@@ -17,12 +17,15 @@ namespace MyOrders
 
         public int CurrentWeek = 0;
         private List<PaymentColor> Colors;
+
+        public List<Payment> PreTransactions;
+
         public Payments()
         {
             InitializeComponent();
             SetConvertMenuItems();
             SetConvertMenuItems2();
-            tb_CurrentWeek.KeyPress += OnlyDigits;
+            PreTransactions = new List<Payment>();            tb_CurrentWeek.KeyPress += OnlyDigits;
             CurrentWeek = CalendarSetting.GetWeekOfYear(DateTime.Today);
             label1.Text = string.Format("Текущая неделя: {0}", CurrentWeek);
             tb_CurrentWeek.Text = CurrentWeek.ToString();
@@ -160,6 +163,10 @@ namespace MyOrders
                     var en = Environment.NewLine;
                     string content = $"{FormatSum(rows[i].Sum)} {CurCode} {en} {ContrAgentName} {en} №сп {rows[i].CreditNum},№сч {rows[i].Acc},  {en} {rows[i].Comments}";
 
+                    var fontSimple = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                    var fontBold = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+
+
                     try
                     {
                         grid[col.Name, i] = new DataGridViewTextBoxCell()
@@ -167,6 +174,7 @@ namespace MyOrders
                             Value = content, //string.Format("{0},сумма:{1}", ContrAgentName, rows[i].Sum),
                             Style = new DataGridViewCellStyle()
                             {
+                                Font = rows[i].TransactionID == 0 ? fontSimple : fontBold,
                                 BackColor = isPaymentExpired(rows[i]) ? Color.Red : GetPaymentColor(rows[i].ColorID),//paymentType == 2 ? Color.LightGreen : Color.Azure,//GetStatusColor(rows[i].Status),
                                 Alignment = DataGridViewContentAlignment.MiddleCenter,
                                 SelectionBackColor = isPaymentExpired(rows[i]) ? Color.Red : GetPaymentColor(rows[i].ColorID)//paymentType == 2 ? Color.LightGreen : Color.Azure//GetStatusColor(rows[i].Status)
@@ -504,6 +512,182 @@ namespace MyOrders
                 db.SaveChanges();
             }
 
+        }
+        private void предварительныйРасчетToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentCell.Tag != null)
+            {
+                var ID = Convert.ToInt32(dataGridView1.CurrentCell.Tag);
+                using (UserContext db = new UserContext(Settings.constr))
+                {
+                    var item = db.Payments.Where(x => x.ID == ID).SingleOrDefault();
+                    if (PreTransactions.Where(x => x.ID == item.ID).ToList().Count() == 0)
+                        PreTransactions.Add(item);
+                    else MessageBox.Show("Этот платеж уже добавлен в список");
+                }
+            }
+        }
+
+        private void показатьПредварительныйРасчетToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TestTransactions f = new TestTransactions(this);
+            f.ShowDialog();
+        }
+
+        private void добавитьВПредварительныйРасчетToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.CurrentCell.Tag != null)
+            {
+                var ID = Convert.ToInt32(dataGridView2.CurrentCell.Tag);
+                using (UserContext db = new UserContext(Settings.constr))
+                {
+                    var item = db.Payments.Where(x => x.ID == ID).SingleOrDefault();
+                    if (PreTransactions.Where(x => x.ID == item.ID).ToList().Count() == 0)
+                        PreTransactions.Add(item);
+                    else MessageBox.Show("Этот платеж уже добавлен в список");
+                }
+            }
+        }
+
+        private void показатьПредварительныйРасчетToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            TestTransactions f = new TestTransactions(this);
+            f.ShowDialog();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        public void DeletePayment(Payment payment)
+        {
+            DialogResult dialogResult = MessageBox.Show("Удалить платеж?", "Удаление", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (payment.TransactionID != 0)
+                {
+                    MessageBox.Show("Удаление невозможно, т.к. платеж уже отражен на балансе!");
+                    return;
+                }
+                using (var db = new UserContext(Settings.constr))
+                {
+                    var item = db.Payments.FirstOrDefault(x => x.ID == payment.ID);
+                    db.Payments.Remove(item);
+                    db.SaveChanges();
+                }
+                MessageBox.Show("Удалено");
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
+            
+        }
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentCell.Tag != null)
+            {
+                var ID = Convert.ToInt32(dataGridView1.CurrentCell.Tag);
+                using (UserContext db = new UserContext(Settings.constr))
+                {
+                    var item = db.Payments.Where(x => x.ID == ID).SingleOrDefault();
+                    DeletePayment(item);
+                }
+            }
+            InitPaymentsForm(this.CurrentWeek);
+        }
+
+        private void удалитьToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.CurrentCell.Tag != null)
+            {
+                var ID = Convert.ToInt32(dataGridView2.CurrentCell.Tag);
+                using (UserContext db = new UserContext(Settings.constr))
+                {
+                    var item = db.Payments.Where(x => x.ID == ID).SingleOrDefault();
+                    DeletePayment(item);
+                }
+            }
+            InitPaymentsForm(this.CurrentWeek);
+        }
+
+        public void CancelTransaction(Payment payment)
+        {
+            int transID = payment.TransactionID;
+            if (transID == 0)
+            {
+                MessageBox.Show("Платеж еще не проведен!");
+                return;
+            }
+            
+            try
+            {
+                using (var db = new UserContext(Settings.constr))
+                {
+                    var trans = db.Transactions.FirstOrDefault(x => x.ID == transID);
+                    var date = trans.TransactionDate.ToString("dd.MM.yyyy");
+                    var workDay = db.WorkDays.ToList().FirstOrDefault(x => x.WorkDayDate.ToString("dd.MM.yyyy") == date);
+                    if (workDay == null)
+                    {
+                        MessageBox.Show("Ошибка! Не найден рабочий день!");
+                        return;
+                    }
+                    var dayID = workDay.WorkDayID;
+                    var currency = db.CurrencyCodes.FirstOrDefault(x => x.Code == trans.TransactionCurrencyCode).CurrencyID;
+                    var balance = db.BalanceOnDays.FirstOrDefault(x => x.WorkDayID == dayID && x.CurrencyID == currency);
+                    balance.CurrentAmount -= trans.Sum;
+                    db.BalanceOnDays.Attach(balance);
+
+                    var entry = db.Entry(balance);
+                    entry.Property(x => x.CurrentAmount).IsModified = true;
+                    var paym = db.Payments.FirstOrDefault(x => x.ID == payment.ID);
+                    paym.TransactionID = 0;
+                    var payentry = db.Entry(paym);
+                    payentry.Property(x => x.TransactionID).IsModified = true;
+
+                    db.Transactions.Remove(trans);
+
+                    db.SaveChanges();
+                }
+                MessageBox.Show("Баланс изменен");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+            
+            
+        }
+        private void отменитьПроводкуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentCell.Tag != null)
+            {
+                var ID = Convert.ToInt32(dataGridView1.CurrentCell.Tag);
+                using (UserContext db = new UserContext(Settings.constr))
+                {
+                    var item = db.Payments.Where(x => x.ID == ID).SingleOrDefault();
+                    CancelTransaction(item);
+                }
+            }
+            InitPaymentsForm(this.CurrentWeek);
+        }
+
+        private void отменитьПроводкуToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            if (dataGridView2.CurrentCell.Tag != null)
+            {
+                var ID = Convert.ToInt32(dataGridView2.CurrentCell.Tag);
+                using (UserContext db = new UserContext(Settings.constr))
+                {
+                    var item = db.Payments.Where(x => x.ID == ID).SingleOrDefault();
+                    CancelTransaction(item);
+                }
+            }
+            InitPaymentsForm(this.CurrentWeek);
         }
     }
 }

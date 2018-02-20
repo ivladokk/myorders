@@ -919,14 +919,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MyOrders.exe" size="366592">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MyOrders.exe" size="378880">
       <assemblyIdentity name="MyOrders" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>qgZd2O3qfeuJ4DkEEJ8L2cGFedsCI4qlwH2t1jtpTkA=</dsig:DigestValue>
+        <dsig:DigestValue>B2GBzNTyWMl0QnsWkcnC/7l3KfuFGEZj+hyLZetQywA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -936,7 +936,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>yO6dUWJ3DXLxDLaHKpTI4Xsnj+5SzAkFP1sqUl6LN3E=</dsig:DigestValue>
+      <dsig:DigestValue>VcbYnWGrkCrqkhUxwIo1YaaNq3QHY2GOm4MgxCPz5F0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Database1_log.ldf" size="8388608" writeableType="applicationData">
@@ -945,7 +945,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>qZNT5AGDuQls8NVDWam0uVKjxeGv5nX8zWroQ/wplz8=</dsig:DigestValue>
+      <dsig:DigestValue>JEjdi6TXWLhJyhwcm47S/TTtl4RkMBuFZ2xzzOnzi7Y=</dsig:DigestValue>
     </hash>
   </file>
   <file name="GoodDB.mdf" size="5242880" writeableType="applicationData">

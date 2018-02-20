@@ -256,6 +256,12 @@
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TestTransactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestTransactions.Designer.cs">
+      <DependentUpon>TestTransactions.cs</DependentUpon>
+    </Compile>
     <Compile Include="TransactionUnit.cs" />
     <EmbeddedResource Include="BalanceForm.resx">
       <DependentUpon>BalanceForm.cs</DependentUpon>
@@ -344,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestTransactions.resx">
+      <DependentUpon>TestTransactions.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>

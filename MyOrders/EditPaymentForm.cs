@@ -181,10 +181,11 @@ namespace MyOrders
                 entry.Property(x => x.Acc).IsModified = true;
                 entry.Property(x => x.ControlDate).IsModified = true;
                 entry.Property(x => x.ColorID).IsModified = true;
+                entry.Property(x => x.TransactionID).IsModified = false;
                 db.SaveChanges();
             }
 
-            if (payment.PaymentStatus == 2)
+            /*if (payment.PaymentStatus == 2)
             {
                 TransactionUnit unit = new TransactionUnit(payment);
                 var trans = unit.CreateTransaction();
@@ -198,7 +199,7 @@ namespace MyOrders
                     entry.Property(x => x.TransactionID).IsModified = true;
                     db.SaveChanges();
                 }
-            }
+            }*/
 
 
         }

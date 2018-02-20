@@ -69,10 +69,6 @@ namespace MyOrders
         }
     }
 
-
-
-
-
     class TransactionUnit
     {
         private Payment _payment;

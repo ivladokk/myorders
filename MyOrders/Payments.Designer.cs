@@ -45,6 +45,8 @@ namespace MyOrders
             this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отразитьНаБалансеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConvertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.предварительныйРасчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.показатьПредварительныйРасчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_NextWeek = new DevExpress.XtraEditors.SimpleButton();
             this.tb_CurrentWeek = new System.Windows.Forms.TextBox();
@@ -56,9 +58,15 @@ namespace MyOrders
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ConvertToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьВПредварительныйРасчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.показатьПредварительныйРасчетToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lb_balance = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ConvertToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.отменитьПроводкуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отменитьПроводкуToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -113,6 +121,7 @@ namespace MyOrders
             this.dataGridView1.ShowRowErrors = false;
             this.dataGridView1.Size = new System.Drawing.Size(1015, 236);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyPress);
@@ -122,37 +131,55 @@ namespace MyOrders
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.добавитьToolStripMenuItem,
             this.изменитьToolStripMenuItem,
+            this.удалитьToolStripMenuItem,
             this.отразитьНаБалансеToolStripMenuItem,
-            this.ConvertToolStripMenuItem});
+            this.ConvertToolStripMenuItem,
+            this.предварительныйРасчетToolStripMenuItem,
+            this.показатьПредварительныйРасчетToolStripMenuItem,
+            this.отменитьПроводкуToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(189, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(278, 180);
             // 
             // добавитьToolStripMenuItem
             // 
             this.добавитьToolStripMenuItem.Name = "добавитьToolStripMenuItem";
-            this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
             this.добавитьToolStripMenuItem.Text = "Добавить";
             this.добавитьToolStripMenuItem.Click += new System.EventHandler(this.добавитьToolStripMenuItem_Click);
             // 
             // изменитьToolStripMenuItem
             // 
             this.изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
-            this.изменитьToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.изменитьToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
             this.изменитьToolStripMenuItem.Text = "Изменить";
             this.изменитьToolStripMenuItem.Click += new System.EventHandler(this.изменитьToolStripMenuItem_Click);
             // 
             // отразитьНаБалансеToolStripMenuItem
             // 
             this.отразитьНаБалансеToolStripMenuItem.Name = "отразитьНаБалансеToolStripMenuItem";
-            this.отразитьНаБалансеToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.отразитьНаБалансеToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
             this.отразитьНаБалансеToolStripMenuItem.Text = "Отразить на балансе";
             this.отразитьНаБалансеToolStripMenuItem.Click += new System.EventHandler(this.отразитьНаБалансеToolStripMenuItem_Click);
             // 
             // ConvertToolStripMenuItem
             // 
             this.ConvertToolStripMenuItem.Name = "ConvertToolStripMenuItem";
-            this.ConvertToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.ConvertToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
             this.ConvertToolStripMenuItem.Text = "Конвертировать..";
+            // 
+            // предварительныйРасчетToolStripMenuItem
+            // 
+            this.предварительныйРасчетToolStripMenuItem.Name = "предварительныйРасчетToolStripMenuItem";
+            this.предварительныйРасчетToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.предварительныйРасчетToolStripMenuItem.Text = "Добавить в предварительный расчет";
+            this.предварительныйРасчетToolStripMenuItem.Click += new System.EventHandler(this.предварительныйРасчетToolStripMenuItem_Click);
+            // 
+            // показатьПредварительныйРасчетToolStripMenuItem
+            // 
+            this.показатьПредварительныйРасчетToolStripMenuItem.Name = "показатьПредварительныйРасчетToolStripMenuItem";
+            this.показатьПредварительныйРасчетToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.показатьПредварительныйРасчетToolStripMenuItem.Text = "Показать предварительный расчет";
+            this.показатьПредварительныйРасчетToolStripMenuItem.Click += new System.EventHandler(this.показатьПредварительныйРасчетToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -275,31 +302,55 @@ namespace MyOrders
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.toolStripMenuItem2,
+            this.удалитьToolStripMenuItem1,
             this.toolStripMenuItem3,
-            this.ConvertToolStripMenuItem2});
+            this.ConvertToolStripMenuItem2,
+            this.добавитьВПредварительныйРасчетToolStripMenuItem,
+            this.показатьПредварительныйРасчетToolStripMenuItem1,
+            this.отменитьПроводкуToolStripMenuItem1});
             this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(189, 114);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(278, 202);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(277, 22);
             this.toolStripMenuItem1.Text = "Добавить";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(188, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(277, 22);
             this.toolStripMenuItem2.Text = "Изменить";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(188, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(277, 22);
             this.toolStripMenuItem3.Text = "Отразить на балансе";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // ConvertToolStripMenuItem2
+            // 
+            this.ConvertToolStripMenuItem2.Name = "ConvertToolStripMenuItem2";
+            this.ConvertToolStripMenuItem2.Size = new System.Drawing.Size(277, 22);
+            this.ConvertToolStripMenuItem2.Text = "Конвертировать..";
+            // 
+            // добавитьВПредварительныйРасчетToolStripMenuItem
+            // 
+            this.добавитьВПредварительныйРасчетToolStripMenuItem.Name = "добавитьВПредварительныйРасчетToolStripMenuItem";
+            this.добавитьВПредварительныйРасчетToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.добавитьВПредварительныйРасчетToolStripMenuItem.Text = "Добавить в предварительный расчет";
+            this.добавитьВПредварительныйРасчетToolStripMenuItem.Click += new System.EventHandler(this.добавитьВПредварительныйРасчетToolStripMenuItem_Click);
+            // 
+            // показатьПредварительныйРасчетToolStripMenuItem1
+            // 
+            this.показатьПредварительныйРасчетToolStripMenuItem1.Name = "показатьПредварительныйРасчетToolStripMenuItem1";
+            this.показатьПредварительныйРасчетToolStripMenuItem1.Size = new System.Drawing.Size(277, 22);
+            this.показатьПредварительныйРасчетToolStripMenuItem1.Text = "Показать предварительный расчет";
+            this.показатьПредварительныйРасчетToolStripMenuItem1.Click += new System.EventHandler(this.показатьПредварительныйРасчетToolStripMenuItem1_Click);
             // 
             // statusStrip1
             // 
@@ -317,11 +368,33 @@ namespace MyOrders
             this.lb_balance.Size = new System.Drawing.Size(113, 17);
             this.lb_balance.Text = "Остатки на сегодня";
             // 
-            // ConvertToolStripMenuItem2
+            // удалитьToolStripMenuItem
             // 
-            this.ConvertToolStripMenuItem2.Name = "ConvertToolStripMenuItem2";
-            this.ConvertToolStripMenuItem2.Size = new System.Drawing.Size(188, 22);
-            this.ConvertToolStripMenuItem2.Text = "Конвертировать..";
+            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
+            // 
+            // удалитьToolStripMenuItem1
+            // 
+            this.удалитьToolStripMenuItem1.Name = "удалитьToolStripMenuItem1";
+            this.удалитьToolStripMenuItem1.Size = new System.Drawing.Size(277, 22);
+            this.удалитьToolStripMenuItem1.Text = "Удалить";
+            this.удалитьToolStripMenuItem1.Click += new System.EventHandler(this.удалитьToolStripMenuItem1_Click);
+            // 
+            // отменитьПроводкуToolStripMenuItem
+            // 
+            this.отменитьПроводкуToolStripMenuItem.Name = "отменитьПроводкуToolStripMenuItem";
+            this.отменитьПроводкуToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.отменитьПроводкуToolStripMenuItem.Text = "Отменить проводку";
+            this.отменитьПроводкуToolStripMenuItem.Click += new System.EventHandler(this.отменитьПроводкуToolStripMenuItem_Click);
+            // 
+            // отменитьПроводкуToolStripMenuItem1
+            // 
+            this.отменитьПроводкуToolStripMenuItem1.Name = "отменитьПроводкуToolStripMenuItem1";
+            this.отменитьПроводкуToolStripMenuItem1.Size = new System.Drawing.Size(277, 22);
+            this.отменитьПроводкуToolStripMenuItem1.Text = "Отменить проводку";
+            this.отменитьПроводкуToolStripMenuItem1.Click += new System.EventHandler(this.отменитьПроводкуToolStripMenuItem1_Click);
             // 
             // Payments
             // 
@@ -372,5 +445,13 @@ namespace MyOrders
         private ToolStripMenuItem toolStripMenuItem3;
         private ToolStripMenuItem ConvertToolStripMenuItem;
         private ToolStripMenuItem ConvertToolStripMenuItem2;
+        private ToolStripMenuItem предварительныйРасчетToolStripMenuItem;
+        private ToolStripMenuItem показатьПредварительныйРасчетToolStripMenuItem;
+        private ToolStripMenuItem добавитьВПредварительныйРасчетToolStripMenuItem;
+        private ToolStripMenuItem показатьПредварительныйРасчетToolStripMenuItem1;
+        private ToolStripMenuItem удалитьToolStripMenuItem;
+        private ToolStripMenuItem удалитьToolStripMenuItem1;
+        private ToolStripMenuItem отменитьПроводкуToolStripMenuItem;
+        private ToolStripMenuItem отменитьПроводкуToolStripMenuItem1;
     }
 }

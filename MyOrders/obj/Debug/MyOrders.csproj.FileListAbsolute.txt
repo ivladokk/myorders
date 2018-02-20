@@ -244,3 +244,4 @@ D:\MyOrders\MyOrders\obj\Debug\MyOrders.EditCurrency.resources
 D:\MyOrders\MyOrders\obj\Debug\MyOrders.RateAdd.resources
 D:\MyOrders\MyOrders\obj\Debug\MyOrders.RatesControl.resources
 D:\MyOrders\MyOrders\obj\Debug\MyOrders.RatesForm.resources
+D:\MyOrders\MyOrders\obj\Debug\MyOrders.TestTransactions.resources
