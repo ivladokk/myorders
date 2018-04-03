@@ -36,11 +36,12 @@
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.контрагентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.цветаПлатежейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.валютыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.платежиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.балансToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетПоПлатежамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.шаблоныПлатежейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.валютыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчетПоДоставкамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +66,8 @@
             this.платежиToolStripMenuItem,
             this.балансToolStripMenuItem,
             this.отчетПоПлатежамToolStripMenuItem,
-            this.шаблоныПлатежейToolStripMenuItem});
+            this.шаблоныПлатежейToolStripMenuItem,
+            this.отчетПоДоставкамToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
@@ -116,6 +118,13 @@
             this.цветаПлатежейToolStripMenuItem.Text = "Цвета платежей";
             this.цветаПлатежейToolStripMenuItem.Click += new System.EventHandler(this.цветаПлатежейToolStripMenuItem_Click);
             // 
+            // валютыToolStripMenuItem
+            // 
+            this.валютыToolStripMenuItem.Name = "валютыToolStripMenuItem";
+            this.валютыToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.валютыToolStripMenuItem.Text = "Валюты";
+            this.валютыToolStripMenuItem.Click += new System.EventHandler(this.валютыToolStripMenuItem_Click);
+            // 
             // платежиToolStripMenuItem
             // 
             this.платежиToolStripMenuItem.Name = "платежиToolStripMenuItem";
@@ -144,12 +153,12 @@
             this.шаблоныПлатежейToolStripMenuItem.Text = "Шаблоны платежей";
             this.шаблоныПлатежейToolStripMenuItem.Click += new System.EventHandler(this.шаблоныПлатежейToolStripMenuItem_Click);
             // 
-            // валютыToolStripMenuItem
+            // отчетПоДоставкамToolStripMenuItem
             // 
-            this.валютыToolStripMenuItem.Name = "валютыToolStripMenuItem";
-            this.валютыToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.валютыToolStripMenuItem.Text = "Валюты";
-            this.валютыToolStripMenuItem.Click += new System.EventHandler(this.валютыToolStripMenuItem_Click);
+            this.отчетПоДоставкамToolStripMenuItem.Name = "отчетПоДоставкамToolStripMenuItem";
+            this.отчетПоДоставкамToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.отчетПоДоставкамToolStripMenuItem.Text = "Отчет по доставкам";
+            this.отчетПоДоставкамToolStripMenuItem.Click += new System.EventHandler(this.отчетПоДоставкамToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -183,6 +192,7 @@
         private System.Windows.Forms.ToolStripMenuItem цветаПлатежейToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem шаблоныПлатежейToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem валютыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отчетПоДоставкамToolStripMenuItem;
     }
 }
 

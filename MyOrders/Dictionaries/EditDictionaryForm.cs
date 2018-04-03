@@ -111,7 +111,7 @@ namespace MyOrders.Dictionaries
                 }
 
                 MessageBox.Show("Добавлено");
-                (Sender as EditPaymentForm).LoadAgents();
+                (Sender as IEditForm).LoadAgents();
                 this.Close();
                 return;
             }

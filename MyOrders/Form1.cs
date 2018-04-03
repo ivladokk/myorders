@@ -137,5 +137,13 @@ namespace MyOrders
             EditCurrency f = new EditCurrency();
             f.ShowDialog();
         }
+
+        private void отчетПоДоставкамToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GoodsReport f = new GoodsReport();
+            f.MdiParent = this;
+            f.WindowState = FormWindowState.Maximized;
+            f.Show();
+        }
     }
 }

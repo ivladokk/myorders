@@ -26,6 +26,7 @@ namespace MyOrders
             BuildReport(CurrentWeek);
 
         }
+        List<ContrAgent> Contragents = null;
         public void BuildReport(int week)
         {
             dataGridView1.Columns.Clear();
@@ -40,6 +41,8 @@ namespace MyOrders
                 {
                     Orders = db.Orders.Where(x=>x.Status!=5).ToList();
                     if (Orders.Count == 0) return;
+
+                    Contragents = db.Contragents.ToList();
                 }
             }
             catch (Exception ex)
@@ -90,7 +93,7 @@ namespace MyOrders
                 {
                     dataGridView1[col.Name, i] = new DataGridViewTextBoxCell()
                         {
-                            Value = string.Format("{0},гр.мест:{1},общ.вес:{2}", rows[i].Provider, rows[i].PlaceCount,GetTotalWeight(rows[i].ID)),
+                            Value = string.Format("{0},гр.мест:{1},общ.вес:{2}", /*rows[i].Provider*/GetProvider(rows[i]), rows[i].PlaceCount,GetTotalWeight(rows[i].ID)),
                             Style = new DataGridViewCellStyle()
                             {
                                 BackColor = GetStatusColor(rows[i].Status),
@@ -108,6 +111,12 @@ namespace MyOrders
 
         }
 
+        private string GetProvider(Order item)
+        {
+            return item.ProviderID == null
+                ? item.Provider
+                : Contragents.FirstOrDefault(x => x.ContrAgentID == item.ProviderID).Name;
+        }
         public int GetTotalWeight(int OrderID)
         {
             var db = new UserContext(Settings.constr);

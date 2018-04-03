@@ -37,8 +37,14 @@ namespace MyOrders
             }
 
             gridControl1.DataSource = ds.Tables[0];
+            
         }
 
-
+        private void excelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+            if (!String.IsNullOrEmpty(saveFileDialog1.FileName))
+                gridControl1.ExportToXlsx(saveFileDialog1.FileName);
+        }
     }
 }

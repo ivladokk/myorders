@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace MyOrders
 {
-    public partial class EditPaymentForm : XtraForm
+    public partial class EditPaymentForm : XtraForm,IEditForm
     {
         private Payment Payment;
         private int Type;

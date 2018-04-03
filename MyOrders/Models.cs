@@ -54,6 +54,9 @@ namespace MyOrders
         public int AcceptNum { get; set; }
         public int Status { get; set; }
         public int PlaceCount { get; set; }
+        public int? ContrAgentID { get; set; }
+        public string NumberKP { get; set; }
+        public int? ProviderID { get; set; }
     }
 
     public class Good

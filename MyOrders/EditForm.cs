@@ -8,25 +8,36 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using MyOrders.Dictionaries;
 
 namespace MyOrders
 {
-    public partial class EditForm : DevExpress.XtraEditors.XtraForm
+    public partial class EditForm : DevExpress.XtraEditors.XtraForm,IEditForm
     {
         public Order MyOrder;
         public int Type;
         public int OrderID;
         public List<Good> MyGoods;
         object Sender;
+
+        private bool needToUpdateProvider = false;
+
         public EditForm(Order order,int type, object sender)
         {
             InitializeComponent();
+            if (type == 2)
+                needToUpdateProvider = order.ProviderID == null;
+
+
 
             tb_AcceptNum.KeyPress += OnlyDigits;
             tb_PlaceCount.KeyPress += OnlyDigits;
 
 
             Sender = sender;
+            LoadAgents();
+
+
             BindingList<Status> objects = new BindingList<Status>();
             using (UserContext db = new UserContext(Settings.constr))
             {
@@ -50,7 +61,26 @@ namespace MyOrders
                 
         }
 
+        public void LoadAgents()
+        {
+            BindingList<ContrAgent> Contragents = new BindingList<ContrAgent>();
 
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                foreach (var i in db.Contragents.ToList())
+                {
+                    Contragents.Add(i);
+                }
+            }
+
+            cb_Contragent.Properties.DisplayMember = "Name";
+            cb_Contragent.Properties.ValueMember = "ContrAgentID";
+            cb_Contragent.Properties.DataSource = Contragents;
+
+            cb_Provider.Properties.DisplayMember = "Name";
+            cb_Provider.Properties.ValueMember = "ContrAgentID";
+            cb_Provider.Properties.DataSource = Contragents;
+        }
         private void OnlyDigits(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(8))
@@ -62,7 +92,11 @@ namespace MyOrders
         {
 
         }
-
+        private void btn_AddAgent_Click(object sender, EventArgs e)
+        {
+            EditDictionaryForm f = new EditDictionaryForm(null, 3, this);
+            f.Show();
+        }
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             if (MyOrder == null)
@@ -79,7 +113,11 @@ namespace MyOrders
 
         public void InitEditForm()
         {
-            tb_Provider.Text = MyOrder.Provider;
+            cb_Contragent.EditValue = MyOrder.ContrAgentID;
+            tb_NumberKP.Text = MyOrder.NumberKP;
+            if (needToUpdateProvider)
+                label8.Text = $"Поставщик: {MyOrder.Provider}";
+            else cb_Provider.EditValue = MyOrder.ProviderID;
             tb_AcceptNum.Text = MyOrder.AcceptNum.ToString();
             dt_OrderDate.Value = MyOrder.OrderDate;
             dt_ControlDate.Value = MyOrder.ControlDate;
@@ -99,7 +137,9 @@ namespace MyOrders
         }
         private void EditOrder(Order order)
         {
-            order.Provider = tb_Provider.Text;
+            order.ContrAgentID = Convert.ToInt32(cb_Contragent.EditValue);
+            order.NumberKP = tb_NumberKP.Text;
+            order.ProviderID = Convert.ToInt32(cb_Provider.EditValue);
             order.AcceptNum = Convert.ToInt32(tb_AcceptNum.Text);
             order.OrderDate = dt_OrderDate.Value;
             order.ControlDate = dt_ControlDate.Value;
@@ -109,7 +149,9 @@ namespace MyOrders
             {
                 db.Orders.Attach(order);
                 var entry = db.Entry(order);
-                entry.Property(x => x.Provider).IsModified = true;
+                entry.Property(x => x.ContrAgentID).IsModified = true;
+                entry.Property(x => x.NumberKP).IsModified = true;
+                entry.Property(x => x.ProviderID).IsModified = true;
                 entry.Property(x => x.AcceptNum).IsModified = true;
                 entry.Property(x => x.OrderDate).IsModified = true;
                 entry.Property(x => x.ControlDate).IsModified = true;
@@ -123,12 +165,19 @@ namespace MyOrders
 
         public bool isValid()
         {
-            if (tb_AcceptNum.Text == "" || tb_PlaceCount.Text == "" || tb_Provider.Text == "")
+
+            if (needToUpdateProvider && cb_Provider.EditValue == null)
+            {
+                MessageBox.Show("Выберите поставщика из справочника!");
+                return false;
+            }
+
+            if (cb_Contragent.EditValue == null|| tb_AcceptNum.Text == "" || tb_PlaceCount.Text == "" || cb_Provider.EditValue == null)
             {
                 MessageBox.Show("Заполните все поля!");
                 return false;
             }
-            else return true;
+            return true;
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
@@ -139,7 +188,9 @@ namespace MyOrders
             {
                 Order newOrder = new Order()
                 {
-                    Provider = tb_Provider.Text,
+                    ContrAgentID = Convert.ToInt32(cb_Contragent.EditValue),
+                    NumberKP = tb_NumberKP.Text,
+                    ProviderID = Convert.ToInt32(cb_Provider.EditValue),
                     AcceptNum = Convert.ToInt32(tb_AcceptNum.Text),
                     AddDate = DateTime.Today,
                     OrderDate = dt_OrderDate.Value,

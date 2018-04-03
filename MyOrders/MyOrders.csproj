@@ -187,6 +187,13 @@
     <Compile Include="GoodItem.Designer.cs">
       <DependentUpon>GoodItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="GoodsReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsReport.Designer.cs">
+      <DependentUpon>GoodsReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IEditForm.cs" />
     <Compile Include="Models.cs" />
     <Compile Include="MyGood.cs">
       <SubType>UserControl</SubType>
@@ -307,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GoodItem.resx">
       <DependentUpon>GoodItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsReport.resx">
+      <DependentUpon>GoodsReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyGood.resx">
       <DependentUpon>MyGood.cs</DependentUpon>
