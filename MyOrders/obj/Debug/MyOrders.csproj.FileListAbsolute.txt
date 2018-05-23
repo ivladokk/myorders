@@ -246,3 +246,8 @@ D:\MyOrders\MyOrders\obj\Debug\MyOrders.RatesControl.resources
 D:\MyOrders\MyOrders\obj\Debug\MyOrders.RatesForm.resources
 D:\MyOrders\MyOrders\obj\Debug\MyOrders.TestTransactions.resources
 D:\MyOrders\MyOrders\obj\Debug\MyOrders.GoodsReport.resources
+D:\MyOrders\MyOrders\bin\Debug\AppCore.dll
+D:\MyOrders\MyOrders\bin\Debug\CalculationModule.dll
+D:\MyOrders\MyOrders\bin\Debug\AppCore.pdb
+D:\MyOrders\MyOrders\bin\Debug\AppCore.dll.config
+D:\MyOrders\MyOrders\bin\Debug\CalculationModule.pdb

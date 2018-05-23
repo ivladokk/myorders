@@ -42,13 +42,18 @@
             this.отчетПоПлатежамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.шаблоныПлатежейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетПоДоставкамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.калькуляцияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.настройкиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.справочникТоваровToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.калькуляцияToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(877, 24);
@@ -160,6 +165,37 @@
             this.отчетПоДоставкамToolStripMenuItem.Text = "Отчет по доставкам";
             this.отчетПоДоставкамToolStripMenuItem.Click += new System.EventHandler(this.отчетПоДоставкамToolStripMenuItem_Click);
             // 
+            // калькуляцияToolStripMenuItem
+            // 
+            this.калькуляцияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.создатьToolStripMenuItem,
+            this.настройкиToolStripMenuItem1,
+            this.справочникТоваровToolStripMenuItem});
+            this.калькуляцияToolStripMenuItem.Name = "калькуляцияToolStripMenuItem";
+            this.калькуляцияToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.калькуляцияToolStripMenuItem.Text = "Калькуляция";
+            // 
+            // создатьToolStripMenuItem
+            // 
+            this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
+            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.создатьToolStripMenuItem.Text = "Создать...";
+            this.создатьToolStripMenuItem.Click += new System.EventHandler(this.создатьToolStripMenuItem_Click);
+            // 
+            // настройкиToolStripMenuItem1
+            // 
+            this.настройкиToolStripMenuItem1.Name = "настройкиToolStripMenuItem1";
+            this.настройкиToolStripMenuItem1.Size = new System.Drawing.Size(189, 22);
+            this.настройкиToolStripMenuItem1.Text = "Настройки";
+            this.настройкиToolStripMenuItem1.Click += new System.EventHandler(this.настройкиToolStripMenuItem1_Click);
+            // 
+            // справочникТоваровToolStripMenuItem
+            // 
+            this.справочникТоваровToolStripMenuItem.Name = "справочникТоваровToolStripMenuItem";
+            this.справочникТоваровToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.справочникТоваровToolStripMenuItem.Text = "Справочник товаров";
+            this.справочникТоваровToolStripMenuItem.Click += new System.EventHandler(this.справочникТоваровToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,6 +229,10 @@
         private System.Windows.Forms.ToolStripMenuItem шаблоныПлатежейToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem валютыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отчетПоДоставкамToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem калькуляцияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem создатьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem справочникТоваровToolStripMenuItem;
     }
 }
 

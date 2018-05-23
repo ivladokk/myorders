@@ -1,1 +1,1 @@
-Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=d:\MyOrders\MyOrders\Database1.mdf;Integrated Security=True
+Data Source=EPBYMINW7544\SQLEXPRESS;Initial Catalog=GoodsDB;Integrated Security=True;Persist Security Info=False

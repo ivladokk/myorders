@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalculationModule.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using CalculationModule;
 
 namespace MyOrders
 {
@@ -18,19 +20,11 @@ namespace MyOrders
         {
             InitializeComponent();
 
+
             CultureInfo culture = new CultureInfo("ru-RU");
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
-
-           
-           
-
-
-
             RepForm rep = new RepForm();
-
-
-            decimal a = Convert.ToDecimal("1,2345");
 
 
             rep.MdiParent = this;
@@ -112,9 +106,11 @@ namespace MyOrders
 
         private void отчетПоПлатежамToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PaymentsReport f = new PaymentsReport();
-            f.MdiParent = this;
-            f.WindowState = FormWindowState.Maximized;
+            PaymentsReport f = new PaymentsReport
+            {
+                MdiParent = this,
+                WindowState = FormWindowState.Maximized
+            };
             f.Show();
         }
 
@@ -126,9 +122,11 @@ namespace MyOrders
 
         private void шаблоныПлатежейToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FuturePaymentsRep f = new FuturePaymentsRep();
-            f.MdiParent = this;
-            f.WindowState = FormWindowState.Maximized;
+            FuturePaymentsRep f = new FuturePaymentsRep
+            {
+                MdiParent = this,
+                WindowState = FormWindowState.Maximized
+            };
             f.Show();
         }
 
@@ -143,6 +141,32 @@ namespace MyOrders
             GoodsReport f = new GoodsReport();
             f.MdiParent = this;
             f.WindowState = FormWindowState.Maximized;
+            f.Show();
+        }
+
+        private void создатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CalculationMain f = new CalculationMain
+            {
+                MdiParent = this,
+                WindowState = FormWindowState.Maximized
+            };
+            f.Show();
+        }
+
+        private void настройкиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CalculationSettings f = new CalculationSettings();
+            f.ShowDialog();
+        }
+
+        private void справочникТоваровToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProductsDictionary f = new ProductsDictionary
+            {
+                MdiParent = this,
+                WindowState = FormWindowState.Maximized
+            };
             f.Show();
         }
     }

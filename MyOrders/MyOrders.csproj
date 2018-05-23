@@ -405,6 +405,16 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppCore\AppCore.csproj">
+      <Project>{6daa1fe9-9627-4fa3-a5e3-4d82c62ce6ad}</Project>
+      <Name>AppCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CalculationModule\CalculationModule.csproj">
+      <Project>{e1df486b-2054-4d26-a0ce-dcac1202df7d}</Project>
+      <Name>CalculationModule</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
