@@ -179,7 +179,7 @@
             // 
             this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
             this.создатьToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.создатьToolStripMenuItem.Text = "Создать...";
+            this.создатьToolStripMenuItem.Text = "Старт";
             this.создатьToolStripMenuItem.Click += new System.EventHandler(this.создатьToolStripMenuItem_Click);
             // 
             // настройкиToolStripMenuItem1

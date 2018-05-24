@@ -31,8 +31,53 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.BonusSkins.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Data.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v17.1.Core">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Office.v17.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v17.1.Core, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Pdf.v17.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v17.1.Core, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Printing.v17.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v17.1.Core">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.RichEdit.v17.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v17.1.Core">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Sparkline.v17.1.Core.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Utils.v17.1">
       <HintPath>..\MyOrders\bin\Debug\DevExpress.Utils.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraBars.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraEditors.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraGrid.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraLayout.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraPrinting.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraTreeList.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraVerticalGrid.v17.1.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="ExcelDataReader, Version=3.4.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
@@ -54,6 +99,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CalculationForm.Designer.cs">
+      <DependentUpon>CalculationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CalculationLauncher.cs" />
     <Compile Include="CalculationWorker.cs" />
     <Compile Include="ImportProductAttributes.cs" />
@@ -144,12 +195,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CalculationForm.resx">
+      <DependentUpon>CalculationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProductsDictionary.resx">
       <DependentUpon>ProductsDictionary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductsImport.resx">
       <DependentUpon>ProductsImport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="UI\CalculationConstantForm.resx">
       <DependentUpon>CalculationConstantForm.cs</DependentUpon>
     </EmbeddedResource>

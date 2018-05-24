@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using AppCore;
 using AppCore.Models;
 using AppCore.Settings;
@@ -70,50 +71,11 @@ namespace CalculationModule
 
         public CalculationWorker()
         {
-            //_calculationInstance = instance;
-
-            dynamicConst.Add(new DynamicConstant
-            {
-                ID = 1,
-                CalculationTypeID = 1,
-                Name = "1% от стоимости товара",
-                Expression = "sum[1] / 100"
-            });
-
             
-
-            /*
-            order.Add(new CalculationOrder
-            {
-                Order = 1,
-                ItemType = 1,
-                ItemID = 1
-            });
-            order.Add(new CalculationOrder
-            {
-                Order = 2,
-                ItemType = 3,
-                ItemID = 1
-            });
-            order.Add(new CalculationOrder
-            {
-                Order = 3,
-                ItemType = 2,
-                ItemID = 1
-            });
-            order.Add(new CalculationOrder
-            {
-                Order = 4,
-                ItemType = 1,
-                ItemID = 2
-            });
-            order.Add(new CalculationOrder
-            {
-                Order = 5,
-                ItemType = 3,
-                ItemID = 2
-            });*/
-
+        }
+        public CalculationWorker(CalculationInstance instance)
+        {
+            calculationInstance = instance;
         }
 
         public void ProcessNew()
@@ -318,6 +280,7 @@ namespace CalculationModule
             _usedConstatns.AddRange(manualConstants);
         }
 
+        public DataTable exported;
         public DataTable GetDataTable()
         {
             DataTable dt = new DataTable("Report");
@@ -360,18 +323,23 @@ namespace CalculationModule
                 }
             }
 
-            dt.Rows.Add();
+            /*dt.Rows.Add();
             int lastRow = dt.Rows.Count - 1;
             dt.Rows[lastRow]["Product"] = "Сумма";
             foreach (var item in _calculationItems.Where(x=>x.WithSum == 1))
             {
                 dt.Rows[lastRow][item.ItemName] = ItemSumList.FirstOrDefault(x => x.Item.ItemName == item.ItemName).Value;
-            }
+            }*/
+
+            exported = dt;
+            var fileName = $"xml/Calculation_{calculationInstance.ID}";
+            dt.WriteXml(fileName);
+
             return dt;
         }
 
         public void SaveResults()
-        {
+        {/*
             using (UserContext db = new UserContext(Settings.constr))
             {
                 var oldProducts = db.CalculatedProducts.Where(x => x.CalculationInstanceID == calculationInstance.ID);
@@ -404,9 +372,22 @@ namespace CalculationModule
 
                 db.SaveChanges();
             }
+            */
 
-            
+            exported = GetDataTable();
+            var fileName = $"xml/Calculation_{calculationInstance.ID}.xml";
+            exported.WriteXml(fileName);
 
+
+        }
+
+        public DataTable LoaDataTable()
+        {
+            DataTable dt = new DataTable();
+            var doc = XDocument.Load("filename.xml");
+            var fileName = $"xml/Calculation_{calculationInstance.ID}.xml";
+            dt.ReadXml(fileName);
+            return dt;
         }
 
         private void GetSum(CalculationItem item)

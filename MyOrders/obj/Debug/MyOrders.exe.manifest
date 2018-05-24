@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CalculationModule.dll" size="72192">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CalculationModule.dll" size="76288">
       <assemblyIdentity name="CalculationModule" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>wBAumICotWEinwlKJFlUKAPQDir7Eqq3SPqbQwTp4uc=</dsig:DigestValue>
+        <dsig:DigestValue>s2uIsUFhsKrz7nTmldQQsuSQF1gkAEy0PAxwG9F3Ebo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -950,7 +950,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>QpDwZk+aqEqCHn+RGbd8wyuGodTNSl2AeqRZM3cC4k8=</dsig:DigestValue>
+        <dsig:DigestValue>7WPwwK3w8EFgvIqz2Emds+ij0kalQiy+S+9cG74J83o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

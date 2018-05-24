@@ -170,6 +170,7 @@ namespace CalculationModule.UI
         private void btn_finish_Click(object sender, EventArgs e)
         {
             isCopmleted = true;
+            _worker.SaveResults();
             this.Close();
         }
 

@@ -436,3 +436,17 @@ left join Transactions T on T.PaymentID=P.Id
 left join CurrencyCodes C on C.Code=P.PaymentCurrencyCode
 end
 GO
+
+
+
+create procedure GetCalculationInstances
+as begin
+
+	select	I.ID as 'ID',
+			I.Name as 'Название',
+			T.Name as 'Тип',
+			I.CreateDate as 'Дата создания'
+	from CalculationInstances I 
+	inner join CalculationTypes T on T.ID=I.CalculationTypeID
+
+end
