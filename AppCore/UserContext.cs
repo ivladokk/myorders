@@ -38,6 +38,7 @@ namespace AppCore
         public DbSet<ProductAttribute> ProductAttributes { get; set; }
         public DbSet<DynamicConstant> DynamicConstants { get; set; }
         public DbSet<CalculationOrder> CalculationOrders { get; set; }
+        public DbSet<CalculationResult> CalculationResults { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             Database.SetInitializer<UserContext>(null);

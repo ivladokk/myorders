@@ -28,7 +28,7 @@ namespace CalculationModule
 
         public void LoadCalculation()
         {
-            //gridControl1.DataSource = worker.LoaDataTable();
+            gridControl1.DataSource = worker.GetDataTable();
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

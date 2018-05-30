@@ -113,3 +113,5 @@ D:\MyOrders\CalculationModule\bin\Debug\ja\DevExpress.XtraVerticalGrid.v17.1.res
 D:\MyOrders\CalculationModule\bin\Debug\ru\DevExpress.XtraVerticalGrid.v17.1.resources.dll
 D:\MyOrders\CalculationModule\obj\Debug\CalculationModule.CalculationForm.resources
 D:\MyOrders\CalculationModule\obj\Debug\CalculationModule.dll.licenses
+D:\MyOrders\CalculationModule\bin\Debug\Newtonsoft.Json.dll
+D:\MyOrders\CalculationModule\bin\Debug\Newtonsoft.Json.xml

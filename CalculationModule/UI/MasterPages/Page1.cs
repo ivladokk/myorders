@@ -17,11 +17,16 @@ namespace CalculationModule.UI.MasterPages
     {
         public int SelectedTypeID { get; set; }
         public string CalcName { get; set; }
+        public int ContrAgentID { get; set; }
         public Page1()
         {
             InitializeComponent();
            
             LoadTypes();
+            LoadAgents();
+
+            
+
         }
 
         private bool isLoaded = false;
@@ -44,6 +49,25 @@ namespace CalculationModule.UI.MasterPages
                 tb_name.DataBindings.Add("Text", this, "CalcName");
             }
 
+        }
+
+        public void LoadAgents()
+        {
+            BindingList<ContrAgent> Contragents = new BindingList<ContrAgent>();
+
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                foreach (var i in db.Contragents.ToList())
+                {
+                    Contragents.Add(i);
+                }
+            }
+
+            cb_Contragent.Properties.DisplayMember = "Name";
+            cb_Contragent.Properties.ValueMember = "ContrAgentID";
+            cb_Contragent.Properties.DataSource = Contragents;
+            //ContrAgentID = (int) cb_Contragent.EditValue;
+            cb_Contragent.DataBindings.Add("EditValue", this, "ContrAgentID");
         }
 
         private void cb_type_SelectedValueChanged(object sender, EventArgs e)

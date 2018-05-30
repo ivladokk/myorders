@@ -32,6 +32,9 @@
             this.cb_type = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_name = new System.Windows.Forms.TextBox();
+            this.cb_Contragent = new DevExpress.XtraEditors.LookUpEdit();
+            this.label3 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_Contragent.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -75,16 +78,40 @@
             this.tb_name.Size = new System.Drawing.Size(335, 20);
             this.tb_name.TabIndex = 3;
             // 
+            // cb_Contragent
+            // 
+            this.cb_Contragent.Location = new System.Drawing.Point(3, 127);
+            this.cb_Contragent.Name = "cb_Contragent";
+            // 
+            // 
+            // 
+            this.cb_Contragent.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cb_Contragent.Size = new System.Drawing.Size(335, 20);
+            this.cb_Contragent.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 109);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(123, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Выберите контрагента";
+            // 
             // Page1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.tb_name);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cb_type);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.cb_Contragent);
             this.Name = "Page1";
-            this.Size = new System.Drawing.Size(353, 112);
+            this.Size = new System.Drawing.Size(353, 262);
+            ((System.ComponentModel.ISupportInitialize)(this.cb_Contragent.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,5 +123,7 @@
         private System.Windows.Forms.ComboBox cb_type;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_name;
+        private DevExpress.XtraEditors.LookUpEdit cb_Contragent;
+        private System.Windows.Forms.Label label3;
     }
 }

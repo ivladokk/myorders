@@ -161,6 +161,8 @@ namespace AppCore.Models
         public int CalculationTypeID { get; set; }
         public string Name { get; set; }
         public DateTime CreateDate { get; set; }
+        public int Status { get; set; }
+        public int ContrAgentID { get; set; }
 
     }
 
@@ -240,5 +242,15 @@ namespace AppCore.Models
         public int CalculationTypeID { get; set; }
         public int ItemType { get; set; }
         public int ItemID { get; set; }
+    }
+
+    public class CalculationResult
+    {
+        public int ID { get; set; }
+        public int CalculationInstanseID { get; set; }
+        public string CalculatedProducts { get; set; }
+        public string CalculatedItemsJSON { get; set; }
+        public string CalculatedDynamicsJSON { get; set; }
+        public string CalculatedSumsJSON { get; set; }
     }
 }

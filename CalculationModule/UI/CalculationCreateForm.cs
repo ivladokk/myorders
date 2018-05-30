@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using AppCore;
 using AppCore.Settings;
 using CalculationModule.UI.MasterPages;
+using DevExpress.Pdf.Native;
 using DevExpress.XtraEditors;
 
 namespace CalculationModule.UI
@@ -30,11 +31,12 @@ namespace CalculationModule.UI
         private Step step2;
         private Step step3;
         private Step step4;
-
+        private CalculationMain _sender;
         private bool isCopmleted = false;
-        public CalculationCreateForm()
+        public CalculationCreateForm(CalculationMain sender)
         {
             InitializeComponent();
+            _sender = sender;
             this.Focus();
             _worker = new CalculationWorker();
             CreateSteps();
@@ -75,7 +77,12 @@ namespace CalculationModule.UI
 
         private void Action1()
         {
-            _worker.CreateInstance(page1.SelectedTypeID, page1.CalcName);
+            if (page1.ContrAgentID == 0)
+            {
+                MessageBox.Show("Выберите контрагента");
+                return;
+            }
+            _worker.CreateInstance(page1.SelectedTypeID, page1.CalcName, page1.ContrAgentID);
             page3 = new Page3(_worker.calculationInstance);
             step3 = new Step
             {
@@ -131,7 +138,7 @@ namespace CalculationModule.UI
             flowLayoutPanel1.Controls.Add(_currentStep.Control);
             btn_finish.Enabled = _currentStep.isLast;
             btn_next.Enabled = !_currentStep.isLast;
-            btn_prev.Enabled = _currentStep.Prev == null;
+            btn_prev.Enabled = _currentStep.Prev != null;
             
             
         }
@@ -171,6 +178,7 @@ namespace CalculationModule.UI
         {
             isCopmleted = true;
             _worker.SaveResults();
+            _sender.Load();
             this.Close();
         }
 
@@ -199,7 +207,7 @@ namespace CalculationModule.UI
                 if (dialogResult == DialogResult.Yes)
                 {
                     Clear();
-                    this.Close();
+                    e.Cancel = false;
                 }
                 else if (dialogResult == DialogResult.No)
                 {

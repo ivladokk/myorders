@@ -54,7 +54,7 @@ namespace CalculationModule.UI
 
         private void создатьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CalculationCreateForm f = new CalculationCreateForm();
+            CalculationCreateForm f = new CalculationCreateForm(this);
             f.Show();
             f.Focus();
         }

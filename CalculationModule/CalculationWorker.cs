@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
 using AppCore;
 using AppCore.Models;
 using AppCore.Settings;
+using Newtonsoft.Json;
 
 namespace CalculationModule
 {
@@ -23,8 +25,8 @@ namespace CalculationModule
     public class CalculatedValue
     {
 
-        public CalculationItem Item;
-        public decimal Value;
+        public CalculationItem Item { get; set; }
+        public decimal Value { get; set; }
     }
 
     public class CalculatedProduct
@@ -68,14 +70,60 @@ namespace CalculationModule
 
         public List<CalculationOrder> order = new List<CalculationOrder>();
         public List<CalculatedDynamic> CalculatedDynamics = new List<CalculatedDynamic>();
+        private int _mode;
 
         public CalculationWorker()
         {
-            
+            _mode = 1;
         }
         public CalculationWorker(CalculationInstance instance)
         {
+            _mode = 2;
             calculationInstance = instance;
+            LoadEnviroment();
+            ImportFromJSON();
+        }
+        public void CreateInstance(int typeID, string name, int agentID)
+        {
+            if (_mode != 1)
+            {
+                return;
+            }
+            var instance = new CalculationInstance  
+            {
+                CalculationTypeID = typeID,
+                CreateDate = DateTime.Today,
+                Name = name,
+                ContrAgentID = agentID,
+                Status = 1
+            };
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                db.CalculationInsctInstances.Add(instance);
+                db.SaveChanges();
+                calculationInstance = instance;
+            }
+
+            LoadEnviroment();
+        }
+
+        public void LoadEnviroment()
+        {
+            if (calculationInstance == null)
+            {
+                MessageBox.Show("Ошибка при загрузке элементов");
+                return;
+            }
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                _calculationItems = db.CalculationItems
+                    .Where(x => x.CalculationTypeID == calculationInstance.CalculationTypeID).ToList();
+                _usedConstatns = db.CalculationConstants
+                    .Where(x => x.CalculationTypeID == calculationInstance.CalculationTypeID && x.ConstantType == 1).ToList();
+                dynamicConst = db.DynamicConstants
+                    .Where(x => x.CalculationTypeID == calculationInstance.CalculationTypeID).ToList();
+                order = db.CalculationOrders.Where(x => x.CalculationTypeID == calculationInstance.CalculationTypeID).ToList();
+            }
         }
 
         public void ProcessNew()
@@ -110,7 +158,6 @@ namespace CalculationModule
                     }
                     case 3:
                     {
-
                         var item = _calculationItems.FirstOrDefault(x => x.ID == ord.ItemID);
                         GetSum(item);
                         break;
@@ -178,30 +225,19 @@ namespace CalculationModule
             });
 
         }
-        public void CreateInstance(int typeID, string name)
+        private void GetSum(CalculationItem item)
         {
-            var instance = new CalculationInstance
+            decimal ret = 0;
+            foreach (var i in calculatedProducts)
             {
-                CalculationTypeID = typeID,
-                CreateDate = DateTime.Today,
-                Name = name
-            };
-            using (UserContext db = new UserContext(Settings.constr))
-            {
-                db.CalculationInsctInstances.Add(instance);
-                db.SaveChanges();
-                calculationInstance = instance;
+                foreach (var val in i.CalculatedValues.Where(x => x.Item.ID == item.ID))
+                {
+                    ret += val.Value;
+                }
             }
-            using (UserContext db = new UserContext(Settings.constr))
-            {
-                _calculationItems = db.CalculationItems
-                    .Where(x => x.CalculationTypeID == calculationInstance.CalculationTypeID).ToList();
-                _usedConstatns = db.CalculationConstants
-                    .Where(x => x.CalculationTypeID == calculationInstance.CalculationTypeID && x.ConstantType == 1).ToList();
-                order = db.CalculationOrders.Where(x => x.CalculationTypeID == calculationInstance.CalculationTypeID).ToList();
-            }
-        }
 
+            ItemSumList.Add(new ItemSum { Item = item, Value = ret });
+        }
         public void ImportProducts(DataTable dt)
         {
 
@@ -280,7 +316,6 @@ namespace CalculationModule
             _usedConstatns.AddRange(manualConstants);
         }
 
-        public DataTable exported;
         public DataTable GetDataTable()
         {
             DataTable dt = new DataTable("Report");
@@ -322,8 +357,8 @@ namespace CalculationModule
                     dt.Rows[i][item.Item.ItemName] = item.Value;
                 }
             }
-
-            /*dt.Rows.Add();
+            /*
+            dt.Rows.Add();
             int lastRow = dt.Rows.Count - 1;
             dt.Rows[lastRow]["Product"] = "Сумма";
             foreach (var item in _calculationItems.Where(x=>x.WithSum == 1))
@@ -331,88 +366,32 @@ namespace CalculationModule
                 dt.Rows[lastRow][item.ItemName] = ItemSumList.FirstOrDefault(x => x.Item.ItemName == item.ItemName).Value;
             }*/
 
-            exported = dt;
-            var fileName = $"xml/Calculation_{calculationInstance.ID}";
-            dt.WriteXml(fileName);
-
             return dt;
         }
 
         public void SaveResults()
-        {/*
-            using (UserContext db = new UserContext(Settings.constr))
-            {
-                var oldProducts = db.CalculatedProducts.Where(x => x.CalculationInstanceID == calculationInstance.ID);
-                db.CalculatedProducts.RemoveRange(oldProducts);
-                var oldValues = db.CalculatedItems.Where(x => x.CalculationInstanceID == calculationInstance.ID);
-                db.CalculatedItems.RemoveRange(oldValues);
-
-                foreach (var i in calculatedProducts)
-                {
-                    var calculatedProduct = new AppCore.Models.CalculatedProduct
-                    {
-                        CalculationInstanceID = calculationInstance.ID,
-                        Count = i.Product.Count,
-                        ProductID = i.Product.Product.ID
-                    };
-                    db.CalculatedProducts.Add(calculatedProduct);
-                    foreach (var item in i.CalculatedValues)
-                    {
-                        var newItem = new AppCore.Models.CalculatedItem
-                        {
-                            Value = item.Value,
-                            CalculatedProductID = calculatedProduct.ProductID,
-                            ItemID = item.Item.ID,
-                            CalculationInstanceID = calculationInstance.ID
-                        };
-                        db.CalculatedItems.Add(newItem);
-                    }
-                    
-                }
-
-                db.SaveChanges();
-            }
-            */
-
-            exported = GetDataTable();
-            var fileName = $"xml/Calculation_{calculationInstance.ID}.xml";
-            exported.WriteXml(fileName);
-
-
-        }
-
-        public DataTable LoaDataTable()
         {
-            DataTable dt = new DataTable();
-            var doc = XDocument.Load("filename.xml");
-            var fileName = $"xml/Calculation_{calculationInstance.ID}.xml";
-            dt.ReadXml(fileName);
-            return dt;
+            ExportToJSON();
         }
 
-        private void GetSum(CalculationItem item)
-        {
-            decimal ret = 0;
-            foreach (var i in calculatedProducts)
-            {
-                foreach (var val in i.CalculatedValues.Where(x => x.Item.ID == item.ID))
-                {
-                    ret += val.Value;
-                }
-            }
-
-            ItemSumList.Add(new ItemSum {Item = item, Value = ret});
-        }
         private decimal CalculateValue(string parsedEpression)
         {
-
-            var loDataTable = new DataTable();
-            parsedEpression = parsedEpression.Replace(",", ".");
-            var loDataColumn = new DataColumn("Eval", typeof(decimal), parsedEpression);
-            loDataTable.Columns.Add(loDataColumn);
-            loDataTable.Rows.Add(0);
-            var res = Convert.ToDecimal(loDataTable.Rows[0]["Eval"]);
-            return Decimal.Round(res, 4);
+            try
+            {
+                var loDataTable = new DataTable();
+                parsedEpression = parsedEpression.Replace(",", ".");
+                var loDataColumn = new DataColumn("Eval", typeof(decimal), parsedEpression);
+                loDataTable.Columns.Add(loDataColumn);
+                loDataTable.Rows.Add(0);
+                var res = Convert.ToDecimal(loDataTable.Rows[0]["Eval"]);
+                return Decimal.Round(res, 4);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"ошибка при парсинге выражения {parsedEpression} : {e.Message}");
+                return -9999999;
+            }
+            
         }
 
         private string ParseExpression(ImportedProduct product, CalculationItem item, List<CalculatedValue> caclulatedValues)
@@ -492,6 +471,27 @@ namespace CalculationModule
             return ret;
         }
 
+        private void ExportToJSON()
+        {
+            var products = JsonConvert.SerializeObject(calculatedProducts);
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                db.CalculationResults.Add(new CalculationResult
+                {
+                    CalculationInstanseID = calculationInstance.ID,
+                    CalculatedProducts = products
+                });
+                db.SaveChanges();
+            }
+        }
 
+        private void ImportFromJSON()
+        {
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                var data = db.CalculationResults.FirstOrDefault(x => x.CalculationInstanseID == calculationInstance.ID);
+                calculatedProducts = JsonConvert.DeserializeObject<List<CalculatedProduct>>(data.CalculatedProducts);
+            }
+        }
     }
 }
