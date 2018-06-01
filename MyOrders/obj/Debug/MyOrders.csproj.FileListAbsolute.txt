@@ -253,3 +253,5 @@ D:\MyOrders\MyOrders\bin\Debug\AppCore.dll.config
 D:\MyOrders\MyOrders\bin\Debug\CalculationModule.pdb
 D:\MyOrders\MyOrders\bin\Debug\Newtonsoft.Json.dll
 D:\MyOrders\MyOrders\bin\Debug\Newtonsoft.Json.xml
+D:\MyOrders\MyOrders\bin\Debug\Offers.dll
+D:\MyOrders\MyOrders\bin\Debug\Offers.pdb

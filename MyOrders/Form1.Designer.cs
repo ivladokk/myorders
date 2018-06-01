@@ -46,6 +46,10 @@
             this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.справочникТоваровToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.предложенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.всеПредложенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справочникОборудованияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справочникПроизводителейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +57,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
-            this.калькуляцияToolStripMenuItem});
+            this.калькуляцияToolStripMenuItem,
+            this.предложенияToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(877, 24);
@@ -196,6 +201,35 @@
             this.справочникТоваровToolStripMenuItem.Text = "Справочник товаров";
             this.справочникТоваровToolStripMenuItem.Click += new System.EventHandler(this.справочникТоваровToolStripMenuItem_Click);
             // 
+            // предложенияToolStripMenuItem
+            // 
+            this.предложенияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.всеПредложенияToolStripMenuItem,
+            this.справочникОборудованияToolStripMenuItem,
+            this.справочникПроизводителейToolStripMenuItem});
+            this.предложенияToolStripMenuItem.Name = "предложенияToolStripMenuItem";
+            this.предложенияToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.предложенияToolStripMenuItem.Text = "Предложения";
+            // 
+            // всеПредложенияToolStripMenuItem
+            // 
+            this.всеПредложенияToolStripMenuItem.Name = "всеПредложенияToolStripMenuItem";
+            this.всеПредложенияToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.всеПредложенияToolStripMenuItem.Text = "Все предложения";
+            // 
+            // справочникОборудованияToolStripMenuItem
+            // 
+            this.справочникОборудованияToolStripMenuItem.Name = "справочникОборудованияToolStripMenuItem";
+            this.справочникОборудованияToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.справочникОборудованияToolStripMenuItem.Text = "Справочник оборудования";
+            // 
+            // справочникПроизводителейToolStripMenuItem
+            // 
+            this.справочникПроизводителейToolStripMenuItem.Name = "справочникПроизводителейToolStripMenuItem";
+            this.справочникПроизводителейToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.справочникПроизводителейToolStripMenuItem.Text = "Справочник производителей";
+            this.справочникПроизводителейToolStripMenuItem.Click += new System.EventHandler(this.справочникПроизводителейToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,6 +267,10 @@
         private System.Windows.Forms.ToolStripMenuItem создатьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem справочникТоваровToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem предложенияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem всеПредложенияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem справочникОборудованияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem справочникПроизводителейToolStripMenuItem;
     }
 }
 

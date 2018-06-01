@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AppCore.dll" size="35328">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AppCore.dll" size="43008">
       <assemblyIdentity name="AppCore" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>CFACI0e8BaibG/0dKRmiICidbsZSzwcDqZt8fvjRhas=</dsig:DigestValue>
+        <dsig:DigestValue>ix8WJgNMyy4Iv01AuPnMzmXJYEoziLD/jJLBD1w0euY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -62,7 +62,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>N+EJz5gu/MxUruCctOa//RBCRQ3RDVT+mjM14M0dg2g=</dsig:DigestValue>
+        <dsig:DigestValue>INE7qHNuW1XDx1Nyt5DfT1yAl/xMuQoiUmWljlX+Grk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -943,14 +943,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MyOrders.exe" size="386048">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MyOrders.exe" size="387584">
       <assemblyIdentity name="MyOrders" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>X4dpm53D/lUyH8zsrfo84kZVi0tLhivdhCjDqaIHEV4=</dsig:DigestValue>
+        <dsig:DigestValue>zFsTA1WgDE/vvoVgyAgCXE5WjssmQMUS8UPg5XIcaV4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -963,6 +963,18 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>9Yw3T/yq5ONtdA2Q+/f+cNCrtzKM2a86CntwgD6ZS6Q=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Offers.dll" size="14848">
+      <assemblyIdentity name="Offers" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>QNfEn8hOtlhnUxHGsJf4M7TTEQYh/zzW0v6Cxjg+nnE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

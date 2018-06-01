@@ -253,4 +253,77 @@ namespace AppCore.Models
         public string CalculatedDynamicsJSON { get; set; }
         public string CalculatedSumsJSON { get; set; }
     }
+
+    public class Offer
+    {
+        public int ID { get; set; }
+        public int ContrAgentID { get; set; }
+        public DateTime CreateDate { get; set; }
+        public string OfferName { get; set; }
+        
+        
+    }
+
+    public class OfferHeader
+    {
+        public int ID { get; set; }
+        public int OfferID { get; set; }
+        public int ManufacterID { get; set; }
+        public string Subject { get; set; }
+        public string SubjectRus { get; set; }
+        public string OfferNumber { get; set; }
+    }
+
+    public class OfferFooter
+    {
+        public int ID { get; set; }
+        public int OfferID { get; set; }
+        public string Delivery { get; set; }
+        public string DeliveryRus { get; set; }
+        public string Payment { get; set; }
+        public string PaymentRus { get; set; }
+        public string GoodsDeliv { get; set; }
+        public string GoodsDelivRus { get; set; }
+        public DateTime OfferTill { get; set; }
+        public string TechAssist { get; set; }
+        public string TechAssistRus { get; set; }
+        public string Warranty { get; set; }
+        public string WarrantyRus { get; set; }
+        public decimal TotalAmountGoods { get; set; }
+        public decimal PackPrice { get; set; }
+        public decimal GeneralAmount { get; set; }
+        public string Sign { get; set; }
+        public string SignRus { get; set; }
+    }
+
+    public class OfferItem
+    {
+        public int ID { get; set; }
+        public int OfferID { get; set; }
+        public int EquipmentID { get; set; }
+        public int Count { get; set; }
+        public decimal Price { get; set; }
+        public decimal Amount { get; set; }
+    }
+
+    public class Equipment
+    {
+        public int ID { get; set; }
+        public string EquipName { get; set; }
+        public string EquipNameRus { get; set; }
+        public int ManufacterID { get; set; }
+        public string Code { get; set; }
+        public string Description { get; set; }
+        public string DescriptionRus { get; set; }
+        public decimal Price { get; set; }
+        public string Image { get; set; }
+    }
+
+    public class Manufacter
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string NameRus { get; set; }
+        public string Logo { get; set; }
+    }
 }

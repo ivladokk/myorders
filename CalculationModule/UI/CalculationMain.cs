@@ -61,7 +61,16 @@ namespace CalculationModule.UI
 
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (dataGridView1.CurrentRow != null)
+            {
+                var id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
+                using (UserContext db = new UserContext(Settings.constr))
+                {
+                    var instance = db.CalculationInsctInstances.FirstOrDefault(x => x.ID == id);
+                    db.CalculationInsctInstances.Remove(instance);
+                }
+                Load();
+            }
         }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)

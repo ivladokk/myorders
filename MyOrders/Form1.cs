@@ -11,6 +11,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using CalculationModule;
+using Offers.UI;
 
 namespace MyOrders
 {
@@ -163,6 +164,16 @@ namespace MyOrders
         private void справочникТоваровToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ProductsDictionary f = new ProductsDictionary
+            {
+                MdiParent = this,
+                WindowState = FormWindowState.Maximized
+            };
+            f.Show();
+        }
+
+        private void справочникПроизводителейToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManufactersDictionary f = new ManufactersDictionary
             {
                 MdiParent = this,
                 WindowState = FormWindowState.Maximized

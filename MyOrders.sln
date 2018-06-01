@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculationModule", "Calcul
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppCore", "AppCore\AppCore.csproj", "{6DAA1FE9-9627-4FA3-A5E3-4D82C62CE6AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Offers", "Offers\Offers.csproj", "{F174583D-9089-4AB3-9550-0F9D4E8ED3B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6DAA1FE9-9627-4FA3-A5E3-4D82C62CE6AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DAA1FE9-9627-4FA3-A5E3-4D82C62CE6AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DAA1FE9-9627-4FA3-A5E3-4D82C62CE6AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F174583D-9089-4AB3-9550-0F9D4E8ED3B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F174583D-9089-4AB3-9550-0F9D4E8ED3B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F174583D-9089-4AB3-9550-0F9D4E8ED3B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F174583D-9089-4AB3-9550-0F9D4E8ED3B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
