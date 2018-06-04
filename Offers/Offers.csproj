@@ -31,8 +31,53 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.BonusSkins.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Data.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v17.1.Core">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Office.v17.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v17.1.Core, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Pdf.v17.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v17.1.Core, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Printing.v17.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v17.1.Core">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.RichEdit.v17.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v17.1.Core">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Sparkline.v17.1.Core.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Utils.v17.1">
       <HintPath>..\MyOrders\bin\Debug\DevExpress.Utils.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraBars.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraEditors.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraGrid.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraLayout.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraPrinting.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraTreeList.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraVerticalGrid.v17.1.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="System" />
@@ -49,6 +94,36 @@
   <ItemGroup>
     <Compile Include="OfferWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\AddOfferItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AddOfferItem.Designer.cs">
+      <DependentUpon>AddOfferItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EquipmentItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\EquipmentItem.Designer.cs">
+      <DependentUpon>EquipmentItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EquipmentSelection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\EquipmentSelection.Designer.cs">
+      <DependentUpon>EquipmentSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MasterPage\Page5.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MasterPage\Page5.Designer.cs">
+      <DependentUpon>Page5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\OfferCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\OfferCreateForm.Designer.cs">
+      <DependentUpon>OfferCreateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\EquipmentDictionary.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +148,42 @@
     <Compile Include="UI\ManufactersEdit.Designer.cs">
       <DependentUpon>ManufactersEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\MasterPage\Page1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MasterPage\Page1.Designer.cs">
+      <DependentUpon>Page1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MasterPage\Page2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MasterPage\Page2.Designer.cs">
+      <DependentUpon>Page2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MasterPage\Page3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MasterPage\Page3.Designer.cs">
+      <DependentUpon>Page3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MasterPage\Page4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MasterPage\Page4.Designer.cs">
+      <DependentUpon>Page4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\OfferEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\OfferEdit.Designer.cs">
+      <DependentUpon>OfferEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Offers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Offers.Designer.cs">
+      <DependentUpon>Offers.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppCore\AppCore.csproj">
@@ -81,6 +192,25 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="UI\AddOfferItem.resx">
+      <DependentUpon>AddOfferItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EquipmentItem.resx">
+      <DependentUpon>EquipmentItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EquipmentSelection.resx">
+      <DependentUpon>EquipmentSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MasterPage\Page5.resx">
+      <DependentUpon>Page5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\OfferCreateForm.resx">
+      <DependentUpon>OfferCreateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EquipmentDictionary.resx">
+      <DependentUpon>EquipmentDictionary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\EquipmentEdit.resx">
       <DependentUpon>EquipmentEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,6 +220,25 @@
     <EmbeddedResource Include="UI\ManufactersEdit.resx">
       <DependentUpon>ManufactersEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\MasterPage\Page1.resx">
+      <DependentUpon>Page1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MasterPage\Page2.resx">
+      <DependentUpon>Page2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MasterPage\Page3.resx">
+      <DependentUpon>Page3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MasterPage\Page4.resx">
+      <DependentUpon>Page4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\OfferEdit.resx">
+      <DependentUpon>OfferEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Offers.resx">
+      <DependentUpon>Offers.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

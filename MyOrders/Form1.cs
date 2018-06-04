@@ -180,5 +180,25 @@ namespace MyOrders
             };
             f.Show();
         }
+
+        private void справочникОборудованияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EquipmentDictionary f = new EquipmentDictionary
+            {
+                MdiParent = this,
+                WindowState = FormWindowState.Maximized
+            };
+            f.Show();
+        }
+
+        private void всеПредложенияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OffersMain f = new OffersMain
+            {
+                MdiParent = this,
+                WindowState = FormWindowState.Maximized
+            };
+            f.Show();
+        }
     }
 }

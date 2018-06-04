@@ -216,12 +216,14 @@
             this.всеПредложенияToolStripMenuItem.Name = "всеПредложенияToolStripMenuItem";
             this.всеПредложенияToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.всеПредложенияToolStripMenuItem.Text = "Все предложения";
+            this.всеПредложенияToolStripMenuItem.Click += new System.EventHandler(this.всеПредложенияToolStripMenuItem_Click);
             // 
             // справочникОборудованияToolStripMenuItem
             // 
             this.справочникОборудованияToolStripMenuItem.Name = "справочникОборудованияToolStripMenuItem";
             this.справочникОборудованияToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.справочникОборудованияToolStripMenuItem.Text = "Справочник оборудования";
+            this.справочникОборудованияToolStripMenuItem.Click += new System.EventHandler(this.справочникОборудованияToolStripMenuItem_Click);
             // 
             // справочникПроизводителейToolStripMenuItem
             // 

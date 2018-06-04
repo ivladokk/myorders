@@ -74,6 +74,7 @@ namespace Offers.UI
                 {
                     var manufacter = db.Manufacters.FirstOrDefault(x => x.ID == id);
                     db.Manufacters.Remove(manufacter);
+                    db.SaveChanges();
                 }
                 Init();
             }

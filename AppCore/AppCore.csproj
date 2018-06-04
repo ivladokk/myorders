@@ -52,13 +52,7 @@
   <ItemGroup>
     <Compile Include="Base\BaseLauncher.cs" />
     <Compile Include="Base\BaseModule.cs" />
-    <Compile Include="Components\MasterPage\MasterPageControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Components\MasterPage\MasterPageControl.Designer.cs">
-      <DependentUpon>MasterPageControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Components\MasterPage\MasterPageControlItem.cs" />
+    <Compile Include="Components\MasterPage\Step.cs" />
     <Compile Include="Interfaces\ILauncher.cs" />
     <Compile Include="Models\DBModels.cs" />
     <Compile Include="Modules\CalculationModule.cs" />
@@ -70,11 +64,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Components\MasterPage\MasterPageControl.resx">
-      <DependentUpon>MasterPageControl.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

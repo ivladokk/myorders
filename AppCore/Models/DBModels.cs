@@ -287,6 +287,8 @@ namespace AppCore.Models
         public DateTime OfferTill { get; set; }
         public string TechAssist { get; set; }
         public string TechAssistRus { get; set; }
+        public string TechDoc { get; set; }
+        public string TechDocRus { get; set; }
         public string Warranty { get; set; }
         public string WarrantyRus { get; set; }
         public decimal TotalAmountGoods { get; set; }

@@ -1,0 +1,62 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using AppCore;
+using AppCore.Models;
+using AppCore.Settings;
+
+namespace Offers.UI
+{
+    public partial class EquipmentItem : UserControl
+    {
+        private OfferItem _offerItem;
+        private Equipment _equipment;
+        private EquipmentSelection _sender;
+        private decimal amount => GetAmount();
+
+        public EquipmentItem(OfferItem offerItem, EquipmentSelection sender)
+        {
+            InitializeComponent();
+            _offerItem = offerItem;
+            _sender = sender;
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                _equipment = db.Equipments.FirstOrDefault(x => x.ID == offerItem.EquipmentID);
+            }
+
+            tb_price.Text = _equipment.Price.ToString();
+
+            lb_name.DataBindings.Add("Text", _equipment, "EquipNameRus");
+            tb_price.DataBindings.Add("Text", _offerItem, "Price");
+            tb_count.DataBindings.Add("Value", _offerItem, "Count");
+           // tb_amount.DataBindings.Add("Text", this, "amount");
+           
+
+        }
+
+        public OfferItem GetItem()
+        {
+            return _offerItem;
+        }
+
+        private void Remove()
+        {
+            _sender.RemoveItem(_offerItem);
+        }
+        private decimal GetAmount()
+        {
+            return _offerItem.Price * _offerItem.Count;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Remove();
+        }
+    }
+}

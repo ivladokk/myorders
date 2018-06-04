@@ -1,6 +1,4 @@
 D:\MyOrders\AppCore\obj\Debug\AppCore.csprojResolveAssemblyReference.cache
-D:\MyOrders\AppCore\obj\Debug\AppCore.Components.MasterPage.MasterPageControl.resources
-D:\MyOrders\AppCore\obj\Debug\AppCore.csproj.GenerateResource.Cache
 D:\MyOrders\AppCore\obj\Debug\AppCore.csproj.CoreCompileInputs.cache
 D:\MyOrders\AppCore\bin\Debug\AppCore.dll.config
 D:\MyOrders\AppCore\bin\Debug\AppCore.dll
