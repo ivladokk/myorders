@@ -30,7 +30,7 @@ namespace Offers.UI
         private Page2 page2 = new Page2();
         private Page3 page3;
         private Page4 page4;
-        private Page5 page5;
+        private Page5 page5 = new Page5();
         private Step step1;
         private Step step2;
         private Step step3;
@@ -72,7 +72,18 @@ namespace Offers.UI
                 Header = "Шаг 2/4: Импорт товаров",
                 isLast = false
             };
-            
+
+           
+            step5 = new Step
+            {
+                Control = page5,
+                HasAction = false,
+                Next = null,
+                Prev = step4,
+                Header = "Шаг 5/5: Завершение работы",
+                isLast = true
+            };
+
             step1.Next = step2;
             
             
@@ -88,8 +99,6 @@ namespace Offers.UI
                 return;
             }
             _worker.CreateOffer(page1.ContrAgentID, page1.OfferName);
-            var header = new OfferHeader {OfferID = _worker.offer.ID};
-            page2.header = header;
             page3 = new Page3(_worker.offer);
             step3 = new Step
             {
@@ -111,7 +120,9 @@ namespace Offers.UI
         {
             if (page2.IsValid())
             {
-                _worker.SetHeader(page2.header);
+                var header = page2.GetHeader();
+                header.OfferID = _worker.offer.ID;
+                _worker.SetHeader(header);
                 _currentStep.isCompleted = true;
 
             }
@@ -132,32 +143,28 @@ namespace Offers.UI
                     Control = page4,
                     HasAction = true,
                     DoAction = Action4,
-                    Next = null,
+                    Next = step5,
                     Prev = step3,
                     Header = "Шаг 4/4: Заполните футер предложения",
                     isLast = false
                 };
                 step3.Next = step4;
                 _steps.Add(step4);
+
+                
+                _steps.Add(step5);
+
+
             }
         }
 
         public void Action4()
         {
-            _worker.SetFooter(page4.footer);
+            var footer = page4.footer;
+            footer.OfferID = _worker.offer.ID;
+            _worker.SetFooter(footer);
             _currentStep.isCompleted = true;
-            page5 = new Page5();
-            step5 = new Step
-            {
-                Control = page5,
-                HasAction = false,
-                Next = null,
-                Prev = step4,
-                Header = "Шаг 5/5: Завершение работы",
-                isLast = true
-            };
-            step3.Next = step4;
-            _steps.Add(step4);
+           
         }
         
         private void InitCurrentStep()
@@ -205,27 +212,36 @@ namespace Offers.UI
 
         private void btn_finish_Click(object sender, EventArgs e)
         {
-            if (page5.Print)
-                _worker.Print();
-            isCopmleted = true;
-            this.Close();
+            try
+            {
+                _worker.Save();
+                if (page5.Print)
+                    _worker.Print();
+                isCopmleted = true;
+                this.Close();
+                _sender.Init();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void Clear()
         {
-           /* using (UserContext db = new UserContext(Settings.constr))
+            using (UserContext db = new UserContext(Settings.constr))
             {
-                if (_worker.calculationInstance != null)
+                if (_worker.offer != null)
                 {
-                    var inst = db.CalculationInsctInstances.FirstOrDefault(x => x.ID == _worker.calculationInstance.ID);
+                    var inst = db.Offers.FirstOrDefault(x => x.ID == _worker.offer.ID);
                     if (inst != null)
                     {
-                        db.CalculationInsctInstances.Remove(inst);
+                        db.Offers.Remove(inst);
                         db.SaveChanges();
                     }
 
                 }
-            }*/
+            }
         }
 
         private void CalculationCreateForm_FormClosing(object sender, FormClosingEventArgs e)

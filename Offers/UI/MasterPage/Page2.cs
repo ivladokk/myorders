@@ -18,18 +18,30 @@ namespace Offers.UI.MasterPage
 {
     public partial class Page2 : UserControl
     {
-        public OfferHeader header;
+        public string OfferNumber { get; set; }
+        public string Subject { get; set; }
+        public string SubjectRus { get; set; }
+        public int ManufacterID { get; set; }
         public Page2()
         {
             InitializeComponent();
-            header = new OfferHeader();
             LoadManufacters();
-            tb_num.DataBindings.Add("Text", header, "OfferNumber");
-            tb_subject.DataBindings.Add("Text", header, "Subject");
-            tb_subject_rus.DataBindings.Add("Text", header, "SubjectRus");
-            cb_manufacter.DataBindings.Add("SelectedValue", header, "ManufacterID");
+            tb_num.DataBindings.Add("Text", this, "OfferNumber");
+            tb_subject.DataBindings.Add("Text", this, "Subject");
+            tb_subject_rus.DataBindings.Add("Text", this, "SubjectRus");
+            cb_manufacter.DataBindings.Add("SelectedValue", this, "ManufacterID");
         }
 
+        public OfferHeader GetHeader()
+        {
+            return new OfferHeader
+            {
+                OfferNumber = OfferNumber,
+                SubjectRus = SubjectRus,
+                Subject = Subject,
+                ManufacterID = ManufacterID
+            };
+        }
         public void LoadManufacters()
         {
             BindingList<Manufacter> manufacterDS = new BindingList<Manufacter>();
@@ -52,5 +64,5 @@ namespace Offers.UI.MasterPage
         }
 
     }
-   
+
 }

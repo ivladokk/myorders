@@ -18,7 +18,8 @@ namespace CalculationModule.UI.MasterPages
         {
             InitializeComponent();
             footer = new OfferFooter();
-
+            footer.OfferTill = DateTime.Today;
+            dt_offertill.Value = DateTime.Today;
             tb_delivery_eng.DataBindings.Add("Text", footer, "Delivery");
             tb_delivery_rus.DataBindings.Add("Text", footer, "DeliveryRus");
             tb_payment_eng.DataBindings.Add("Text", footer, "Payment");

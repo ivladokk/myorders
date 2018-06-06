@@ -110,3 +110,6 @@ D:\MyOrders\Offers\obj\Debug\Offers.dll.licenses
 D:\MyOrders\Offers\obj\Debug\Offers.UI.AddOfferItem.resources
 D:\MyOrders\Offers\obj\Debug\Offers.UI.EquipmentItem.resources
 D:\MyOrders\Offers\obj\Debug\Offers.UI.MasterPage.Page5.resources
+D:\MyOrders\Offers\bin\Debug\itextsharp.dll
+D:\MyOrders\Offers\bin\Debug\itextsharp.xmlworker.dll
+D:\MyOrders\Offers\bin\Debug\itextsharp.xml

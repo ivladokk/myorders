@@ -12,7 +12,7 @@ namespace Offers.UI.MasterPage
 {
     public partial class Page5 : UserControl
     {
-        public bool Print;
+        public bool Print { get; set; }
         public Page5()
         {
             InitializeComponent();

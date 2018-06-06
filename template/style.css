@@ -1,0 +1,15 @@
+body {
+    background-color: #f8f9fa;
+}
+.wrapper {
+    margin-top: 25px;
+    border: solid;
+    border-color: #20c997;
+    background-color: #ffff;
+    border-radius: .25rem;
+    border-width: .25rem;
+}
+.my-cell
+{
+    
+}

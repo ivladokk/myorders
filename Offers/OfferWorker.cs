@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using AppCore;
 using AppCore.Models;
 using AppCore.Settings;
+using DevExpress.DocumentServices.ServiceModel.DataContracts;
 
 namespace Offers
 {
+    public class OfferInstance
+    {
+        public Offer offer { get; set; }
+        public OfferHeader header { get; set; }
+        public List<OfferItem> items { get; set; }
+        public OfferFooter footer { get; set; }
+    }
     public class OfferWorker
     {
         private readonly int _type;
@@ -26,7 +35,15 @@ namespace Offers
         {
             _type = 2;
             this.offer = offer;
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                _header = db.OfferHeaders.FirstOrDefault(x => x.OfferID == offer.ID);
+                _footer = db.OfferFooters.FirstOrDefault(x => x.OfferID == offer.ID);
+                _items = db.OfferItems.Where(x => x.OfferID == offer.ID).ToList();
+            }
         }
+
+
 
         public void CreateOffer(int agentId, string name)
         {
@@ -58,9 +75,41 @@ namespace Offers
             _footer = footer;
         }
 
+
+        public void Save()
+        {
+            try
+            {
+                using (UserContext db = new UserContext(Settings.constr))
+                {
+                    db.OfferHeaders.Add(_header);
+                    db.OfferItems.AddRange(_items);
+                    db.OfferFooters.Add(_footer);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+           
+        }
+
         public void Print()
         {
-
+            ExportUtils export = new ExportUtils(new ReportTemplate
+            {
+                MainTemplatePath = @"D:\template\index.html",
+                TableTemplatePath = @"D:\template\table.html"
+            });
+            var instance = new OfferInstance
+            {
+                offer = offer,
+                footer = _footer,
+                header = _header,
+                items = _items
+            };
+            var report = export.Export(instance);
         }
     }
 }
