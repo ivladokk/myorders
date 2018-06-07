@@ -384,7 +384,7 @@ namespace CalculationModule
                 loDataTable.Columns.Add(loDataColumn);
                 loDataTable.Rows.Add(0);
                 var res = Convert.ToDecimal(loDataTable.Rows[0]["Eval"]);
-                return Decimal.Round(res, 4);
+                return Decimal.Round(res, 2);
             }
             catch (Exception e)
             {

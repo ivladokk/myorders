@@ -19,6 +19,7 @@ namespace Offers.UI
         public ManufactersDictionary()
         {
             InitializeComponent();
+            Init();
         }
 
         public void Init()

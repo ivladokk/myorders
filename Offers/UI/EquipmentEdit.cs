@@ -91,6 +91,7 @@ namespace Offers.UI
             openFileDialog1.ShowDialog();
             if (openFileDialog1.FileName != "")
                 tb_img.Text = openFileDialog1.FileName;
+            _equipment.Image = tb_img.Text;
         }
     }
 }

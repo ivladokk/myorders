@@ -45,6 +45,7 @@ namespace AppCore.Models
     {
         public int ContrAgentID { get; set; }
         public string Name { get; set; }
+        public string NameEng { get; set; }
         public string Address { get; set; }
         // public List<ItemParam> AddParams { get; set; }
 
@@ -272,6 +273,8 @@ namespace AppCore.Models
         public string Subject { get; set; }
         public string SubjectRus { get; set; }
         public string OfferNumber { get; set; }
+        public string HeaderText { get; set; }
+        public string HeaderTextRus { get; set; }
     }
 
     public class OfferFooter

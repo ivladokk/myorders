@@ -38,7 +38,7 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 28);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(599, 214);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(633, 230);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.WrapContents = false;
             // 
@@ -59,7 +59,7 @@
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "EquipmentSelection";
-            this.Size = new System.Drawing.Size(605, 287);
+            this.Size = new System.Drawing.Size(639, 261);
             this.ResumeLayout(false);
 
         }

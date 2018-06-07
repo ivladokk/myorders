@@ -59,6 +59,8 @@
             0,
             0,
             0});
+            this.tb_count.ValueChanged += new System.EventHandler(this.tb_count_ValueChanged);
+            this.tb_count.Leave += new System.EventHandler(this.tb_count_Leave);
             // 
             // tb_price
             // 
@@ -66,6 +68,8 @@
             this.tb_price.Name = "tb_price";
             this.tb_price.Size = new System.Drawing.Size(58, 20);
             this.tb_price.TabIndex = 2;
+            this.tb_price.TextChanged += new System.EventHandler(this.tb_price_TextChanged);
+            this.tb_price.Leave += new System.EventHandler(this.tb_price_Leave);
             // 
             // tb_amount
             // 

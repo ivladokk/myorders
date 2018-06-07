@@ -22,6 +22,9 @@ namespace Offers.UI.MasterPage
         public string Subject { get; set; }
         public string SubjectRus { get; set; }
         public int ManufacterID { get; set; }
+        public string HeaderText { get; set; }
+        public string HeaderTextRus { get; set; }
+
         public Page2()
         {
             InitializeComponent();
@@ -30,6 +33,9 @@ namespace Offers.UI.MasterPage
             tb_subject.DataBindings.Add("Text", this, "Subject");
             tb_subject_rus.DataBindings.Add("Text", this, "SubjectRus");
             cb_manufacter.DataBindings.Add("SelectedValue", this, "ManufacterID");
+            tb_text.DataBindings.Add("Text", this, "HeaderText");
+            tb_text_rus.DataBindings.Add("Text", this, "HeaderTextRus");
+
         }
 
         public OfferHeader GetHeader()
@@ -39,7 +45,9 @@ namespace Offers.UI.MasterPage
                 OfferNumber = OfferNumber,
                 SubjectRus = SubjectRus,
                 Subject = Subject,
-                ManufacterID = ManufacterID
+                ManufacterID = ManufacterID,
+                HeaderText = HeaderText,
+                HeaderTextRus = HeaderTextRus
             };
         }
         public void LoadManufacters()

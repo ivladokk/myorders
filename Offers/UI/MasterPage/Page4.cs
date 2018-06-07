@@ -8,16 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AppCore.Models;
+using Offers;
 
 namespace CalculationModule.UI.MasterPages
 {
     public partial class Page4 : UserControl
     {
         public OfferFooter footer;
+        
+
         public Page4()
         {
             InitializeComponent();
             footer = new OfferFooter();
+
+            
+
             footer.OfferTill = DateTime.Today;
             dt_offertill.Value = DateTime.Today;
             tb_delivery_eng.DataBindings.Add("Text", footer, "Delivery");
@@ -38,5 +44,7 @@ namespace CalculationModule.UI.MasterPages
             tb_total.DataBindings.Add("Text", footer, "GeneralAmount");
 
         }
+
+       
     }
 }

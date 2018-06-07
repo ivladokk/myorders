@@ -109,7 +109,17 @@ namespace Offers
                 header = _header,
                 items = _items
             };
-            var report = export.Export(instance);
+
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.DefaultExt = "pdf";
+            dialog.Filter = "PDF|*.pdf";
+            dialog.ShowDialog();
+            if (!string.IsNullOrEmpty(dialog.FileName))
+            {
+                export.Export(instance, dialog.FileName);
+
+            }
+            
         }
     }
 }

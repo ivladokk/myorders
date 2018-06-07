@@ -113,3 +113,5 @@ D:\MyOrders\Offers\obj\Debug\Offers.UI.MasterPage.Page5.resources
 D:\MyOrders\Offers\bin\Debug\itextsharp.dll
 D:\MyOrders\Offers\bin\Debug\itextsharp.xmlworker.dll
 D:\MyOrders\Offers\bin\Debug\itextsharp.xml
+D:\MyOrders\Offers\bin\Debug\Newtonsoft.Json.dll
+D:\MyOrders\Offers\bin\Debug\Newtonsoft.Json.xml

@@ -36,7 +36,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(611, 286);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(643, 314);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // Page3
@@ -45,7 +45,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "Page3";
-            this.Size = new System.Drawing.Size(611, 286);
+            this.Size = new System.Drawing.Size(643, 314);
             this.ResumeLayout(false);
 
         }

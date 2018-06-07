@@ -84,6 +84,7 @@ namespace MyOrders
     {
         public int ContrAgentID { get; set; }
         public string Name { get; set; }
+        public string NameEng { get; set; }
         public string Address { get; set; }
        // public List<ItemParam> AddParams { get; set; }
 

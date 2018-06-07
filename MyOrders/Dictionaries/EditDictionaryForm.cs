@@ -36,6 +36,7 @@ namespace MyOrders.Dictionaries
         {
             tb_Name.Text = Item.Name;
             tb_Address.Text = Item.Address;
+            tb_name_eng.Text = Item.NameEng;
         }
 
         
@@ -50,12 +51,14 @@ namespace MyOrders.Dictionaries
         public void EditContragent(ContrAgent item)
         {
             item.Name = tb_Name.Text;
+            item.NameEng = tb_name_eng.Text;
             item.Address = tb_Address.Text;
             using (UserContext db = new UserContext(Settings.constr))
             {
                 db.Contragents.Attach(item);
                 var entry = db.Entry(item);
                 entry.Property(x => x.Name).IsModified = true;
+                entry.Property(x => x.NameEng).IsModified = true;
                 entry.Property(x => x.Address).IsModified = true;
                 db.SaveChanges();
             }
@@ -71,6 +74,7 @@ namespace MyOrders.Dictionaries
                 ContrAgent newitem = new ContrAgent()
                 {
                     Name = tb_Name.Text,
+                    NameEng = tb_name_eng.Text,
                     Address = tb_Address.Text
                 };
 
@@ -101,6 +105,7 @@ namespace MyOrders.Dictionaries
                 ContrAgent newitem = new ContrAgent()
                 {
                     Name = tb_Name.Text,
+                    NameEng = tb_name_eng.Text,
                     Address = tb_Address.Text
                 };
 

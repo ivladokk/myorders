@@ -18,7 +18,7 @@ namespace Offers.UI
         private OfferItem _offerItem;
         private Equipment _equipment;
         private EquipmentSelection _sender;
-        private decimal amount => GetAmount();
+
 
         public EquipmentItem(OfferItem offerItem, EquipmentSelection sender)
         {
@@ -30,12 +30,12 @@ namespace Offers.UI
                 _equipment = db.Equipments.FirstOrDefault(x => x.ID == offerItem.EquipmentID);
             }
 
-            tb_price.Text = _equipment.Price.ToString();
+          
 
             lb_name.DataBindings.Add("Text", _equipment, "EquipNameRus");
             tb_price.DataBindings.Add("Text", _offerItem, "Price");
             tb_count.DataBindings.Add("Value", _offerItem, "Count");
-           // tb_amount.DataBindings.Add("Text", this, "amount");
+            tb_amount.DataBindings.Add("Text", _offerItem, "Amount");
            
 
         }
@@ -57,6 +57,26 @@ namespace Offers.UI
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Remove();
+        }
+
+        private void tb_price_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tb_count_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tb_price_Leave(object sender, EventArgs e)
+        {
+            tb_amount.Text = GetAmount().ToString();
+        }
+
+        private void tb_count_Leave(object sender, EventArgs e)
+        {
+            tb_amount.Text = GetAmount().ToString();
         }
     }
 }

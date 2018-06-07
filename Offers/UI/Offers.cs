@@ -64,6 +64,7 @@ namespace Offers.UI
                     {
                         db.Offers.Remove(offer);
                         db.SaveChanges();
+                        Init();
                     }
                     
                 }
