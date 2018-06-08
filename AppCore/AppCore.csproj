@@ -52,6 +52,12 @@
   <ItemGroup>
     <Compile Include="Base\BaseLauncher.cs" />
     <Compile Include="Base\BaseModule.cs" />
+    <Compile Include="Components\LoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\MasterPage\Step.cs" />
     <Compile Include="Interfaces\ILauncher.cs" />
     <Compile Include="Models\DBModels.cs" />
@@ -60,7 +66,11 @@
     <Compile Include="UserContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Components\LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

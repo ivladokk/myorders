@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AppCore;
+using AppCore.Components;
 using AppCore.Models;
 using AppCore.Settings;
 using DevExpress.DocumentServices.ServiceModel.DataContracts;
+using DevExpress.Internal.WinApi.Windows.UI.Notifications;
 
 namespace Offers
 {
@@ -97,11 +100,11 @@ namespace Offers
 
         public void Print()
         {
-            ExportUtils export = new ExportUtils(new ReportTemplate
+            var template = new ReportTemplate
             {
-                MainTemplatePath = @"D:\template\index.html",
-                TableTemplatePath = @"D:\template\table.html"
-            });
+                MainTemplatePath = Application.StartupPath + @"\template\index.html",
+                TableTemplatePath = Application.StartupPath + @"\template\table.html"
+            };
             var instance = new OfferInstance
             {
                 offer = offer,
@@ -116,8 +119,9 @@ namespace Offers
             dialog.ShowDialog();
             if (!string.IsNullOrEmpty(dialog.FileName))
             {
-                export.Export(instance, dialog.FileName);
-
+                ExportUtils export = new ExportUtils(template, instance, dialog.FileName);
+               export.Export();
+                
             }
             
         }

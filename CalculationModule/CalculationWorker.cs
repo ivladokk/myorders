@@ -174,7 +174,7 @@ namespace CalculationModule
                 var calcValue = new CalculatedValue
                 {
                     Item = item,
-                    Value = CalculateValue(ParseExpression(pr.Product, item, pr.CalculatedValues))
+                    Value = CalculateValue(ParseExpression(pr.Product, item, pr.CalculatedValues), item.NeedRound == 1)
                 };
                 pr.CalculatedValues.Add(calcValue);
             }
@@ -357,14 +357,22 @@ namespace CalculationModule
                     dt.Rows[i][item.Item.ItemName] = item.Value;
                 }
             }
-            /*
-            dt.Rows.Add();
-            int lastRow = dt.Rows.Count - 1;
-            dt.Rows[lastRow]["Product"] = "Сумма";
-            foreach (var item in _calculationItems.Where(x=>x.WithSum == 1))
+
+            try
             {
-                dt.Rows[lastRow][item.ItemName] = ItemSumList.FirstOrDefault(x => x.Item.ItemName == item.ItemName).Value;
-            }*/
+                dt.Rows.Add();
+                int lastRow = dt.Rows.Count - 1;
+                dt.Rows[lastRow]["Product"] = "Сумма";
+                foreach (var item in _calculationItems.Where(x => x.WithSum == 1))
+                {
+                    dt.Rows[lastRow][item.ItemName] = ItemSumList.FirstOrDefault(x => x.Item.ItemName == item.ItemName).Value;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка при расчете сумммы");
+            }
+            
 
             return dt;
         }
@@ -374,7 +382,7 @@ namespace CalculationModule
             ExportToJSON();
         }
 
-        private decimal CalculateValue(string parsedEpression)
+        private decimal CalculateValue(string parsedEpression, bool round = false)
         {
             try
             {
@@ -384,7 +392,8 @@ namespace CalculationModule
                 loDataTable.Columns.Add(loDataColumn);
                 loDataTable.Rows.Add(0);
                 var res = Convert.ToDecimal(loDataTable.Rows[0]["Eval"]);
-                return Decimal.Round(res, 2);
+
+                return round ? Round(Decimal.Round(res, 2)) : Decimal.Round(res, 2);
             }
             catch (Exception e)
             {
@@ -392,6 +401,15 @@ namespace CalculationModule
                 return -9999999;
             }
             
+        }
+
+        private decimal Round(decimal price)
+        {
+            var DecPrice = price * 2;
+            var roundedPrice = Math.Round(DecPrice, MidpointRounding.AwayFromZero);
+            var finalPrice = roundedPrice / 2;
+
+            return finalPrice;
         }
 
         private string ParseExpression(ImportedProduct product, CalculationItem item, List<CalculatedValue> caclulatedValues)
@@ -473,13 +491,18 @@ namespace CalculationModule
 
         private void ExportToJSON()
         {
-            var products = JsonConvert.SerializeObject(calculatedProducts);
+            var data = new CalculationJson
+            {
+                products = calculatedProducts,
+                sum = ItemSumList
+            };
+            var result = JsonConvert.SerializeObject(data);
             using (UserContext db = new UserContext(Settings.constr))
             {
                 db.CalculationResults.Add(new CalculationResult
                 {
                     CalculationInstanseID = calculationInstance.ID,
-                    CalculatedProducts = products
+                    CalculatedProducts = result
                 });
                 db.SaveChanges();
             }
@@ -490,8 +513,16 @@ namespace CalculationModule
             using (UserContext db = new UserContext(Settings.constr))
             {
                 var data = db.CalculationResults.FirstOrDefault(x => x.CalculationInstanseID == calculationInstance.ID);
-                calculatedProducts = JsonConvert.DeserializeObject<List<CalculatedProduct>>(data.CalculatedProducts);
+                var result = JsonConvert.DeserializeObject<CalculationJson>(data.CalculatedProducts);
+                calculatedProducts = result.products;
+                ItemSumList = result.sum;
             }
         }
+    }
+
+    public class CalculationJson
+    {
+        public List<CalculatedProduct> products { get; set; }
+        public List<ItemSum> sum { get; set; }
     }
 }

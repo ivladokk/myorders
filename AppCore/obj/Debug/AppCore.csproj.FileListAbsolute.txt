@@ -9,3 +9,5 @@ D:\MyOrders\AppCore\bin\Debug\EntityFramework.xml
 D:\MyOrders\AppCore\bin\Debug\EntityFramework.SqlServer.xml
 D:\MyOrders\AppCore\obj\Debug\AppCore.dll
 D:\MyOrders\AppCore\obj\Debug\AppCore.pdb
+D:\MyOrders\AppCore\obj\Debug\AppCore.Components.LoadingForm.resources
+D:\MyOrders\AppCore\obj\Debug\AppCore.csproj.GenerateResource.Cache

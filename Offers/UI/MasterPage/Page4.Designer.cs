@@ -331,6 +331,8 @@
             this.tb_pack.Name = "tb_pack";
             this.tb_pack.Size = new System.Drawing.Size(131, 20);
             this.tb_pack.TabIndex = 7;
+ 
+            this.tb_pack.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_pack_KeyPress);
             // 
             // label17
             // 

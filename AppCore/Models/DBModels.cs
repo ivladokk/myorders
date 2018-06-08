@@ -184,6 +184,7 @@ namespace AppCore.Models
         public int OrderID { get; set; }
         public int WithSum { get; set; }
         public string Expression { get; set; }
+        public int NeedRound { get; set; }
 
     }
 

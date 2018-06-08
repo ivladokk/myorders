@@ -15,14 +15,23 @@ namespace CalculationModule.UI.MasterPages
     public partial class Page4 : UserControl
     {
         public OfferFooter footer;
-        
+        private List<OfferItem> _items;
 
-        public Page4()
+
+
+        public Page4(List<OfferItem> items)
         {
             InitializeComponent();
             footer = new OfferFooter();
+            _items = items;
 
-            
+            decimal total = 0;
+            foreach (var i in items)
+            {
+                total += i.Amount;
+            }
+
+            footer.TotalAmountGoods = total;
 
             footer.OfferTill = DateTime.Today;
             dt_offertill.Value = DateTime.Today;
@@ -45,6 +54,21 @@ namespace CalculationModule.UI.MasterPages
 
         }
 
-       
+        private void tb_pack_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char) 13)
+            {
+                try
+                {
+                    var sum = Convert.ToDecimal(tb_amount.Text) + Convert.ToDecimal(tb_pack.Text);
+                    tb_total.Text = sum.ToString();
+                    footer.GeneralAmount = sum;
+                }
+                catch
+                {
+
+                }
+            }
+        }
     }
 }

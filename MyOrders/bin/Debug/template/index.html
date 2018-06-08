@@ -1,0 +1,464 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<style type="text/css">
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #f7f8fa;
+}
+.wrapper {
+
+    background-color: #ffff;
+
+
+	width: 1200px;
+    margin: 25px auto;
+	padding: 10px;
+	box-shadow: 0 12px 58px rgba(166,171,179,0.2)
+}
+.my-cell
+{
+	box-sizing: border-box;
+	padding:0 10px;
+}
+.row {
+	border-bottom: 1px solid gray;
+	display: flex;
+}
+.row-min {
+	display: flex;
+	height: 100%;
+}
+.row-img {
+	justify-content: center;
+	padding: 15px;
+	border-bottom: none;
+	border-right: 1px solid gray;
+	border-left: 1px solid gray;
+}
+.row:before,
+.row:after {
+  content: " ";
+  display: table;
+}
+.row:after {
+  clear: both;
+}
+.row-min:before,
+.row-min:after {
+	content: " ";
+  display: table;
+}
+.row-min:after {
+  clear: both;
+}
+.col-1 {
+    float: left;
+    width: 8.333333333333332%;
+  }
+
+  .col-2 {
+    float: left;
+    width: 16.666666666666664%;
+  }
+
+  .col-3 {
+    float: left;
+    width: 25%;
+  }
+
+  .col-4 {
+    float: left;
+    width: 33.33333333333333%;
+  }
+
+  .col-5 {
+    float: left;
+    width: 41.66666666666667%;
+  }
+
+  .col-6 {
+    float: left;
+    width: 49.99%;
+  }
+  
+  .col-7 {
+    float: left;
+    width: 58.333333333333336%;
+  }
+ 
+  .col-8 {
+    float: left;
+    width: 66.66666666666666%;
+  }
+  
+  .col-9 {
+    float: left;
+    width: 75%;
+  }
+  
+  .col-10 {
+    float: left;
+    width: 83.33333333333334%;
+  }
+
+  .col-11 {
+    float: left;
+    width: 91.66666666666666%;
+  }
+  .col-12 {
+    float: left;
+    width: 100%;
+  }
+.rus {
+	border-left: 1px solid gray;
+}
+.my-table-head .row {
+	border: none;
+}
+.my-table-head {
+	text-align: center;
+	font-weight: 700;
+	border-bottom: 1px solid gray;
+	font-size: 15px;
+}
+.first {
+	border-left: 1px solid gray;
+}
+.last {
+	border: none;
+}
+.my-table-head .my-cell {
+	height:95px;
+	border-right: 1px solid gray;
+}
+.my-table-content .my-cell {
+	border-right: 1px solid gray;
+}
+.my-table-content {
+	font-size: 15px;
+}
+.top {
+	border: 1px solid gray;
+}
+.border-right {
+	border-right: 1px solid gray;
+}
+.my-footer {
+	border: 1px solid gray;
+}
+		</style>
+		
+	</head>
+	<body>
+		<div class="container wrapper">
+			<div class="top">
+					<div class="row">
+							<div class="col-2 my-cell">
+								<p>CUSTOMER NAME:</p>
+							</div>
+							<div class="col-4 my-cell">
+								<p>#customer#</p>
+							</div>
+							<div class="col-2 my-cell rus">
+								<p>НАЗВАНИЕ КЛИЕНТА:</p>
+							</div>
+							<div class="col-4 my-cell">
+								<p>#customer_rus#</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-2 my-cell">
+								<p>FROM:</p>
+							</div>
+							<div class="col-4 my-cell">
+								<p>#from#</p>
+							</div>
+							<div class="col-2 my-cell rus">
+								<p>ОТ КОГО:</p>
+							</div>
+							<div class="col-4 my-cell">
+								<p>#from_rus#</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-6">
+								<div class="row-min">
+									<div class="col-4 my-cell">
+										<p><b>OFFER NO.:</b></p>
+									</div>
+									<div class="col-2 my-cell border-right">
+										<p><b>#offernum#</b></p>
+									</div>
+									<div class="col-3 my-cell">
+										<p><b>DATE:</b></p>
+									</div>
+									<div class="col-3 my-cell">
+										<p><b>#offerdate#</b></p>
+									</div>
+								</div>
+								
+							</div>
+							<div class="col-6">
+								<div class="row-min"> 
+									<div class="col-4 my-cell rus">
+										<p><b>КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ №:</b></p>
+									</div>
+									<div class="col-2 my-cell border-right">
+										<p><b>#offernum#</b></p>
+									</div>
+									<div class="col-3 my-cell">
+										<p>ДАТА:</p>
+									</div>
+									<div class="col-3 my-cell">
+										<p>#offerdate#</p>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-2 my-cell">
+								<p><b>SUBJECT:</b></p>
+							</div>
+							<div class="col-4 my-cell">
+								<p><b>#subject#</b></p>
+							</div>
+							<div class="col-2 my-cell rus">
+								<p><b>ТЕМА:</b></p>
+							</div>
+							<div class="col-4 my-cell">
+								<p><b>#subject_rus#</b></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-6 my-cell">
+								<p>#headertext#</p>
+							</div>
+							<div class="col-6 my-cell rus">
+								<p>#headertext_rus#</p>
+							</div>
+						</div>
+			</div>
+			
+
+
+			<div class="table">
+				<div class="my-table-head">
+					<div class="row">
+						<div class="col-6">
+							<div class="row">
+								<div class="col-2 my-cell first">
+									<p>CODE</p>
+								</div>
+								<div class="col-1 my-cell">
+									<p>Q-TY</p>
+								</div>
+								<div class="col-1 my-cell">
+									<p>U.M.</p>
+								</div>
+								<div class="col-4 my-cell">
+									<p>DESCRIPTION</p>
+								</div>
+								<div class="col-2 my-cell">
+									<p>UNIT PRICE, EURO</p>
+								</div>
+								<div class="col-2 my-cell">
+									<p>AMOUNT, EURO</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="row">
+								<div class="col-2 my-cell">
+									<p>КОД</p>
+								</div>
+								<div class="col-1 my-cell">
+									<p>КОЛ-ВО</p>
+								</div>
+								<div class="col-1 my-cell">
+									<p>ЕД. ИЗМ.</p>
+								</div>
+								<div class="col-4 my-cell">
+									<p>НАИМЕНОВАНИЕ</p>
+								</div>
+								<div class="col-2 my-cell">
+									<p>ЦЕНА ЗА ЕД., ЕВРО</p>
+								</div>
+								<div class="col-2 last my-cell">
+									<p>СУММА, ЕВРО</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="my-table-content">
+						#table#
+			
+
+
+
+
+			</div>
+			<div class="my-footer">
+				<div class="row">
+					<div class="col-3 my-cell">
+						<p>Delivery:</p>
+					</div>
+					<div class="col-3 my-cell">
+						<p>#delivery#</p>
+					</div>
+					<div class="col-3 my-cell rus">
+						<p>Сроки поставки:</p>
+					</div>
+					<div class="col-3 my-cell">
+						<p>#delivery_rus#</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3 my-cell">
+						<p>Payment:</p>
+					</div>
+					<div class="col-3 my-cell">
+						<p>#payment#</p>
+					</div>
+					<div class="col-3 my-cell rus">
+						<p>Оплата:</p>
+					</div>
+					<div class="col-3 my-cell">
+						<p>#payment_rus#</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3 my-cell">
+						<p>Goods delivered:</p>
+					</div>
+					<div class="col-3 my-cell">
+						<p>#goodsdeliv#</p>
+					</div>
+					<div class="col-3 my-cell rus">
+						<p>Базис поставки:</p>
+					</div>
+					<div class="col-3 my-cell">
+						<p>#goodsdeliv_rus#</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3 my-cell">
+						<p>Offer validity:</p>
+					</div>
+					<div class="col-3 my-cell">
+						<p>#offertill#</p>
+					</div>
+					<div class="col-3 my-cell rus">
+						<p>Срок действия коммерческого предложения:</p>
+					</div>
+					<div class="col-3 my-cell">
+						<p>#offertill#</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3 my-cell">
+						<p>Technical assistance:</p>
+					</div>
+					<div class="col-3 my-cell">
+						<p>#techassist#</p>
+					</div>
+					<div class="col-3 my-cell rus">
+						<p>Техническая поддержка:</p>
+					</div>
+					<div class="col-3 my-cell">
+						<p>#techassist_rus#</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3 my-cell">
+						<p>Technical documentation:</p>
+					</div>
+					<div class="col-3 my-cell">
+						<p>#techdoc#</p>
+					</div>
+					<div class="col-3 my-cell rus">
+						<p>Техническая документация:</p>
+					</div>
+					<div class="col-3 my-cell">
+						<p>#techdoc_rus#</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3 my-cell">
+						<p>Warranty:</p>
+					</div>
+					<div class="col-3 my-cell">
+						<p>#warranty#</p>
+					</div>
+					<div class="col-3 my-cell rus">
+						<p>Гарантия:</p>
+					</div>
+					<div class="col-3 my-cell">
+						<p>#warranty_rus#</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4 my-cell">
+						<p>TOTAL AMOUNT OF THE GOODS:</p>
+					</div>
+					<div class="col-2 my-cell">
+						<p>#total#</p>
+					</div>
+					<div class="col-4 my-cell rus">
+						<p>ИТОГОВАЯ СТОИМОСТЬ ТОВАРА:</p>
+					</div>
+					<div class="col-2 my-cell">
+						<p>#total#</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4 my-cell">
+						<p>Packing charges:</p>
+					</div>
+					<div class="col-2 my-cell">
+						<p>#pack#</p>
+					</div>
+					<div class="col-4 my-cell rus">
+						<p>Стоимость упаковки:</p>
+					</div>
+					<div class="col-2 my-cell">
+						<p>#pack#</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4 my-cell">
+						<p><b>GENERAL TOTAL AMOUNT OF THE SUPPLY:</b></p>
+					</div>
+					<div class="col-2 my-cell">
+						<p><b>#general#</b></p>
+					</div>
+					<div class="col-4 my-cell rus">
+						<p><b>ИТОГОВАЯ СТОИМОСТЬ ПОСТАВКИ:</b></p>
+					</div>
+					<div class="col-2 my-cell">
+						<p><b>#general#</b></p>
+					</div>
+				</div>
+
+
+
+
+			</div>
+
+
+		</div>
+	</body>
+</html>

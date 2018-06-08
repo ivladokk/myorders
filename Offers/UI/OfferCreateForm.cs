@@ -69,7 +69,7 @@ namespace Offers.UI
                 HasAction = true,
                 isCompleted = false,
                 DoAction = Action2,
-                Header = "Шаг 2/4: Импорт товаров",
+                Header = "Шаг 2/4: Заполните значения",
                 isLast = false
             };
 
@@ -107,7 +107,7 @@ namespace Offers.UI
                 HasAction = true,
                 isCompleted = false,
                 DoAction = Action3,
-                Header = "Шаг 3/4: Заполните значения",
+                Header = "Шаг 3/4: Выберите оборудование",
                 isLast = false
             };
             step2.Next = step3;
@@ -137,7 +137,7 @@ namespace Offers.UI
                 _worker.FillItems(items);
                
                 _currentStep.isCompleted = true;
-                page4 = new Page4();
+                page4 = new Page4(items);
                 step4 = new Step
                 {
                     Control = page4,

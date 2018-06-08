@@ -28,6 +28,7 @@ namespace CalculationModule.UI
             {
                 _editModel = editItem;
                 checkBox1.Checked = _editModel.WithSum == 1;
+                checkBox2.Checked = _editModel.NeedRound == 1;
             }
             
             LoadLists();
@@ -79,6 +80,7 @@ namespace CalculationModule.UI
                 _editModel.OrderID = 1;
                 _editModel.CalculationTypeID = _sender.currentTypeID;
                 _editModel.WithSum = checkBox1.Checked ? 1 : 0;
+                _editModel.NeedRound = checkBox2.Checked ? 1 : 0;
                 using (UserContext db = new UserContext(Settings.constr))
                 {
                     db.CalculationItems.Add(_editModel);
@@ -92,6 +94,7 @@ namespace CalculationModule.UI
             if (_type == 2)
             {
                 _editModel.WithSum = checkBox1.Checked ? 1 : 0;
+                _editModel.NeedRound = checkBox2.Checked ? 1 : 0;
                 using (UserContext db = new UserContext(Settings.constr))
                 {
                     db.CalculationItems.Attach(_editModel);
@@ -99,6 +102,8 @@ namespace CalculationModule.UI
                     entry.Property(x => x.Expression).IsModified = true;
                     entry.Property(x => x.ItemName).IsModified = true;
                     entry.Property(x => x.OrderID).IsModified = true;
+                    entry.Property(x => x.NeedRound).IsModified = true;
+                    entry.Property(x => x.WithSum).IsModified = true;
                     db.SaveChanges();
                 }
                 _sender.Init();

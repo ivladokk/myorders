@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AppCore;
+using AppCore.Components;
 using AppCore.Models;
 using AppCore.Settings;
 using iTextSharp.text.pdf;
@@ -32,14 +33,22 @@ namespace Offers
     public class ExportUtils
     {
         private ReportTemplate _template;
+        private OfferInstance _offer;
+        private string _folder;
 
-        public ExportUtils(ReportTemplate template)
+        public ExportUtils(ReportTemplate template, OfferInstance offer, string folder)
         {
             _template = template;
+            _offer = offer;
+            _folder = folder;
         }
 
+        public Action GetAction()
+        {
+            return Export;
+        }
 
-        public void Export(OfferInstance offer, string folder)
+        public void Export()
         {
             Dictionary<string,string> main = new Dictionary<string, string>();
            
@@ -49,34 +58,34 @@ namespace Offers
                 using (UserContext db = new UserContext(Settings.constr))
                 {
                     customer = db.Contragents.FirstOrDefault(a =>
-                        a.ContrAgentID == db.Offers.FirstOrDefault(x => x.ID == offer.offer.ID).ContrAgentID);
+                        a.ContrAgentID == db.Offers.FirstOrDefault(x => x.ID == _offer.offer.ID).ContrAgentID);
                     main.Add("#customer#", customer.NameEng);
                     main.Add("#customer_rus#", customer.Name);
-                    var from = db.Manufacters.FirstOrDefault(x => x.ID == offer.header.ManufacterID);
+                    var from = db.Manufacters.FirstOrDefault(x => x.ID == _offer.header.ManufacterID);
                     main.Add("#from#", from.Name);
                     main.Add("#from_rus#", from.NameRus);
-                    main.Add("#offernum#", offer.header.OfferNumber);
-                    main.Add("#offerdate#", offer.offer.CreateDate.ToString("dd.MM.yyyy"));
-                    main.Add("#headertext#", offer.header.HeaderText);
-                    main.Add("#headertext_rus#", offer.header.HeaderTextRus);
-                    main.Add("#subject#", offer.header.Subject);
-                    main.Add("#subject_rus#", offer.header.SubjectRus);
-                    main.Add("#delivery#", offer.footer.Delivery);
-                    main.Add("#delivery_rus#", offer.footer.DeliveryRus);
-                    main.Add("#payment#", offer.footer.Payment);
-                    main.Add("#payment_rus#", offer.footer.PaymentRus);
-                    main.Add("#goodsdeliv#", offer.footer.GoodsDeliv);
-                    main.Add("#goodsdeliv_rus#", offer.footer.GoodsDelivRus);
-                    main.Add("#offertill#", offer.footer.OfferTill.ToString("dd.MM.yyyy"));
-                    main.Add("#techassist#", offer.footer.TechAssist);
-                    main.Add("#techassist_rus#", offer.footer.TechAssistRus);
-                    main.Add("#techdoc#", offer.footer.TechDoc);
-                    main.Add("#techdoc_rus#", offer.footer.TechDocRus);
-                    main.Add("#warranty#", offer.footer.Warranty);
-                    main.Add("#warranty_rus#", offer.footer.WarrantyRus);
-                    main.Add("#total#", offer.footer.TotalAmountGoods.ToString());
-                    main.Add("#pack#", offer.footer.PackPrice.ToString());
-                    main.Add("#general#", offer.footer.GeneralAmount.ToString());
+                    main.Add("#offernum#", _offer.header.OfferNumber);
+                    main.Add("#offerdate#", _offer.offer.CreateDate.ToString("dd.MM.yyyy"));
+                    main.Add("#headertext#", _offer.header.HeaderText);
+                    main.Add("#headertext_rus#", _offer.header.HeaderTextRus);
+                    main.Add("#subject#", _offer.header.Subject);
+                    main.Add("#subject_rus#", _offer.header.SubjectRus);
+                    main.Add("#delivery#", _offer.footer.Delivery);
+                    main.Add("#delivery_rus#", _offer.footer.DeliveryRus);
+                    main.Add("#payment#", _offer.footer.Payment);
+                    main.Add("#payment_rus#", _offer.footer.PaymentRus);
+                    main.Add("#goodsdeliv#", _offer.footer.GoodsDeliv);
+                    main.Add("#goodsdeliv_rus#", _offer.footer.GoodsDelivRus);
+                    main.Add("#offertill#", _offer.footer.OfferTill.ToString("dd.MM.yyyy"));
+                    main.Add("#techassist#", _offer.footer.TechAssist);
+                    main.Add("#techassist_rus#", _offer.footer.TechAssistRus);
+                    main.Add("#techdoc#", _offer.footer.TechDoc);
+                    main.Add("#techdoc_rus#", _offer.footer.TechDocRus);
+                    main.Add("#warranty#", _offer.footer.Warranty);
+                    main.Add("#warranty_rus#", _offer.footer.WarrantyRus);
+                    main.Add("#total#", _offer.footer.TotalAmountGoods.ToString());
+                    main.Add("#pack#", _offer.footer.PackPrice.ToString());
+                    main.Add("#general#", _offer.footer.GeneralAmount.ToString());
                     
                 }
             }
@@ -89,7 +98,7 @@ namespace Offers
 
             var str = File.ReadAllText(_template.MainTemplatePath);
             var resultHtml = ReplacePlaceholders(main, str);
-            resultHtml = resultHtml.Replace("#table#", GetItemsTable(offer.items));
+            resultHtml = resultHtml.Replace("#table#", GetItemsTable(_offer.items));
 
             var data = new JsonData()
             {
@@ -97,7 +106,7 @@ namespace Offers
                 htmlCode = resultHtml
             };
 
-            if (GetPDF(data, folder))
+            if (GetPDF(data, _folder))
             {
                 MessageBox.Show("Файл успешно экспортирован!");
             }
@@ -110,8 +119,14 @@ namespace Offers
             
         }
 
+        private string GetBase64Img(string img)
+        {
+
+            return Convert.ToBase64String(File.ReadAllBytes(img));
+        }
         private string GetItemsTable(List<OfferItem> items)
         {
+           
             string result = "";
             foreach (var i in items)
             {
@@ -129,7 +144,7 @@ namespace Offers
                         table.Add("#amount#", i.Amount.ToString());
                         table.Add("#equipname#", equip.EquipName);
                         table.Add("#equipname_rus#", equip.EquipNameRus);
-                        table.Add("#image#", equip.Image);
+                        table.Add("#image#", GetBase64Img(equip.Image));
                         var str = File.ReadAllText(_template.TableTemplatePath);
                         result += ReplacePlaceholders(table, str); 
                     }

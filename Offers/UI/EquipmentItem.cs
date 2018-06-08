@@ -78,5 +78,44 @@ namespace Offers.UI
         {
             tb_amount.Text = GetAmount().ToString();
         }
+
+        private void tb_price_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char) 13)
+            {
+                try
+                {
+                    _offerItem.Price = Convert.ToDecimal(tb_price.Text);
+                    _offerItem.Count = Convert.ToInt32(tb_count.Value);
+                    tb_amount.Text = GetAmount().ToString();
+                    _offerItem.Amount = GetAmount();
+
+                }
+                catch (Exception exception)
+                {
+
+                }
+            }
+               
+        }
+
+        private void tb_count_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                try
+                {
+                    _offerItem.Price = Convert.ToDecimal(tb_price.Text);
+                    _offerItem.Count = Convert.ToInt32(tb_count.Value);
+                    tb_amount.Text = GetAmount().ToString();
+                    _offerItem.Amount = GetAmount();
+
+                }
+                catch (Exception exception)
+                {
+
+                }
+            }
+        }
     }
 }
