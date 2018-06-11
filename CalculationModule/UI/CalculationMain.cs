@@ -23,6 +23,7 @@ namespace CalculationModule.UI
         public CalculationMain()
         {
             InitializeComponent();
+            CreateStatusMenu();
             Load();
            
 
@@ -50,6 +51,46 @@ namespace CalculationModule.UI
             }
 
             dataGridView1.DataSource = ds.Tables[0];
+        }
+
+        public void CreateStatusMenu()
+        {
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                var statuses = db.CalculationStatus.ToList();
+                foreach (var i in statuses)
+                {
+                    ToolStripMenuItem item = new ToolStripMenuItem();
+                    item.Text = i.StatusValue;
+                    item.Tag = i.ID;
+                    item.Click += status_click;
+                    изменитьСтатусToolStripMenuItem.DropDownItems.Add(item);
+
+                }
+            }
+            
+            
+        }
+
+        private void status_click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                
+                var id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
+                SetStatus(id, Convert.ToInt32((sender as ToolStripMenuItem).Tag));
+            }
+        }
+
+        private void SetStatus(int calcId, int status)
+        {
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                var calc = db.CalculationInsctInstances.FirstOrDefault(x => x.ID == calcId);
+                calc.Status = status;
+                db.SaveChanges();
+                Load();
+            }
         }
 
         private void создатьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -101,6 +142,11 @@ namespace CalculationModule.UI
                     f.Show();
                 }
             }
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

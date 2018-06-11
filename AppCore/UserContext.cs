@@ -45,6 +45,7 @@ namespace AppCore
         public DbSet<OfferItem> OfferItems { get; set; }
         public DbSet<Equipment> Equipments { get; set; }
         public DbSet<Manufacter> Manufacters { get; set; }
+        public DbSet<CalculationStatus> CalculationStatus { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

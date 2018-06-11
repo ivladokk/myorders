@@ -224,9 +224,19 @@ namespace AppCore.Models
     public class ProductAttribute
     {
         public int ID { get; set; }
+        public int Code { get; set; }
+        public string View { get; set; }
         public string VendorCode { get; set; }
-        public int TNVEDCode { get; set; }
+        public string ProductName { get; set; }
+        public string Unit { get; set; }
+        public int GoodsGroup { get; set; }
+        public long TNVEDCode { get; set; }
+        public int Duty { get; set; }
         public decimal TNVEDValue { get; set; }
+        public string Owner { get; set; }
+        public string Certificate { get; set; }
+        public string Declaration { get; set; }
+        
     }
 
     public class DynamicConstant
@@ -331,5 +341,11 @@ namespace AppCore.Models
         public string Name { get; set; }
         public string NameRus { get; set; }
         public string Logo { get; set; }
+    }
+
+    public class CalculationStatus
+    {
+        public int ID { get; set; }
+        public string StatusValue { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace CalculationModule
     {
         public Product Product;
         public int Count;
-        public int TNVEDCode;
+        public long TNVEDCode;
         public decimal TNVEDValue;
     }
 
@@ -246,38 +246,46 @@ namespace CalculationModule
             dt.Columns[2].ColumnName = "ProductName";
             dt.Columns[3].ColumnName = "Count";
             dt.Columns[5].ColumnName = "Price";*/
-            Products.Clear();
-            List<ImportedProduct> products = new List<ImportedProduct>();
-            for (int i = 0; i < dt.Rows.Count; i++)
+            try
             {
-                var pr = new ImportedProduct
+                Products.Clear();
+                List<ImportedProduct> products = new List<ImportedProduct>();
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    Product = new Product
+                    var pr = new ImportedProduct
                     {
-                        Name = dt.Rows[i]["ProductName"].ToString(),
-                        Price = Convert.ToDecimal(dt.Rows[i]["Price"].ToString().Replace(".",",")),
-                        VendorCode = dt.Rows[i]["VendorCode"].ToString()
-                    },
-                    Count = Convert.ToInt32(dt.Rows[i]["Count"].ToString())
-                };
-                using (UserContext db = new UserContext(Settings.constr))
-                {
-                    var code = db.ProductAttributes.FirstOrDefault(x =>
-                        x.VendorCode == pr.Product.VendorCode.ToUpper());
-                    if (code != null)
+                        Product = new Product
+                        {
+                            Name = dt.Rows[i]["ProductName"].ToString(),
+                            Price = Convert.ToDecimal(dt.Rows[i]["Price"].ToString().Replace(".", ",")),
+                            VendorCode = dt.Rows[i]["VendorCode"].ToString()
+                        },
+                        Count = Convert.ToInt32(dt.Rows[i]["Count"].ToString())
+                    };
+                    using (UserContext db = new UserContext(Settings.constr))
                     {
-                        pr.TNVEDCode = code.TNVEDCode;
-                        pr.TNVEDValue = code.TNVEDValue;
+                        var code = db.ProductAttributes.FirstOrDefault(x =>
+                            x.VendorCode == pr.Product.VendorCode.ToUpper());
+                        if (code != null)
+                        {
+                            pr.TNVEDCode = code.TNVEDCode;
+                            pr.TNVEDValue = code.TNVEDValue;
+                        }
+                        else
+                        {
+                            FailedImportedProducts.Add(pr);
+                        }
                     }
-                    else
-                    {
-                        FailedImportedProducts.Add(pr);
-                    }
+                    products.Add(pr);
                 }
-                products.Add(pr);
-            }
 
-            Products = products;
+                Products = products;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка при импорте!");
+            }
+            
             
         }
 

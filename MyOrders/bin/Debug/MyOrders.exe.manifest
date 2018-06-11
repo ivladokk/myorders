@@ -43,26 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AppCore.dll" size="41472">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AppCore.dll" size="43008">
       <assemblyIdentity name="AppCore" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>uRLRU7amDqpPyFuK+EyaG2Pusqb0oNy4KIuHsHP03K0=</dsig:DigestValue>
+        <dsig:DigestValue>q+GmjPihuvcXokI+IFCJiSUnpmR3fLj7OnUffw2NGTY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CalculationModule.dll" size="80384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CalculationModule.dll" size="86528">
       <assemblyIdentity name="CalculationModule" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oK+nnGYkDQnZNgWaZjaESW7bINc7NAQLlAMJUU4P63o=</dsig:DigestValue>
+        <dsig:DigestValue>XQi5gB35Q0Ytf3CQdonEL3wKZRrQ1ERfXDkLVR3Ngqk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -950,7 +950,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FOGDyITjuNqRUKJSXGahXg1H9h7J4K0/1g5/4i+u+Zc=</dsig:DigestValue>
+        <dsig:DigestValue>GOKrOd80Rjph+2wNDDIAzuRkknz/lwExhgks0ECRVs8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -974,7 +974,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9A+M5cI+C16I5EBanvVCFkIZ8Gk08/+KEBND7Ld+qcE=</dsig:DigestValue>
+        <dsig:DigestValue>zEcA+8EnLlthz+Np3415Timbhx236HRlZPmDdowDtnA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
