@@ -70,7 +70,7 @@
             // 
             this.tb_value.Location = new System.Drawing.Point(12, 65);
             this.tb_value.Name = "tb_value";
-            this.tb_value.Size = new System.Drawing.Size(509, 134);
+            this.tb_value.Size = new System.Drawing.Size(594, 134);
             this.tb_value.TabIndex = 3;
             this.tb_value.Text = "";
             // 
@@ -79,22 +79,24 @@
             this.lb_items.FormattingEnabled = true;
             this.lb_items.Location = new System.Drawing.Point(12, 205);
             this.lb_items.Name = "lb_items";
-            this.lb_items.Size = new System.Drawing.Size(180, 134);
+            this.lb_items.ScrollAlwaysVisible = true;
+            this.lb_items.Size = new System.Drawing.Size(223, 186);
             this.lb_items.TabIndex = 4;
             this.lb_items.DoubleClick += new System.EventHandler(this.lb_items_DoubleClick);
             // 
             // lb_constants
             // 
             this.lb_constants.FormattingEnabled = true;
-            this.lb_constants.Location = new System.Drawing.Point(198, 205);
+            this.lb_constants.Location = new System.Drawing.Point(241, 205);
             this.lb_constants.Name = "lb_constants";
-            this.lb_constants.Size = new System.Drawing.Size(160, 134);
+            this.lb_constants.ScrollAlwaysVisible = true;
+            this.lb_constants.Size = new System.Drawing.Size(177, 186);
             this.lb_constants.TabIndex = 5;
             this.lb_constants.DoubleClick += new System.EventHandler(this.lb_constants_DoubleClick);
             // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(12, 346);
+            this.btn_save.Location = new System.Drawing.Point(12, 414);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(125, 23);
             this.btn_save.TabIndex = 6;
@@ -104,7 +106,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(396, 345);
+            this.btn_cancel.Location = new System.Drawing.Point(481, 413);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(125, 23);
             this.btn_cancel.TabIndex = 7;
@@ -115,9 +117,10 @@
             // lb_attrs
             // 
             this.lb_attrs.FormattingEnabled = true;
-            this.lb_attrs.Location = new System.Drawing.Point(364, 205);
+            this.lb_attrs.Location = new System.Drawing.Point(424, 205);
             this.lb_attrs.Name = "lb_attrs";
-            this.lb_attrs.Size = new System.Drawing.Size(157, 134);
+            this.lb_attrs.ScrollAlwaysVisible = true;
+            this.lb_attrs.Size = new System.Drawing.Size(182, 186);
             this.lb_attrs.TabIndex = 8;
             this.lb_attrs.DoubleClick += new System.EventHandler(this.lb_attrs_DoubleClick);
             // 
@@ -134,7 +137,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(364, 29);
+            this.checkBox2.Location = new System.Drawing.Point(339, 28);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(79, 17);
             this.checkBox2.TabIndex = 10;
@@ -145,7 +148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 385);
+            this.ClientSize = new System.Drawing.Size(618, 448);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.lb_attrs);
@@ -157,6 +160,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_name);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CalculationItemForm";
             this.Text = "CalculationItemForm";
             this.ResumeLayout(false);

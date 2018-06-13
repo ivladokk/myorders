@@ -37,7 +37,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Expression = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -46,6 +46,7 @@
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.K_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConstantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConstantType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +56,7 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.D_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DynamicName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DynamicExpression = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -159,7 +161,7 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Order,
+            this.ID,
             this.ItemName,
             this.Expression});
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
@@ -173,11 +175,11 @@
             this.dataGridView1.Size = new System.Drawing.Size(477, 288);
             this.dataGridView1.TabIndex = 0;
             // 
-            // Order
+            // ID
             // 
-            this.Order.HeaderText = "Очередь расчета";
-            this.Order.Name = "Order";
-            this.Order.ReadOnly = true;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
             // 
             // ItemName
             // 
@@ -239,6 +241,7 @@
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.K_ID,
             this.ConstantName,
             this.ConstantType,
             this.Value});
@@ -249,6 +252,11 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(477, 288);
             this.dataGridView2.TabIndex = 0;
+            // 
+            // K_ID
+            // 
+            this.K_ID.HeaderText = "ID";
+            this.K_ID.Name = "K_ID";
             // 
             // ConstantName
             // 
@@ -312,6 +320,7 @@
             this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.D_ID,
             this.DynamicName,
             this.DynamicExpression});
             this.dataGridView3.ContextMenuStrip = this.contextMenuStrip3;
@@ -320,6 +329,11 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.Size = new System.Drawing.Size(477, 288);
             this.dataGridView3.TabIndex = 0;
+            // 
+            // D_ID
+            // 
+            this.D_ID.HeaderText = "ID";
+            this.D_ID.Name = "D_ID";
             // 
             // DynamicName
             // 
@@ -397,7 +411,7 @@
             // 
             // btn_down
             // 
-            this.btn_down.Location = new System.Drawing.Point(221, 36);
+            this.btn_down.Location = new System.Drawing.Point(305, 36);
             this.btn_down.Name = "btn_down";
             this.btn_down.Size = new System.Drawing.Size(75, 23);
             this.btn_down.TabIndex = 2;
@@ -407,7 +421,7 @@
             // 
             // btn_up
             // 
-            this.btn_up.Location = new System.Drawing.Point(221, 7);
+            this.btn_up.Location = new System.Drawing.Point(305, 7);
             this.btn_up.Name = "btn_up";
             this.btn_up.Size = new System.Drawing.Size(75, 23);
             this.btn_up.TabIndex = 1;
@@ -417,10 +431,11 @@
             // 
             // lb_order
             // 
+            this.lb_order.Dock = System.Windows.Forms.DockStyle.Left;
             this.lb_order.FormattingEnabled = true;
-            this.lb_order.Location = new System.Drawing.Point(6, 6);
+            this.lb_order.Location = new System.Drawing.Point(3, 3);
             this.lb_order.Name = "lb_order";
-            this.lb_order.Size = new System.Drawing.Size(208, 277);
+            this.lb_order.Size = new System.Drawing.Size(265, 288);
             this.lb_order.TabIndex = 0;
             this.lb_order.SelectedIndexChanged += new System.EventHandler(this.lb_order_SelectedIndexChanged);
             // 
@@ -465,17 +480,11 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Order;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Expression;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem изменитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ConstantName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ConstantType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
@@ -490,9 +499,17 @@
         private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem изменитьToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DynamicName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DynamicExpression;
         private System.Windows.Forms.Button btn_saveorder;
         private System.Windows.Forms.Button btn_loadorder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Expression;
+        private System.Windows.Forms.DataGridViewTextBoxColumn K_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ConstantName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ConstantType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Value;
+        private System.Windows.Forms.DataGridViewTextBoxColumn D_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DynamicName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DynamicExpression;
     }
 }

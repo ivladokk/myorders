@@ -120,44 +120,115 @@ namespace CalculationModule.UI
                 tempOrder++;
             }
 
+
+
+
             return list;
+        }
+
+
+        public void CheckOrdersAndReloadIsNeed(List<CalculationOrder> order)
+        {
+            if (order.Count != CreateOrder().Count)
+            {
+                foreach (var i in order)
+                {
+                    if (!Orders.Any(x => x.ItemID == i.ItemID && x.Type == i.ItemType))
+                    {
+                        Orders.Add(new OrderViewModel
+                        {
+                            ItemID = i.ItemID,
+                            Order = i.Order,
+                            Type = i.ItemType,
+                            Text = GetOrderText(i.ItemType, i.ItemID)
+                        });
+                    }
+                   
+                }
+                foreach (var i in Items)
+                {
+                    if (!Orders.Any(x => x.ItemID == i.ID && x.Type == 1))
+                    {
+                        Orders.Add(new OrderViewModel
+                        {
+                            ItemID = i.ID,
+                            Type = 1,
+                            Order = Orders.Max(x => x.Order) + 1,
+                            Text = $"item {i.ItemName}"
+                        });
+                        if (i.WithSum == 1)
+                        {
+                            Orders.Add(new OrderViewModel
+                            {
+                                ItemID = i.ID,
+                                Type = 3,
+                                Order = Orders.Max(x => x.Order) + 1,
+                                Text = $"sum {i.ItemName}"
+                            });
+                        }
+                    }
+                }
+
+                foreach (var i in Dynamics)
+                {
+                    if (!Orders.Any(x => x.ItemID == i.ID && x.Type == 2))
+                    {
+                        Orders.Add(new OrderViewModel
+                        {
+                            ItemID = i.ID,
+                            Type = 2,
+                            Order = Orders.Max(x => x.Order) + 1,
+                            Text = $"dynamic {i.Name}"
+                        });
+                    }
+                }
+            }
+            else
+            {
+                foreach (var i in order)
+                {
+                    Orders.Add(new OrderViewModel
+                    {
+                        ItemID = i.ItemID,
+                        Order = i.Order,
+                        Type = i.ItemType,
+                        Text = GetOrderText(i.ItemType, i.ItemID)
+                    });
+                }
+            }
         }
 
         public void LoadOrderList()
         {
             lb_order.DataSource = null;
+            
+
+            List<CalculationOrder> ordersFromDB = new List<CalculationOrder>();
+
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                ordersFromDB = db.CalculationOrders.Where(x => x.CalculationTypeID == currentTypeID)
+                    .OrderBy(x => x.Order)
+                    .ToList();
+            }
 
             if (Orders.Count == 0)
             {
-                using (UserContext db = new UserContext(Settings.constr))
+                if (ordersFromDB.Count == 0)
                 {
-                    var order = db.CalculationOrders.Where(x => x.CalculationTypeID == currentTypeID).OrderBy(x => x.Order)
-                        .ToList();
-                    if (order.Count == 0)
-                    {
-                        Orders = CreateOrder();
-                    }
-                    else
-                    {
-                        foreach (var i in order)
-                        {
-                            Orders.Add(new OrderViewModel
-                            {
-                                ItemID = i.ItemID,
-                                Order = i.Order,
-                                Type = i.ItemType,
-                                Text = GetOrderText(i.ItemType, i.ItemID)
-                            });
-                        }
-                    }
+                    Orders = CreateOrder();
                 }
+                else CheckOrdersAndReloadIsNeed(ordersFromDB);
+                
             }
-            
+            else CheckOrdersAndReloadIsNeed(ordersFromDB);
+
             BindingList<OrderViewModel> ordersDS = new BindingList<OrderViewModel>();
-            foreach (var i in Orders.OrderBy(x=>x.Order))
+            foreach (var i in Orders.OrderBy(x => x.Order))
             {
                 ordersDS.Add(i);
             }
+
             lb_order.DisplayMember = "Text";
             lb_order.ValueMember = "Order";
             lb_order.DataSource = ordersDS;
@@ -181,9 +252,9 @@ namespace CalculationModule.UI
             {
                 dataGridView1.Rows.Add();
                 dataGridView1.Rows[i].Tag = Items[i].ID;
-                dataGridView1["Order", i] = new DataGridViewTextBoxCell
+                dataGridView1["ID", i] = new DataGridViewTextBoxCell
                 {
-                    Value = Items[i].OrderID
+                    Value = Items[i].ID
                 };
                 dataGridView1["ItemName", i] = new DataGridViewTextBoxCell
                 {
@@ -203,6 +274,10 @@ namespace CalculationModule.UI
             {
                 dataGridView2.Rows.Add();
                 dataGridView2.Rows[i].Tag = Constants[i].ID;
+                dataGridView2["K_ID", i] = new DataGridViewTextBoxCell
+                {
+                    Value = Constants[i].ID
+                };
                 dataGridView2["ConstantName", i] = new DataGridViewTextBoxCell
                 {
                     Value = Constants[i].Name
@@ -225,6 +300,10 @@ namespace CalculationModule.UI
             {
                 dataGridView3.Rows.Add();
                 dataGridView3.Rows[i].Tag = Dynamics[i].ID;
+                dataGridView3["D_ID", i] = new DataGridViewTextBoxCell
+                {
+                    Value = Dynamics[i].ID
+                };
                 dataGridView3["DynamicName", i] = new DataGridViewTextBoxCell
                 {
                     Value = Dynamics[i].Name
