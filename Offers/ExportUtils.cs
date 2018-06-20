@@ -27,6 +27,9 @@ namespace Offers
     {
         public string type { get; set; }
         public string htmlCode { get; set; }
+        public string pageSize { get; set; }
+        public string pageOrientation { get; set; }
+        public int viewportWidth { get; set; }
     }
 
 
@@ -103,7 +106,9 @@ namespace Offers
             var data = new JsonData()
             {
                 type = "htmlToPdf",
-                htmlCode = resultHtml
+                htmlCode = resultHtml,
+                viewportWidth = 2000,
+                pageOrientation = "landscape"
             };
 
             if (GetPDF(data, _folder))

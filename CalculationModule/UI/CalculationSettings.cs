@@ -379,6 +379,28 @@ namespace CalculationModule.UI
                 
         }
 
+        private void RemoveFromOrder(int type, int id)
+        {
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                var item = db.CalculationOrders.FirstOrDefault(x => x.CalculationTypeID == currentTypeID && x.ItemType == type && x.ItemID == id);
+                if (item != null)
+                {
+                    int order = item.Order;
+                    db.CalculationOrders.Remove(item);
+                    var left = db.CalculationOrders.Where(x => x.CalculationTypeID == currentTypeID && x.Order > order)
+                        .ToList();
+                    foreach (var i in left)
+                    {
+                        i.Order--;
+                    }
+
+                    db.SaveChanges();
+                    Orders.Clear();
+                }
+            }
+        }
+
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CalculationItemForm f = new CalculationItemForm(this, 1, null);
@@ -402,7 +424,21 @@ namespace CalculationModule.UI
 
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (dataGridView1.CurrentRow.Tag != null)
+            {
+                var id = Convert.ToInt32(dataGridView1.CurrentRow.Tag);
+                using (UserContext db = new UserContext(Settings.constr))
+                {
+                    var item = db.CalculationItems.FirstOrDefault(x => x.ID == id);
+                    RemoveFromOrder(1, id);
+                    if (item.WithSum == 1)
+                        RemoveFromOrder(3, id);
+                    db.CalculationItems.Remove(item);
+                    db.SaveChanges();
+                    
+                    Init();
+                }
+            }
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -514,6 +550,38 @@ namespace CalculationModule.UI
         {
             btn_up.Enabled = lb_order.SelectedIndex != 0;
             btn_down.Enabled = lb_order.SelectedIndex != lb_order.Items.Count - 1;
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.CurrentRow.Tag != null)
+            {
+                var id = Convert.ToInt32(dataGridView2.CurrentRow.Tag);
+                using (UserContext db = new UserContext(Settings.constr))
+                {
+                    var item = db.CalculationConstants.FirstOrDefault(x => x.ID == id);
+                    db.CalculationConstants.Remove(item);
+                    db.SaveChanges();
+                    Init();
+                }
+            }
+        }
+
+        private void удалитьToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView3.CurrentRow.Tag != null)
+            {
+                var id = Convert.ToInt32(dataGridView3.CurrentRow.Tag);
+                using (UserContext db = new UserContext(Settings.constr))
+                {
+                    var item = db.DynamicConstants.FirstOrDefault(x => x.ID == id);
+                    RemoveFromOrder(2, id);
+                    db.DynamicConstants.Remove(item);
+                    db.SaveChanges();
+                    RemoveFromOrder(1, id);
+                    Init();
+                }
+            }
         }
     }
 
