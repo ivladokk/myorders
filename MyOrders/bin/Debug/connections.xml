@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<connection>
+		<name>MyOrders</name>
+		<constr>Data Source=EPBYMINW7544\SQLEXPRESS;Initial Catalog=GoodsDB;Integrated Security=True;Persist Security Info=False</constr>
+	</connection>
+	<connection>
+		<name>MyOrders2</name>
+		<constr>Data Source=EPBYMINW7544\SQLEXPRESS;Initial Catalog=GoodsDB;Integrated Security=True;Persist Security Info=False</constr>
+	</connection>
+	<connection>
+		<name>MyOrders3</name>
+		<constr>Data Source=EPBYMINW7544\SQLEXPRESS;Initial Catalog=GoodsDB;Integrated Security=True;Persist Security Info=False</constr>
+	</connection>
+</root>

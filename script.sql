@@ -1,12 +1,12 @@
 USE [master]
 GO
-/****** Object:  Database [GoodsDB]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Database [GoodsDB]    Script Date: 6/26/2018 2:13:14 PM ******/
 CREATE DATABASE [GoodsDB]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'GoodsDB', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\GoodsDB.mdf' , SIZE = 4096KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+( NAME = N'GoodsDB', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\GoodsDB.mdf' , SIZE = 5120KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
  LOG ON 
-( NAME = N'GoodsDB_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\GoodsDB_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+( NAME = N'GoodsDB_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\GoodsDB_log.ldf' , SIZE = 1536KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
 GO
 ALTER DATABASE [GoodsDB] SET COMPATIBILITY_LEVEL = 120
 GO
@@ -75,7 +75,7 @@ ALTER DATABASE [GoodsDB] SET DELAYED_DURABILITY = DISABLED
 GO
 USE [GoodsDB]
 GO
-/****** Object:  Table [dbo].[BalanceOnDays]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[BalanceOnDays]    Script Date: 6/26/2018 2:13:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -92,7 +92,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CalculatedItems]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[CalculatedItems]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -105,7 +105,7 @@ CREATE TABLE [dbo].[CalculatedItems](
 	[CalculationInstanceID] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CalculatedProducts]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[CalculatedProducts]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -117,7 +117,7 @@ CREATE TABLE [dbo].[CalculatedProducts](
 	[Count] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CalculationConstants]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[CalculationConstants]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -130,7 +130,7 @@ CREATE TABLE [dbo].[CalculationConstants](
 	[Value] [numeric](18, 2) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CalculationInstances]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[CalculationInstances]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -141,10 +141,11 @@ CREATE TABLE [dbo].[CalculationInstances](
 	[Name] [nvarchar](900) NULL,
 	[CreateDate] [datetime] NULL,
 	[Status] [int] NULL,
-	[ContrAgentID] [int] NULL
+	[ContrAgentID] [int] NULL,
+	[ContrAgentID2] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CalculationItems]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[CalculationItems]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -159,7 +160,7 @@ CREATE TABLE [dbo].[CalculationItems](
 	[NeedRound] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CalculationOrders]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[CalculationOrders]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -172,7 +173,7 @@ CREATE TABLE [dbo].[CalculationOrders](
 	[ItemID] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CalculationResults]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[CalculationResults]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -186,7 +187,7 @@ CREATE TABLE [dbo].[CalculationResults](
 	[CalculatedSumsJSON] [nvarchar](max) NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CalculationStatus]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[CalculationStatus]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -196,7 +197,7 @@ CREATE TABLE [dbo].[CalculationStatus](
 	[StatusValue] [nvarchar](900) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CalculationTypes]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[CalculationTypes]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -206,7 +207,7 @@ CREATE TABLE [dbo].[CalculationTypes](
 	[Name] [nvarchar](900) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ContrAgents]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[ContrAgents]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -222,7 +223,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CurrencyCodes]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[CurrencyCodes]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -237,7 +238,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DynamicConstants]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[DynamicConstants]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -249,7 +250,7 @@ CREATE TABLE [dbo].[DynamicConstants](
 	[Expression] [nvarchar](900) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Equipments]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[Equipments]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -266,7 +267,7 @@ CREATE TABLE [dbo].[Equipments](
 	[Image] [nvarchar](max) NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FuturePayments]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[FuturePayments]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -289,7 +290,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Goods]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[Goods]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -308,7 +309,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Manufacters]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[Manufacters]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -320,7 +321,7 @@ CREATE TABLE [dbo].[Manufacters](
 	[Logo] [nvarchar](max) NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[OfferFooters]    Script Date: 6/11/2018 4:20:17 PM ******/
+/****** Object:  Table [dbo].[OfferFooters]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -348,7 +349,7 @@ CREATE TABLE [dbo].[OfferFooters](
 	[SignRus] [nvarchar](900) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[OfferHeaders]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  Table [dbo].[OfferHeaders]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -364,7 +365,7 @@ CREATE TABLE [dbo].[OfferHeaders](
 	[HeaderTextRus] [nvarchar](900) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[OfferItems]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  Table [dbo].[OfferItems]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -378,7 +379,7 @@ CREATE TABLE [dbo].[OfferItems](
 	[Amount] [numeric](18, 2) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Offers]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  Table [dbo].[Offers]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -390,7 +391,7 @@ CREATE TABLE [dbo].[Offers](
 	[OfferName] [nvarchar](900) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Orders]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  Table [dbo].[Orders]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -413,7 +414,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PaymentColors]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  Table [dbo].[PaymentColors]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -429,7 +430,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Payments]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  Table [dbo].[Payments]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -454,7 +455,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProductAttributes]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  Table [dbo].[ProductAttributes]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -475,7 +476,7 @@ CREATE TABLE [dbo].[ProductAttributes](
 	[Declaration] [nvarchar](900) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Products]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  Table [dbo].[Products]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -487,7 +488,7 @@ CREATE TABLE [dbo].[Products](
 	[VendorCode] [varchar](900) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Rates]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  Table [dbo].[Rates]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -506,7 +507,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Status]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  Table [dbo].[Status]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -521,7 +522,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Transactions]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  Table [dbo].[Transactions]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -538,7 +539,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[WorkDays]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  Table [dbo].[WorkDays]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -553,7 +554,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  StoredProcedure [dbo].[GetAllOffers]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[GetAllOffers]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -569,7 +570,7 @@ from Offers O
 inner join ContrAgents A on A.ContrAgentID=O.ContrAgentID
 end
 GO
-/****** Object:  StoredProcedure [dbo].[GetCalculationInstances]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[GetCalculationInstances]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -581,16 +582,18 @@ as begin
 			I.Name as 'Название',
 			T.Name as 'Тип',
 			A.Name as 'Контрагент',
+			A2.Name as 'Получатель',
 			S.StatusValue as 'Статус',
 			I.CreateDate as 'Дата создания'
 	from CalculationInstances I 
 	inner join CalculationTypes T on T.ID=I.CalculationTypeID
-	inner join ContrAgents A on A.ContrAgentID=I.ContrAgentID
+	left join ContrAgents A on A.ContrAgentID=I.ContrAgentID
+	left join ContrAgents A2 on A2.ContrAgentID=I.ContrAgentID2
 	inner join CalculationStatus S on S.ID = I.Status
 
 end
 GO
-/****** Object:  StoredProcedure [dbo].[GetEquipments]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[GetEquipments]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -608,7 +611,7 @@ inner join Manufacters M on M.ID = E.ManufacterID
 
 end
 GO
-/****** Object:  StoredProcedure [dbo].[GetEquipmentsForOffer]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[GetEquipmentsForOffer]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -625,7 +628,7 @@ inner join Manufacters M on M.ID = E.ManufacterID
 
 end
 GO
-/****** Object:  StoredProcedure [dbo].[GetFuturePayments]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[GetFuturePayments]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -650,7 +653,7 @@ inner join ContrAgents A on A.ContrAgentID=P.ContrAgentID
 left join CurrencyCodes C on C.Code=P.PaymentCurrencyCode
 end
 GO
-/****** Object:  StoredProcedure [dbo].[GetManufactersDictionary]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[GetManufactersDictionary]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -662,7 +665,7 @@ select ID, NameRus as N'Наименование', [Name] as N'Наименов�
 
 end
 GO
-/****** Object:  StoredProcedure [dbo].[GetProductsAttributes]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[GetProductsAttributes]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -681,7 +684,7 @@ as begin
 
 end
 GO
-/****** Object:  StoredProcedure [dbo].[GoodsReport]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[GoodsReport]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -704,7 +707,7 @@ left join ContrAgents A2 on A2.ContrAgentID=O.ProviderID
 inner join Status S on S.StatusID=O.Status
 end
 GO
-/****** Object:  StoredProcedure [dbo].[PaymentsReport]    Script Date: 6/11/2018 4:20:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[PaymentsReport]    Script Date: 6/26/2018 2:13:15 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

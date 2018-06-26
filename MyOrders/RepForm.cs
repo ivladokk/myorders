@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.SqlClient;
 using System.Globalization;
+using AppCore;
+using AppCore.Models;
+using AppCore.Settings;
 
 namespace MyOrders
 {

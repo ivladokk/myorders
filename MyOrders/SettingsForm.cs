@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Xml;
+using AppCore.Settings;
 
 namespace MyOrders
 {

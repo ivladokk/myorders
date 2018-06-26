@@ -197,7 +197,7 @@ namespace MyOrders
             {
                 MdiParent = this,
                 WindowState = FormWindowState.Maximized
-            };
+            }; 
             f.Show();
         }
     }

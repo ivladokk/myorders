@@ -2,20 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using AppCore.Settings;
 using DevExpress.UserSkins;
 using DevExpress.Skins;
 using DevExpress.LookAndFeel;
 
 namespace MyOrders
 {
-    static class Program
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main(string[] args)
         {
+            string constr = "";
+            foreach (var i in args)
+            {
+                constr += i;
+                constr += " ";
+            }
+
+            Settings.SetConstr(constr.Trim());
+ 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

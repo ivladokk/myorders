@@ -1,0 +1,1 @@
+Data Source=EPBYMINW7544\SQLEXPRESS;Initial Catalog=GoodsDB;Integrated Security=True;Persist Security Info=False

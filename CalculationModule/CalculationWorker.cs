@@ -83,7 +83,7 @@ namespace CalculationModule
             LoadEnviroment();
             ImportFromJSON();
         }
-        public void CreateInstance(int typeID, string name, int agentID)
+        public void CreateInstance(int typeID, string name, int agentID, int agentID2)
         {
             if (_mode != 1)
             {
@@ -95,6 +95,7 @@ namespace CalculationModule
                 CreateDate = DateTime.Today,
                 Name = name,
                 ContrAgentID = agentID,
+                ContrAgentID2 = agentID2,
                 Status = 1
             };
             using (UserContext db = new UserContext(Settings.constr))

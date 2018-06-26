@@ -18,6 +18,7 @@ namespace CalculationModule.UI.MasterPages
         public int SelectedTypeID { get; set; }
         public string CalcName { get; set; }
         public int ContrAgentID { get; set; }
+        public int ContrAgentID2 { get; set; }
         public Page1()
         {
             InitializeComponent();
@@ -68,6 +69,12 @@ namespace CalculationModule.UI.MasterPages
             cb_Contragent.Properties.DataSource = Contragents;
             //ContrAgentID = (int) cb_Contragent.EditValue;
             cb_Contragent.DataBindings.Add("EditValue", this, "ContrAgentID");
+
+            cb_Contragent2.Properties.DisplayMember = "Name";
+            cb_Contragent2.Properties.ValueMember = "ContrAgentID";
+            cb_Contragent2.Properties.DataSource = Contragents;
+            //ContrAgentID = (int) cb_Contragent.EditValue;
+            cb_Contragent2.DataBindings.Add("EditValue", this, "ContrAgentID2");
         }
 
         private void cb_type_SelectedValueChanged(object sender, EventArgs e)

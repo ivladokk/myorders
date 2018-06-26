@@ -7,8 +7,11 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AppCore.Models;
+using AppCore.Settings;
 using DevExpress.XtraEditors;
 using MyOrders.Dictionaries;
+using AppCore;
 
 namespace MyOrders
 {

@@ -7,6 +7,9 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AppCore;
+using AppCore.Models;
+using AppCore.Settings;
 using DevExpress.XtraEditors;
 
 namespace MyOrders

@@ -43,26 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AppCore.dll" size="43008">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AppCore.dll" size="43520">
       <assemblyIdentity name="AppCore" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6SWX5b+pechqgZw2Uif9OhFgewSULGfsDjeyAhZo7Oo=</dsig:DigestValue>
+        <dsig:DigestValue>G0G0eadYWRD9XFlXUriIU0KwIw4a7lw0vPrfLjxW65I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CalculationModule.dll" size="90624">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CalculationModule.dll" size="97280">
       <assemblyIdentity name="CalculationModule" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fAYuZP8Q9WfYtf03LcTwMrwTbik0nLfkRRH+6EYn/jM=</dsig:DigestValue>
+        <dsig:DigestValue>BCPlI1bYAuiLTP7+zi7FX4Ss7LHUXxDPqatjBw5D2uk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -943,14 +943,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MyOrders.exe" size="388608">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MyOrders.exe" size="388096">
       <assemblyIdentity name="MyOrders" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>vgIhqxMQXf91ph4ioc+YumrUQoyFrFYWTyTDwuHjLho=</dsig:DigestValue>
+        <dsig:DigestValue>/QFd5krobMIoaitkgPaEXTsSqcM48FYQtiFUlNJVLog=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -974,7 +974,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZzA9nr0ebycMhEshDjLPAsEsRGRzRKk12LMA8iDmeWM=</dsig:DigestValue>
+        <dsig:DigestValue>xI/K0q1I8A1bXXH6tshmQKBTUVjONc5ULlWKLPAVJrI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

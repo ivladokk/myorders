@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace MyOrders
+namespace MyOrders1
 {
-    public static class Settings
+    public static class Settings1
     {
 
         

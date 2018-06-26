@@ -1,0 +1,58 @@
+<?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+  <Report>
+    <Product>ПОДШИПНИК</Product>
+    <Count>32</Count>
+    <Price>2,36</Price>
+  </Report>
+  <Report>
+    <Product>Стопорное кольцо</Product>
+    <Count>32</Count>
+    <Price>0,36</Price>
+  </Report>
+  <Report>
+    <Product>Распорка для колеса</Product>
+    <Count>32</Count>
+    <Price>6,49</Price>
+  </Report>
+  <Report>
+    <Product>Комплект шестерен</Product>
+    <Count>2</Count>
+    <Price>92,04</Price>
+  </Report>
+  <Report>
+    <Product>Зубчатая рейка</Product>
+    <Count>4</Count>
+    <Price>47,2</Price>
+  </Report>
+  <Report>
+    <Product>Пластина</Product>
+    <Count>8</Count>
+    <Price>8,26</Price>
+  </Report>
+  <Report>
+    <Product>Электроклапан SY5220-5YO-01F 1/8' 24 VDC</Product>
+    <Count>4</Count>
+    <Price>118</Price>
+  </Report>
+  <Report>
+    <Product>ЦИЛИНДР D70*60 COD 301.01.070.60</Product>
+    <Count>4</Count>
+    <Price>132,16</Price>
+  </Report>
+  <Report>
+    <Product>Штифт для цилиндра D70 COD 309.04.070</Product>
+    <Count>4</Count>
+    <Price>4,13</Price>
+  </Report>
+  <Report>
+    <Product>Комплект шестерен</Product>
+    <Count>2</Count>
+    <Price>526,87</Price>
+  </Report>
+  <Report>
+    <Product>Крепление</Product>
+    <Count>2</Count>
+    <Price>33,04</Price>
+  </Report>
+</DocumentElement>

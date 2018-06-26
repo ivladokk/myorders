@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Dropbox.Api;
+using System.Xml;
+
 namespace Loader
 {
     public partial class Form1 : Form
@@ -15,16 +16,30 @@ namespace Loader
         public Form1()
         {
             InitializeComponent();
+            ReadConfig();
+        }
+
+        private void ReadConfig()
+        {
+            var connectionsXml = new XmlDocument();
+            connectionsXml.Load(@"connections.xml");
+            Dictionary<string,string> connections = new Dictionary<string, string>();
+            foreach (XmlNode i in connectionsXml["root"].ChildNodes)
+            {
+                connections.Add(i["name"].InnerText, i["constr"].InnerText);
+            }
+            var ds = new BindingSource(connections, null);
+            comboBox1.DisplayMember = "Key";
+            comboBox1.ValueMember = "Value";
+            comboBox1.DataSource = ds;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (var dbx = new DropboxClient("kxfB_FHXHQAAAAAAAAAACRuNdmaBEpWhY83Yed64OxkEuXXHLKfpEaMkxG5Rsnlc"))
-            {
-                var list = dbx.Files.ListFolderAsync("/test").Result;
-                var res = dbx.Files.DownloadZipAsync("/test").Result;
+            //AppCore.Settings.Settings.constr = comboBox1.SelectedValue.ToString();
+            System.Diagnostics.Process.Start("myorders.exe", comboBox1.SelectedValue.ToString());
+            Close();
 
-            }
         }
     }
 }

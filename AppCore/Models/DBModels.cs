@@ -164,6 +164,7 @@ namespace AppCore.Models
         public DateTime CreateDate { get; set; }
         public int Status { get; set; }
         public int ContrAgentID { get; set; }
+        public int ContrAgentID2 { get; set; }
 
     }
 

@@ -78,12 +78,12 @@ namespace CalculationModule.UI
 
         private void Action1()
         {
-            if (page1.ContrAgentID == 0)
+            if (page1.ContrAgentID == 0 || page1.ContrAgentID2 == 0)
             {
                 MessageBox.Show("Выберите контрагента");
                 return;
             }
-            _worker.CreateInstance(page1.SelectedTypeID, page1.CalcName, page1.ContrAgentID);
+            _worker.CreateInstance(page1.SelectedTypeID, page1.CalcName, page1.ContrAgentID, page1.ContrAgentID2);
             page3 = new Page3(_worker.calculationInstance);
             step3 = new Step
             {

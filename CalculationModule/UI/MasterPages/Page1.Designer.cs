@@ -33,8 +33,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tb_name = new System.Windows.Forms.TextBox();
             this.cb_Contragent = new DevExpress.XtraEditors.LookUpEdit();
+            this.cb_Contragent2 = new DevExpress.XtraEditors.LookUpEdit();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cb_Contragent.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_Contragent2.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -90,6 +93,18 @@
             this.cb_Contragent.Size = new System.Drawing.Size(335, 20);
             this.cb_Contragent.TabIndex = 0;
             // 
+            // cb_Contragent2
+            // 
+            this.cb_Contragent2.Location = new System.Drawing.Point(3, 178);
+            this.cb_Contragent2.Name = "cb_Contragent2";
+            // 
+            // 
+            // 
+            this.cb_Contragent2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cb_Contragent2.Size = new System.Drawing.Size(335, 20);
+            this.cb_Contragent2.TabIndex = 0;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -99,19 +114,31 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Выберите контрагента";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 157);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(117, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Выберите получателя";
+            // 
             // Page1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tb_name);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cb_type);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cb_Contragent);
+            this.Controls.Add(this.cb_Contragent2);
             this.Name = "Page1";
             this.Size = new System.Drawing.Size(353, 262);
             ((System.ComponentModel.ISupportInitialize)(this.cb_Contragent.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cb_Contragent2.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,6 +151,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_name;
         private DevExpress.XtraEditors.LookUpEdit cb_Contragent;
+        private DevExpress.XtraEditors.LookUpEdit cb_Contragent2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

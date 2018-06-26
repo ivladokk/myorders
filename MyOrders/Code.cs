@@ -5,49 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Globalization;
+using System.Windows.Forms;
+using AppCore;
+using AppCore.Models;
+using AppCore.Settings;
 
 namespace MyOrders
 {
-    class UserContext : DbContext
+    public static class Launcher
     {
-        public UserContext(string nameOrConnectionString) :
-            base(Settings.constr)
+        public static void StartApp()
         {
-            
+            if (!String.IsNullOrEmpty(Settings.constr))
+            {
+                Application.Run(new Form1());
+            }
         }
-        
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Good> Goods { get; set; }
-        public DbSet<Status> OrderStatuses { get; set; }
-        public DbSet<ContrAgent> Contragents{ get; set; }
-        public DbSet<Payment> Payments { get; set; } 
-        public DbSet<CurrencyCode> CurrencyCodes { get; set; }
-        public DbSet<Transaction> Transactions{ get; set; }
-        public DbSet<BalanceOnDay> BalanceOnDays { get; set; }
-        public DbSet<PaymentColor> PaymentColors { get; set; }
-        public DbSet<WorkDay> WorkDays { get; set; }
-        public DbSet<FuturePayment> FuturePayments { get; set; }
-        public DbSet<Rate> Rates { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            Database.SetInitializer<UserContext>(null);
-
-            base.OnModelCreating(modelBuilder);
-        }
-
     }
-    
-
     class CalendarSetting
     {
         public static List<DateTime> getDaysOfWeek(int Week)
         {
-
-
-            
-
-
             List<DateTime> days = new List<DateTime>();
 
             DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;

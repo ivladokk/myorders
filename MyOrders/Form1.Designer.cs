@@ -1,4 +1,6 @@
-﻿namespace MyOrders
+﻿using AppCore.Settings;
+
+namespace MyOrders
 {
     partial class Form1
     {
@@ -241,7 +243,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Главная";
+            this.Text = Settings.AppName + " Главная";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

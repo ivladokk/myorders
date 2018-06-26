@@ -38,13 +38,29 @@ namespace CalculationModule.UI
 
         private void LoadLists()
         {
-            BindingList<CalculationItem> itemsDS = new BindingList<CalculationItem>();
+            BindingList<CalculationItemViewModel> itemsDS = new BindingList<CalculationItemViewModel>();
             foreach (var i in _sender.Items)
             {
-                itemsDS.Add(i);
+                CalculationItemViewModel item = new CalculationItemViewModel
+                {
+                    ID = i.ID,
+                    Name = i.ItemName,
+                    isSum = false
+                };
+                itemsDS.Add(item);
+                if (i.WithSum == 1)
+                {
+                    CalculationItemViewModel itemWithSum = new CalculationItemViewModel
+                    {
+                        ID = i.ID,
+                        Name = i.ItemName + "[sum]",
+                        isSum = true
+                    };
+                    itemsDS.Add(itemWithSum);
+                }
             }
 
-            lb_items.DisplayMember = "ItemName";
+            lb_items.DisplayMember = "Name";
             lb_items.ValueMember = "ID";
             lb_items.DataSource = itemsDS;
 
@@ -66,15 +82,40 @@ namespace CalculationModule.UI
             lb_attrs.DisplayMember = "Value";
             lb_attrs.ValueMember = "Key";
             lb_attrs.DataSource = new BindingSource(attrsDS, null);
+
+
+            BindingList<DynamicConstant> dynamicDS = new BindingList<DynamicConstant>();
+            foreach (var i in _sender.Dynamics)
+            {
+                dynamicDS.Add(i);
+                
+            }
+            lb_dynamics.DisplayMember = "Name";
+            lb_dynamics.ValueMember = "ID";
+            lb_dynamics.DataSource = dynamicDS;
+
+
+           
+
         }
 
         private void lb_items_DoubleClick(object sender, EventArgs e)
         {
-            tb_value.Text += $"item[{lb_items.SelectedValue}]";
+
+            if (!(lb_items.SelectedItem as CalculationItemViewModel).isSum)
+            {
+                tb_value.Text += $"item[{lb_items.SelectedValue}]";
+            }
+            else
+            {
+                tb_value.Text += $"sum[{lb_items.SelectedValue}]";
+            }
+            
         }
 
         private void btn_save_Click(object sender, EventArgs e)
         {
+            _editModel.Expression = tb_value.Text;
             if (_type == 1)
             {
                 _editModel.OrderID = 1;
@@ -126,13 +167,20 @@ namespace CalculationModule.UI
         {
             this.Close();
         }
+
+        private void lb_dynamics_DoubleClick(object sender, EventArgs e)
+        {
+            tb_value.Text += $"dynamic[{lb_dynamics.SelectedValue}]";
+        }
     }
 
-    public class CalculationItemEditModel
+
+
+    public class CalculationItemViewModel
     {
-        public string ItemName { get; set; }
-        public string DisplayValue { get; set; }
-        public string Expression { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public bool isSum { get; set; }
 
     }
 }

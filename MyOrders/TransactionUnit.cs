@@ -1,9 +1,12 @@
-﻿using System;
+﻿using AppCore.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AppCore;
+using AppCore.Settings;
 
 namespace MyOrders
 {
