@@ -208,7 +208,9 @@ namespace AppCore.Models
     {
         public int ID { get; set; }
         public int CalculationInstanceID { get; set; }
-        public int ProductID { get; set; }
+        public string ProductName { get; set; }
+        public string VendorCode { get; set; }
+        public decimal Price { get; set; }
         public int Count { get; set; }
     }
 

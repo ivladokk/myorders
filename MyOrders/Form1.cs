@@ -193,7 +193,7 @@ namespace MyOrders
 
         private void всеПредложенияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OffersMain f = new OffersMain
+            OffersNewForm f = new OffersNewForm()//OffersMain
             {
                 MdiParent = this,
                 WindowState = FormWindowState.Maximized

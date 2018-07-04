@@ -317,8 +317,15 @@ namespace CalculationModule
 
         public void FillConstants(List<CalculationConstant> manualConstants)
         {
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                _usedConstatns = db.CalculationConstants.Where(x => x.CalculationTypeID == calculationInstance.ID)
+                    .ToList();
+            }
+
             foreach (var i in _usedConstatns.Where(x => x.ConstantType == 2))
             {
+
                 _usedConstatns.Remove(i);
             }
 
@@ -343,9 +350,16 @@ namespace CalculationModule
                 ColumnName = "Price",
                 Caption = "Цена за шт"
             };
+            DataColumn col4 = new DataColumn
+            {
+                ColumnName = $"VendorCode",
+                Caption = $"Артикул"
+            };
             dt.Columns.Add(col1);
+            dt.Columns.Add(col4);
             dt.Columns.Add(col2);
             dt.Columns.Add(col3);
+           
             foreach (var i in _calculationItems)
             {
                 dt.Columns.Add(new DataColumn()
@@ -359,6 +373,7 @@ namespace CalculationModule
             {
                 dt.Rows.Add();
                 dt.Rows[i]["Product"] = calculatedProducts[i].Product.Product.Name;
+                dt.Rows[i]["VendorCode"] = calculatedProducts[i].Product.Product.VendorCode;
                 dt.Rows[i]["Count"] = calculatedProducts[i].Product.Count;
                 dt.Rows[i]["Price"] = calculatedProducts[i].Product.Product.Price;
                 foreach (var item in calculatedProducts[i].CalculatedValues)
@@ -381,6 +396,20 @@ namespace CalculationModule
             {
                 MessageBox.Show("Ошибка при расчете сумммы");
             }
+
+            try
+            {
+                foreach (var i in CalculatedDynamics)
+                {
+                    dt.Rows.Add();
+                    int lastRow = dt.Rows.Count - 1;
+                    dt.Rows[lastRow][0] = $"{i.Dynamic.Name}:{i.Value}";
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
             
 
             return dt;
@@ -389,6 +418,31 @@ namespace CalculationModule
         public void SaveResults()
         {
             ExportToJSON();
+        }
+
+        public void SaveForSearch()
+        {
+            var products = new List<AppCore.Models.CalculatedProduct>();
+
+            foreach (var i in calculatedProducts)
+            {
+                AppCore.Models.CalculatedProduct pr = new AppCore.Models.CalculatedProduct
+                {
+                    CalculationInstanceID = calculationInstance.ID,
+                    ProductName = i.Product.Product.Name,
+                    VendorCode = i.Product.Product.VendorCode,
+                    Count = i.Product.Count,
+                    Price = i.Product.Product.Price
+                };
+                products.Add(pr);
+            }
+
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                db.CalculatedProducts.AddRange(products);
+                db.SaveChanges();
+            }
+
         }
 
         private decimal CalculateValue(string parsedEpression, bool round = false)
@@ -503,7 +557,8 @@ namespace CalculationModule
             var data = new CalculationJson
             {
                 products = calculatedProducts,
-                sum = ItemSumList
+                sum = ItemSumList,
+                dymamics = CalculatedDynamics
             };
             var result = JsonConvert.SerializeObject(data);
             using (UserContext db = new UserContext(Settings.constr))
@@ -525,6 +580,7 @@ namespace CalculationModule
                 var result = JsonConvert.DeserializeObject<CalculationJson>(data.CalculatedProducts);
                 calculatedProducts = result.products;
                 ItemSumList = result.sum;
+                CalculatedDynamics = result.dymamics;
             }
         }
     }
@@ -533,5 +589,6 @@ namespace CalculationModule
     {
         public List<CalculatedProduct> products { get; set; }
         public List<ItemSum> sum { get; set; }
+        public List<CalculatedDynamic> dymamics { get; set; }
     }
 }

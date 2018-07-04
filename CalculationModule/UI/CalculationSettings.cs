@@ -185,21 +185,30 @@ namespace CalculationModule.UI
             }
             else
             {
-                foreach (var i in order)
+                if (!orderLoaded)
                 {
-                    Orders.Add(new OrderViewModel
+                    foreach (var i in order)
                     {
-                        ItemID = i.ItemID,
-                        Order = i.Order,
-                        Type = i.ItemType,
-                        Text = GetOrderText(i.ItemType, i.ItemID)
-                    });
+                        Orders.Add(new OrderViewModel
+                        {
+                            ItemID = i.ItemID,
+                            Order = i.Order,
+                            Type = i.ItemType,
+                            Text = GetOrderText(i.ItemType, i.ItemID)
+                        });
+                    }
+
+                    orderLoaded = true;
                 }
+                
             }
         }
 
+        private bool orderLoaded = false;
         public void LoadOrderList()
         {
+            //if (orderLoaded) return;
+            
             lb_order.DataSource = null;
             
 
@@ -232,6 +241,7 @@ namespace CalculationModule.UI
             lb_order.DisplayMember = "Text";
             lb_order.ValueMember = "Order";
             lb_order.DataSource = ordersDS;
+            orderLoaded = true;
         }
 
         private string GetOrderText(int type, int id)

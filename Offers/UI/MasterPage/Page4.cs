@@ -19,10 +19,11 @@ namespace CalculationModule.UI.MasterPages
 
 
 
-        public Page4(List<OfferItem> items)
+        public Page4(OfferFooter footer,List<OfferItem> items)
         {
             InitializeComponent();
-            footer = new OfferFooter();
+            this.footer = footer;
+            //footer = new OfferFooter();
             _items = items;
 
             decimal total = 0;

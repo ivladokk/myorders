@@ -179,7 +179,8 @@ namespace CalculationModule.UI
         {
             isCopmleted = true;
             _worker.SaveResults();
-            _sender.Load();
+            _worker.SaveForSearch();
+            _sender.Init();
             this.Close();
         }
 

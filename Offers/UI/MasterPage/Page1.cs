@@ -15,14 +15,21 @@ namespace Offers.UI.MasterPage
 {
     public partial class Page1 : UserControl
     {
-        public string  OfferName { get; set; }
-        public int ContrAgentID { get; set; }
+        private Offer _offer;
         public Page1()
         {
             InitializeComponent();
 
             LoadAgents();
-            tb_name.DataBindings.Add("Text", this, "OfferName");
+            tb_name.DataBindings.Add("Text", _offer, "OfferName");
+        }
+
+        public Page1(Offer offer)
+        {
+            InitializeComponent();
+            _offer = offer ?? new Offer();
+            LoadAgents();
+            tb_name.DataBindings.Add("Text", _offer, "OfferName");
         }
 
         public void LoadAgents()
@@ -41,7 +48,17 @@ namespace Offers.UI.MasterPage
             cb_Contragent.Properties.ValueMember = "ContrAgentID";
             cb_Contragent.Properties.DataSource = Contragents;
             //ContrAgentID = (int) cb_Contragent.EditValue;
-            cb_Contragent.DataBindings.Add("EditValue", this, "ContrAgentID");
+            cb_Contragent.DataBindings.Add("EditValue", _offer, "ContrAgentID");
+        }
+
+        public Offer GetOffer()
+        {
+            return _offer;
+        }
+
+        public bool isValid()
+        {
+            return _offer.ContrAgentID != 0;
         }
     }
 }

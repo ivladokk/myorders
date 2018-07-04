@@ -25,6 +25,8 @@ namespace Offers.UI.MasterPage
         public string HeaderText { get; set; }
         public string HeaderTextRus { get; set; }
 
+        private OfferHeader _headerEditModel { get; set; }
+
         public Page2()
         {
             InitializeComponent();
@@ -35,6 +37,20 @@ namespace Offers.UI.MasterPage
             cb_manufacter.DataBindings.Add("SelectedValue", this, "ManufacterID");
             tb_text.DataBindings.Add("Text", this, "HeaderText");
             tb_text_rus.DataBindings.Add("Text", this, "HeaderTextRus");
+
+        }
+
+        public Page2(OfferHeader header)
+        {
+            InitializeComponent();
+            _headerEditModel = header;
+            LoadManufacters();
+            tb_num.DataBindings.Add("Text", _headerEditModel, "OfferNumber");
+            tb_subject.DataBindings.Add("Text", _headerEditModel, "Subject");
+            tb_subject_rus.DataBindings.Add("Text", _headerEditModel, "SubjectRus");
+            cb_manufacter.DataBindings.Add("SelectedValue", _headerEditModel, "ManufacterID");
+            tb_text.DataBindings.Add("Text", _headerEditModel, "HeaderText");
+            tb_text_rus.DataBindings.Add("Text", _headerEditModel, "HeaderTextRus");
 
         }
 

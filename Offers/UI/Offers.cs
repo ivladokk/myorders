@@ -9,11 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AppCore;
+using AppCore.Interfaces;
 using AppCore.Settings;
 
 namespace Offers.UI
 {
-    public partial class OffersMain : Form
+    public partial class OffersMain : Form, IUpdForm
     {
         public OffersMain()
         {
@@ -87,6 +88,26 @@ namespace Offers.UI
                         
                 }
             }
+        }
+
+        private void изменитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                var id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
+                using (UserContext db = new UserContext(Settings.constr))
+                {
+                    var offer = db.Offers.FirstOrDefault(x => x.ID == id);
+                    if (offer != null)
+                    {
+                        var worker = new OfferWorker(offer);
+                        OfferCreateForm f = new OfferCreateForm(this, worker);
+                        f.ShowDialog();
+                    }
+
+                }
+            }
+
         }
     }
     

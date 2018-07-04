@@ -194,6 +194,12 @@
     <Compile Include="UI\Offers.Designer.cs">
       <DependentUpon>Offers.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\OffersNewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\OffersNewForm.Designer.cs">
+      <DependentUpon>OffersNewForm.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppCore\AppCore.csproj">

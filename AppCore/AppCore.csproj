@@ -31,6 +31,51 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.BonusSkins.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Data.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v17.1.Core">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Office.v17.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v17.1.Core">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Pdf.v17.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v17.1.Core">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Printing.v17.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v17.1.Core">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.RichEdit.v17.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v17.1.Core">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Sparkline.v17.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.Utils.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraBars.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraEditors.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraGrid.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraLayout.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraPrinting.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraTreeList.v17.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v17.1">
+      <HintPath>..\MyOrders\bin\Debug\DevExpress.XtraVerticalGrid.v17.1.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -59,7 +104,15 @@
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\MasterPage\Step.cs" />
+    <Compile Include="Components\MyGridSettings.cs" />
+    <Compile Include="Components\MyGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\MyGrid.Designer.cs">
+      <DependentUpon>MyGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\ILauncher.cs" />
+    <Compile Include="Interfaces\IUpdForm.cs" />
     <Compile Include="Models\DBModels.cs" />
     <Compile Include="Modules\CalculationModule.cs" />
     <Compile Include="Settings\Settings.cs" />
@@ -70,6 +123,10 @@
     <EmbeddedResource Include="Components\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\MyGrid.resx">
+      <DependentUpon>MyGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

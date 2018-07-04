@@ -17,10 +17,10 @@ namespace Offers.UI.MasterPage
     public partial class Page3 : UserControl
     {
         private List<OfferItem> _items;
-        public Page3(Offer offer)
+        public Page3(Offer offer, List<OfferItem> items)
         {
             InitializeComponent();
-            _items = new List<OfferItem>();
+            _items = items;
             EquipmentSelection selection = new EquipmentSelection(offer, _items);
             flowLayoutPanel1.Controls.Add(selection);
         }

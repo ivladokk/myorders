@@ -115,3 +115,4 @@ D:\MyOrders\CalculationModule\obj\Debug\CalculationModule.CalculationForm.resour
 D:\MyOrders\CalculationModule\obj\Debug\CalculationModule.dll.licenses
 D:\MyOrders\CalculationModule\bin\Debug\Newtonsoft.Json.dll
 D:\MyOrders\CalculationModule\bin\Debug\Newtonsoft.Json.xml
+D:\MyOrders\CalculationModule\obj\Debug\CalculationModule.UI.SearchForm.resources

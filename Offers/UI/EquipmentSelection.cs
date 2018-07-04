@@ -22,6 +22,7 @@ namespace Offers.UI
             InitializeComponent();
             _items = items;
             _offer = offer;
+            LoadItems();
 
         }
 

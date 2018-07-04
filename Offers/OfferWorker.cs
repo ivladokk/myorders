@@ -29,9 +29,12 @@ namespace Offers
         private List<OfferItem> _items;
         private OfferFooter _footer;
 
+        
+
         public OfferWorker()
         {
             _type = 1;
+            _items = new List<OfferItem>();
         }
 
         public OfferWorker(Offer offer)
@@ -47,18 +50,32 @@ namespace Offers
         }
 
 
-
-        public void CreateOffer(int agentId, string name)
+        public void CreateOffer(Offer newOffer)
         {
-            offer = new Offer
+            if (newOffer.ID == 0)
             {
-                ContrAgentID = agentId,
-                OfferName = name,
-                CreateDate = DateTime.Now
-            };
+                offer = newOffer;
+                offer.CreateDate = DateTime.Now;
+                using (UserContext db = new UserContext(Settings.constr))
+                {
+                    db.Offers.Add(offer);
+                    db.SaveChanges();
+                }
+            }
+            else EditOffer(newOffer);
+
+
+        }
+
+        public void EditOffer(Offer newOffer)
+        {
+            offer = newOffer;
             using (UserContext db = new UserContext(Settings.constr))
             {
-                db.Offers.Add(offer);
+                db.Offers.Attach(offer);
+                var entry = db.Entry(offer);
+                entry.Property(x => x.ContrAgentID).IsModified = true;
+                entry.Property(x => x.OfferName).IsModified = true;
                 db.SaveChanges();
             }
         }
@@ -68,14 +85,29 @@ namespace Offers
             _header = header;
         }
 
+        public OfferHeader GetHeader()
+        {
+            return _header;
+        }
+
         public void FillItems(List<OfferItem> items)
         {
             _items = items;
         }
 
+        public List<OfferItem> GetItems()
+        {
+            return _items;
+        }
+
         public void SetFooter(OfferFooter footer)
         {
             _footer = footer;
+        }
+
+        public OfferFooter GetFooter()
+        {
+            return _footer ?? new OfferFooter();
         }
 
 
@@ -86,6 +118,10 @@ namespace Offers
                 using (UserContext db = new UserContext(Settings.constr))
                 {
                     db.OfferHeaders.Add(_header);
+                    if (_type == 2)
+                    {
+                        ClearItems();
+                    }
                     db.OfferItems.AddRange(_items);
                     db.OfferFooters.Add(_footer);
                     db.SaveChanges();
@@ -98,6 +134,20 @@ namespace Offers
            
         }
 
+        private void ClearItems()
+        {
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                var oldItems = db.OfferItems.Where(x => x.OfferID == offer.ID).ToList();
+                foreach (var i in oldItems)
+                {
+                    db.OfferItems.Remove(i);
+                    
+                }
+                db.SaveChanges();
+
+            }
+        }
         public void Print()
         {
             var template = new ReportTemplate
