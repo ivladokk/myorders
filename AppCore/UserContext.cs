@@ -46,6 +46,7 @@ namespace AppCore
         public DbSet<Equipment> Equipments { get; set; }
         public DbSet<Manufacter> Manufacters { get; set; }
         public DbSet<CalculationStatus> CalculationStatus { get; set; }
+        public DbSet<CustomsGood> CustomsGoods { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -351,4 +351,28 @@ namespace AppCore.Models
         public int ID { get; set; }
         public string StatusValue { get; set; }
     }
+
+    public class CustomsGood
+    {
+        public int ID { get; set; }
+        public string ND { get; set; }
+        public string G022 { get; set; }
+        public string G082 { get; set; }
+        public string G23 { get; set; }
+        public string G31_1 { get; set; }
+        public string TEXT1 { get; set; }
+        public string G31_11 { get; set; }
+        public string G31_7 { get; set; }
+        public string G31_71 { get; set; }
+        public string G33 { get; set; }
+        public string G38 { get; set; }
+        public string G42 { get; set; }
+        public string Value1 { get; set; }
+        public string G45 { get; set; }
+        public string G474RUB { get; set; }
+        public string Value2 { get; set; }
+        public string Value3 { get; set; }
+        public string TOVG { get; set; }
+        
+    }
 }

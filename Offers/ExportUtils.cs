@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -11,9 +12,13 @@ using AppCore;
 using AppCore.Components;
 using AppCore.Models;
 using AppCore.Settings;
+using AutoMapper;
+using GroupDocs.Assembly;
 using iTextSharp.text.pdf;
 using Newtonsoft.Json;
 using Offers;
+using Microsoft.Office.Interop.Word;
+using Application = System.Windows.Forms.Application;
 
 namespace Offers
 {
@@ -30,6 +35,33 @@ namespace Offers
         public string pageSize { get; set; }
         public string pageOrientation { get; set; }
         public int viewportWidth { get; set; }
+    }
+
+    public class OfferPrintModel: Offer
+    {
+        public ContrAgent Customer { get; set; }
+        public string Date { get; set; }
+    }
+
+    public class OfferHeaderPrintModel : OfferHeader
+    {
+        public Manufacter Manufacter { get; set; }
+    }
+
+    public class OfferItemPrintModel: OfferItem
+    {
+        public Equipment Equipment { get; set; }
+        public List<Image> Images { get; set; }
+    }
+    public class OfferReportModel
+    {
+        public OfferPrintModel Offer { get; set; }
+        public OfferHeaderPrintModel Header { get; set; }
+        public IEnumerable<OfferItemPrintModel> Items { get; set; }
+        public OfferFooter Footer { get; set; }
+        public string OfferTill { get; set; }
+        public Image Logo { get; set; }
+
     }
 
 
@@ -51,10 +83,104 @@ namespace Offers
             return Export;
         }
 
+        private dynamic model;
+        public void Ex2()
+        {
+            string tmpDocx = $"{Application.StartupPath}\\temp\\{Guid.NewGuid().ToString()}.docx";
+
+
+            var headerConfig = new MapperConfiguration(cfg => cfg.CreateMap<OfferHeader, OfferHeaderPrintModel>());
+            var headerMapper = headerConfig.CreateMapper();
+            var headerForPrint = headerMapper.Map<OfferHeader, OfferHeaderPrintModel>(_offer.header);
+            
+
+
+            var offerConfig = new MapperConfiguration(cfg => cfg.CreateMap<Offer, OfferPrintModel>());
+            var offerMapper = offerConfig.CreateMapper();
+            var offerForPrint = offerMapper.Map<Offer, OfferPrintModel>(_offer.offer);
+            offerForPrint.Date = offerForPrint.CreateDate.ToString("dd.MM.yyyy");
+
+
+            var itemConfig = new MapperConfiguration(cfg => cfg.CreateMap<OfferItem, OfferItemPrintModel>());
+            var itemMapper = itemConfig.CreateMapper();
+
+            List<OfferItemPrintModel> items = new List<OfferItemPrintModel>();
+
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                var customer = db.Contragents.FirstOrDefault(a =>
+                    a.ContrAgentID == db.Offers.FirstOrDefault(x => x.ID == _offer.offer.ID).ContrAgentID);
+                offerForPrint.Customer = customer;
+                var from = db.Manufacters.FirstOrDefault(x => x.ID == _offer.header.ManufacterID);
+                headerForPrint.Manufacter = from;
+                foreach (var i in _offer.items)
+                {
+                    var item = itemMapper.Map<OfferItem, OfferItemPrintModel>(i);
+                    var equip = db.Equipments.FirstOrDefault(x => x.ID == i.EquipmentID);
+                    item.Equipment = equip;
+                    item.Images = new List<Image>();
+                    if (equip.Image != "")
+                    {
+                        item.Images.Add(Image.FromFile(equip.Image));
+                    }
+                    items.Add(item);
+                }
+
+            }
+
+            OfferReportModel fullOffer = new OfferReportModel
+            {
+                Offer = offerForPrint,
+                Header = headerForPrint,
+                Items = items,
+                Footer = _offer.footer,
+                OfferTill = _offer.footer.OfferTill.ToString("dd.MM.yyyy"),
+                Logo = !string.IsNullOrEmpty(headerForPrint.Manufacter.Logo) ? Image.FromFile(headerForPrint.Manufacter.Logo) : null
+            };
+
+            string template = fullOffer.Logo != null
+                ? Application.StartupPath + @"\template\offer_template.docx"
+                : Application.StartupPath + @"\template\offer_template_nologo.docx";
+
+            DocumentAssembler assembler = new DocumentAssembler();
+            assembler.AssembleDocument(template, tmpDocx, fullOffer, "offer");
+
+
+            Microsoft.Office.Interop.Word.Application appWord = new Microsoft.Office.Interop.Word.Application();
+            wordDocument = appWord.Documents.Open(tmpDocx);
+            FindAndReplace(appWord, "Evaluation Only. Created with GroupDocs.Assembly 18.6. © Aspose Pty Ltd 2001-2018. All Rights Reserved.", "");
+
+            wordDocument.ExportAsFixedFormat(_folder, WdExportFormat.wdExportFormatPDF);
+            wordDocument.Close();
+        }
+        private void FindAndReplace(Microsoft.Office.Interop.Word.Application doc, object findText, object replaceWithText)
+        {
+            //options
+            object matchCase = false;
+            object matchWholeWord = true;
+            object matchWildCards = false;
+            object matchSoundsLike = false;
+            object matchAllWordForms = false;
+            object forward = true;
+            object format = false;
+            object matchKashida = false;
+            object matchDiacritics = false;
+            object matchAlefHamza = false;
+            object matchControl = false;
+            object read_only = false;
+            object visible = true;
+            object replace = 2;
+            object wrap = 1;
+            //execute find and replace
+            doc.Selection.Find.Execute(ref findText, ref matchCase, ref matchWholeWord,
+                ref matchWildCards, ref matchSoundsLike, ref matchAllWordForms, ref forward, ref wrap, ref format, ref replaceWithText, ref replace,
+                ref matchKashida, ref matchDiacritics, ref matchAlefHamza, ref matchControl);
+        }
+        public Microsoft.Office.Interop.Word.Document wordDocument { get; set; }
         public void Export()
         {
             Dictionary<string,string> main = new Dictionary<string, string>();
-           
+
             ContrAgent customer = new ContrAgent();
             try
             {
@@ -62,9 +188,14 @@ namespace Offers
                 {
                     customer = db.Contragents.FirstOrDefault(a =>
                         a.ContrAgentID == db.Offers.FirstOrDefault(x => x.ID == _offer.offer.ID).ContrAgentID);
+                    //offerForPrint.Customer = customer;
+
                     main.Add("#customer#", customer.NameEng);
                     main.Add("#customer_rus#", customer.Name);
                     var from = db.Manufacters.FirstOrDefault(x => x.ID == _offer.header.ManufacterID);
+                    //headerForPrint = 
+                    //headerForPrint.Manufacter = from;
+
                     main.Add("#from#", from.Name);
                     main.Add("#from_rus#", from.NameRus);
                     main.Add("#offernum#", _offer.header.OfferNumber);

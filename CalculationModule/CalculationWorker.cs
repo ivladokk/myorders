@@ -213,6 +213,22 @@ namespace CalculationModule
                 }
             }
 
+           
+
+            string dynamicPattern = @"dynamic\[\d+\]";
+            foreach (Match match in Regex.Matches(dynamic.Expression, dynamicPattern))
+            {
+                string pattern = @"\d+";
+
+                var dynamicId = Convert.ToInt32(Regex.Match(match.Value, pattern).ToString());
+                var dynamicValue = CalculatedDynamics.FirstOrDefault(x => x.Dynamic.ID == dynamicId);
+                if (dynamicValue != null)
+                {
+                    if (!replace.ContainsKey(match.Value))
+                        replace.Add(match.Value, dynamicValue.Value.ToString());
+                }
+            }
+
             var ret = dynamic.Expression;
             foreach (var i in replace)
             {

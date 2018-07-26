@@ -105,3 +105,10 @@ D:\MyOrders\Loader\bin\Debug\es\DevExpress.Office.v17.1.Core.resources.dll
 D:\MyOrders\Loader\bin\Debug\ja\DevExpress.Office.v17.1.Core.resources.dll
 D:\MyOrders\Loader\bin\Debug\ru\DevExpress.Office.v17.1.Core.resources.dll
 D:\MyOrders\Loader\bin\Debug\DevExpress.Utils.v17.1.dll
+D:\MyOrders\Loader\bin\Debug\GroupDocs.Assembly.dll
+D:\MyOrders\Loader\bin\Debug\GroupDocs.Assembly.xml
+D:\MyOrders\Loader\bin\Debug\AutoMapper.dll
+D:\MyOrders\Loader\bin\Debug\System.ValueTuple.dll
+D:\MyOrders\Loader\bin\Debug\AutoMapper.pdb
+D:\MyOrders\Loader\bin\Debug\AutoMapper.xml
+D:\MyOrders\Loader\bin\Debug\System.ValueTuple.xml

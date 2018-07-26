@@ -18,6 +18,7 @@ namespace AppCore.Components
         {
             InitializeComponent();
             _settings = settings;
+            gridView1.OptionsView.ColumnAutoWidth = settings.AutoSizeColums;
             CreateContextMenu();
 
         }

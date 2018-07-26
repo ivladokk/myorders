@@ -10,5 +10,6 @@ namespace AppCore.Components
     public class MyGridSettings
     {
         public List<ToolStripMenuItem> ContextMenuItems { get; set; }
+        public bool AutoSizeColums { get; set; }
     }
 }

@@ -28,6 +28,7 @@ namespace CalculationModule.UI
             InitializeComponent();
             MyGridSettings settings = new MyGridSettings();
             settings.ContextMenuItems = GetMenuItems();
+            settings.AutoSizeColums = true;
             grid = new MyGrid(settings);
             grid.Dock = DockStyle.Fill;
             Controls.Add(grid);

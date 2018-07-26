@@ -200,5 +200,15 @@ namespace MyOrders
             }; 
             f.Show();
         }
+
+        private void сведенияОВвозеТоваровToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CustomsData f = new CustomsData
+            {
+                MdiParent = this,
+                WindowState = FormWindowState.Maximized
+            };
+            f.Show();
+        }
     }
 }

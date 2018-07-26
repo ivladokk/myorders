@@ -27,6 +27,7 @@ namespace Offers.UI
             _sender = sender;
             tb_name_eng.DataBindings.Add("Text", _manufacter, "Name");
             tb_name_rus.DataBindings.Add("Text", _manufacter, "NameRus");
+            tb_logo.DataBindings.Add("Text", _manufacter, "Logo");
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -37,6 +38,7 @@ namespace Offers.UI
                 return;
             }
 
+            _manufacter.Logo = tb_logo.Text;
             if (_mode == 1)
             {
                 using (UserContext db = new UserContext(Settings.constr))
@@ -65,6 +67,12 @@ namespace Offers.UI
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            tb_logo.Text = openFileDialog1.FileName;
         }
     }
 }

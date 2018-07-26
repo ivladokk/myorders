@@ -115,3 +115,10 @@ D:\MyOrders\Offers\bin\Debug\itextsharp.xmlworker.dll
 D:\MyOrders\Offers\bin\Debug\itextsharp.xml
 D:\MyOrders\Offers\bin\Debug\Newtonsoft.Json.dll
 D:\MyOrders\Offers\bin\Debug\Newtonsoft.Json.xml
+D:\MyOrders\Offers\bin\Debug\GroupDocs.Assembly.dll
+D:\MyOrders\Offers\bin\Debug\GroupDocs.Assembly.xml
+D:\MyOrders\Offers\bin\Debug\AutoMapper.dll
+D:\MyOrders\Offers\bin\Debug\System.ValueTuple.dll
+D:\MyOrders\Offers\bin\Debug\AutoMapper.pdb
+D:\MyOrders\Offers\bin\Debug\AutoMapper.xml
+D:\MyOrders\Offers\bin\Debug\System.ValueTuple.xml

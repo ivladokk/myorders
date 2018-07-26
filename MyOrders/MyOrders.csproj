@@ -121,6 +121,18 @@
     <Compile Include="CreateFuturePayment.Designer.cs">
       <DependentUpon>CreateFuturePayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomDataImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomDataImportForm.Designer.cs">
+      <DependentUpon>CustomDataImportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomsData.Designer.cs">
+      <DependentUpon>CustomsData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dictionaries\Contragents.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateFuturePayment.resx">
       <DependentUpon>CreateFuturePayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomDataImportForm.resx">
+      <DependentUpon>CustomDataImportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dictionaries\Contragents.resx">
       <DependentUpon>Contragents.cs</DependentUpon>

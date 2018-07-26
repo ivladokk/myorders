@@ -167,11 +167,13 @@ namespace Offers
             dialog.DefaultExt = "pdf";
             dialog.Filter = "PDF|*.pdf";
             dialog.ShowDialog();
+
             if (!string.IsNullOrEmpty(dialog.FileName))
             {
                 ExportUtils export = new ExportUtils(template, instance, dialog.FileName);
-               export.Export();
-                
+                export.Ex2();
+                //export.Export();
+
             }
             
         }

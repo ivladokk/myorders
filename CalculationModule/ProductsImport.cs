@@ -22,6 +22,7 @@ namespace CalculationModule
         {
             InitializeComponent();
             _sender = sender;
+
             btn_import.Enabled = false;
             import = new ImportProductAttributes();
         }

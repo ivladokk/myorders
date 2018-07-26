@@ -255,3 +255,11 @@ D:\MyOrders\MyOrders\bin\Debug\Newtonsoft.Json.dll
 D:\MyOrders\MyOrders\bin\Debug\Newtonsoft.Json.xml
 D:\MyOrders\MyOrders\bin\Debug\Offers.dll
 D:\MyOrders\MyOrders\bin\Debug\Offers.pdb
+D:\MyOrders\MyOrders\bin\Debug\GroupDocs.Assembly.dll
+D:\MyOrders\MyOrders\bin\Debug\GroupDocs.Assembly.xml
+D:\MyOrders\MyOrders\bin\Debug\AutoMapper.dll
+D:\MyOrders\MyOrders\bin\Debug\System.ValueTuple.dll
+D:\MyOrders\MyOrders\bin\Debug\AutoMapper.pdb
+D:\MyOrders\MyOrders\bin\Debug\AutoMapper.xml
+D:\MyOrders\MyOrders\bin\Debug\System.ValueTuple.xml
+D:\MyOrders\MyOrders\obj\Debug\MyOrders.CustomDataImportForm.resources

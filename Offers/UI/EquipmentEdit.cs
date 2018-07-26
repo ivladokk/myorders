@@ -58,6 +58,11 @@ namespace Offers.UI
 
         private void btn_save_Click(object sender, EventArgs e)
         {
+            _equipment.Code = tb_code.Text;
+            _equipment.Description = tb_desc_eng.Text;
+            _equipment.DescriptionRus = tb_desc_rus.Text;
+            _equipment.Image = tb_img.Text;
+
             using (UserContext db = new UserContext(Settings.constr))
             {
                 if (_mode == 1)
