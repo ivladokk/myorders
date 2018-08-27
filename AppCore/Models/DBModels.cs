@@ -64,6 +64,7 @@ namespace AppCore.Models
         public int CurrencyID { get; set; }
         public int Code { get; set; }
         public string CurrencyName { get; set; }
+        public string CurrencyNameEng { get; set; }
     }
 
 
@@ -227,19 +228,11 @@ namespace AppCore.Models
     public class ProductAttribute
     {
         public int ID { get; set; }
-        public int Code { get; set; }
-        public string View { get; set; }
         public string VendorCode { get; set; }
         public string ProductName { get; set; }
         public string Unit { get; set; }
-        public int GoodsGroup { get; set; }
         public long TNVEDCode { get; set; }
-        public int Duty { get; set; }
         public decimal TNVEDValue { get; set; }
-        public string Owner { get; set; }
-        public string Certificate { get; set; }
-        public string Declaration { get; set; }
-        
     }
 
     public class DynamicConstant
@@ -275,7 +268,7 @@ namespace AppCore.Models
         public int ContrAgentID { get; set; }
         public DateTime CreateDate { get; set; }
         public string OfferName { get; set; }
-        
+        public int CurrencyID { get; set; }
         
     }
 
@@ -357,6 +350,7 @@ namespace AppCore.Models
         public int ID { get; set; }
         public string ND { get; set; }
         public string G022 { get; set; }
+        public string G081 { get; set; }
         public string G082 { get; set; }
         public string G23 { get; set; }
         public string G31_1 { get; set; }
@@ -365,14 +359,39 @@ namespace AppCore.Models
         public string G31_7 { get; set; }
         public string G31_71 { get; set; }
         public string G33 { get; set; }
-        public string G38 { get; set; }
+        public string EXW { get; set; }
         public string G42 { get; set; }
-        public string Value1 { get; set; }
         public string G45 { get; set; }
+        public string SelfValue { get; set; }
         public string G474RUB { get; set; }
-        public string Value2 { get; set; }
-        public string Value3 { get; set; }
         public string TOVG { get; set; }
         
     }
+
+    public class TransportPack
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int ContragentIDFrom { get; set; }
+        public int ContragentIDTo { get; set; }
+        public DateTime CreateDate { get; set; }
+        public int Status { get; set; }
+        public int TotalItemID { get; set; }
+        public decimal TotalSum { get; set; }
+    }
+
+    public class TransportPackItem
+    {
+        public int ID { get; set; }
+        public int TransportPackID { get; set; }
+        public int CalculatedProductID { get; set; }
+        public decimal TotalValue { get; set; }
+    }
+
+    public class TransportPackStatus
+    {
+        public int ID { get; set; }
+        public string StatusValue { get; set; }
+    }
+
 }

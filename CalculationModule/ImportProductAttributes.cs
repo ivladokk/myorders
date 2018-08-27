@@ -33,18 +33,11 @@ namespace CalculationModule
                             item.TNVEDValue = i.TNVEDValue;
                             db.ProductAttributes.Attach(item);
                             var entry = db.Entry(item);
-                            entry.Property(x => x.Code).IsModified = true;
                             entry.Property(x => x.VendorCode).IsModified = true;
-                            entry.Property(x => x.View).IsModified = true;
                             entry.Property(x => x.ProductName).IsModified = true;
                             entry.Property(x => x.Unit).IsModified = true;
-                            entry.Property(x => x.GoodsGroup).IsModified = true;
                             entry.Property(x => x.TNVEDCode).IsModified = true;
-                            entry.Property(x => x.Duty).IsModified = true;
                             entry.Property(x => x.TNVEDValue).IsModified = true;
-                            entry.Property(x => x.Owner).IsModified = true;
-                            entry.Property(x => x.Certificate).IsModified = true;
-                            entry.Property(x => x.Declaration).IsModified = true;
 
                         }
                         else

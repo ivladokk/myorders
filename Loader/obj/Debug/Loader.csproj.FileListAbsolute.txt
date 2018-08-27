@@ -112,3 +112,6 @@ D:\MyOrders\Loader\bin\Debug\System.ValueTuple.dll
 D:\MyOrders\Loader\bin\Debug\AutoMapper.pdb
 D:\MyOrders\Loader\bin\Debug\AutoMapper.xml
 D:\MyOrders\Loader\bin\Debug\System.ValueTuple.xml
+D:\MyOrders\Loader\bin\Debug\Transport.dll
+D:\MyOrders\Loader\bin\Debug\Transport.pdb
+D:\MyOrders\Loader\bin\Debug\Transport.dll.config

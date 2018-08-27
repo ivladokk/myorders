@@ -117,7 +117,7 @@ namespace Offers.UI
         {
             if (!page1.isValid())
             {
-                MessageBox.Show("Выберите контрагента");
+                MessageBox.Show("Выберите контрагента и валюту!");
                 return;
             }
 

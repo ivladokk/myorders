@@ -29,7 +29,26 @@ namespace Offers.UI.MasterPage
             InitializeComponent();
             _offer = offer ?? new Offer();
             LoadAgents();
+            LoadCurrency();
             tb_name.DataBindings.Add("Text", _offer, "OfferName");
+           
+        }
+
+        public void LoadCurrency()
+        {
+            BindingList<CurrencyCode> currencyCodes = new BindingList<CurrencyCode>();
+            using (UserContext db = new UserContext(Settings.constr))
+            {
+                foreach (var i in db.CurrencyCodes.ToList())
+                {
+                    currencyCodes.Add(i);
+                }
+            }
+
+            cb_currency.DisplayMember = "CurrencyName";
+            cb_currency.ValueMember = "CurrencyID";
+            cb_currency.DataSource = currencyCodes;
+            cb_currency.DataBindings.Add("SelectedValue", _offer, "CurrencyID");
         }
 
         public void LoadAgents()
@@ -58,7 +77,7 @@ namespace Offers.UI.MasterPage
 
         public bool isValid()
         {
-            return _offer.ContrAgentID != 0;
+            return _offer.ContrAgentID != 0 && _offer.CurrencyID != 0;
         }
     }
 }

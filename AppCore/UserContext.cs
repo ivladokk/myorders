@@ -47,6 +47,9 @@ namespace AppCore
         public DbSet<Manufacter> Manufacters { get; set; }
         public DbSet<CalculationStatus> CalculationStatus { get; set; }
         public DbSet<CustomsGood> CustomsGoods { get; set; }
+        public DbSet<TransportPack> TransportPacks { get; set; }
+        public DbSet<TransportPackItem> TransportPackItems { get; set; }
+        public DbSet<TransportPackStatus> TransportPackStatus { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

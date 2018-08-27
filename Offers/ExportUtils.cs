@@ -41,6 +41,7 @@ namespace Offers
     {
         public ContrAgent Customer { get; set; }
         public string Date { get; set; }
+        public CurrencyCode Currency { get; set; }
     }
 
     public class OfferHeaderPrintModel : OfferHeader
@@ -111,6 +112,8 @@ namespace Offers
                 var customer = db.Contragents.FirstOrDefault(a =>
                     a.ContrAgentID == db.Offers.FirstOrDefault(x => x.ID == _offer.offer.ID).ContrAgentID);
                 offerForPrint.Customer = customer;
+                var currency = db.CurrencyCodes.FirstOrDefault(x => x.CurrencyID == _offer.offer.CurrencyID);
+                offerForPrint.Currency = currency;
                 var from = db.Manufacters.FirstOrDefault(x => x.ID == _offer.header.ManufacterID);
                 headerForPrint.Manufacter = from;
                 foreach (var i in _offer.items)

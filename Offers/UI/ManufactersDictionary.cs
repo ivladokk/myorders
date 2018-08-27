@@ -68,17 +68,21 @@ namespace Offers.UI
 
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow != null)
+            if (MessageBox.Show("Вы уверены?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                var id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
-                using (UserContext db = new UserContext(Settings.constr))
+                if (dataGridView1.CurrentRow != null)
                 {
-                    var manufacter = db.Manufacters.FirstOrDefault(x => x.ID == id);
-                    db.Manufacters.Remove(manufacter);
-                    db.SaveChanges();
+                    var id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
+                    using (UserContext db = new UserContext(Settings.constr))
+                    {
+                        var manufacter = db.Manufacters.FirstOrDefault(x => x.ID == id);
+                        db.Manufacters.Remove(manufacter);
+                        db.SaveChanges();
+                    }
+                    Init();
                 }
-                Init();
             }
+               
         }
     }
 }

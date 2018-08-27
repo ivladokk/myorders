@@ -10,8 +10,10 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using AppCore.Settings;
 using CalculationModule;
 using Offers.UI;
+using Transport;
 
 namespace MyOrders
 {
@@ -20,8 +22,8 @@ namespace MyOrders
         public Form1()
         {
             InitializeComponent();
-
-
+            Text = Settings.AppName;
+            Name = Settings.AppName;
             CultureInfo culture = new CultureInfo("ru-RU");
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
@@ -204,6 +206,16 @@ namespace MyOrders
         private void сведенияОВвозеТоваровToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CustomsData f = new CustomsData
+            {
+                MdiParent = this,
+                WindowState = FormWindowState.Maximized
+            };
+            f.Show();
+        }
+
+        private void создатьToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            TransportPackAll f = new TransportPackAll
             {
                 MdiParent = this,
                 WindowState = FormWindowState.Maximized

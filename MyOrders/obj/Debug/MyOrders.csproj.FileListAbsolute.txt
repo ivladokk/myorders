@@ -263,3 +263,6 @@ D:\MyOrders\MyOrders\bin\Debug\AutoMapper.pdb
 D:\MyOrders\MyOrders\bin\Debug\AutoMapper.xml
 D:\MyOrders\MyOrders\bin\Debug\System.ValueTuple.xml
 D:\MyOrders\MyOrders\obj\Debug\MyOrders.CustomDataImportForm.resources
+D:\MyOrders\MyOrders\bin\Debug\Transport.dll
+D:\MyOrders\MyOrders\bin\Debug\Transport.pdb
+D:\MyOrders\MyOrders\bin\Debug\Transport.dll.config

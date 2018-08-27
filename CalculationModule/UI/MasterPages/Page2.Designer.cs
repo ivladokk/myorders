@@ -32,6 +32,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btn_refresh = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+           
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,6 +66,7 @@
             this.label1.Size = new System.Drawing.Size(477, 39);
             this.label1.TabIndex = 2;
             this.label1.Text = resources.GetString("label1.Text");
+
             // 
             // Page2
             // 

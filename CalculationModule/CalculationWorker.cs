@@ -20,6 +20,7 @@ namespace CalculationModule
         public int Count;
         public long TNVEDCode;
         public decimal TNVEDValue;
+        public decimal Additional;
     }
 
     public class CalculatedValue
@@ -277,7 +278,8 @@ namespace CalculationModule
                             Price = Convert.ToDecimal(dt.Rows[i]["Price"].ToString().Replace(".", ",")),
                             VendorCode = dt.Rows[i]["VendorCode"].ToString()
                         },
-                        Count = Convert.ToInt32(dt.Rows[i]["Count"].ToString())
+                        Count = Convert.ToInt32(dt.Rows[i]["Count"].ToString()),
+                        Additional = Convert.ToDecimal(dt.Rows[i]["Additional"].ToString().Replace(".", ","))
                     };
                     using (UserContext db = new UserContext(Settings.constr))
                     {
@@ -371,10 +373,16 @@ namespace CalculationModule
                 ColumnName = $"VendorCode",
                 Caption = $"Артикул"
             };
+            DataColumn col5 = new DataColumn
+            {
+                ColumnName = "Additional",
+                Caption = "Доп. значение"
+            };
             dt.Columns.Add(col1);
             dt.Columns.Add(col4);
             dt.Columns.Add(col2);
             dt.Columns.Add(col3);
+            dt.Columns.Add(col5);
            
             foreach (var i in _calculationItems)
             {
@@ -392,6 +400,7 @@ namespace CalculationModule
                 dt.Rows[i]["VendorCode"] = calculatedProducts[i].Product.Product.VendorCode;
                 dt.Rows[i]["Count"] = calculatedProducts[i].Product.Count;
                 dt.Rows[i]["Price"] = calculatedProducts[i].Product.Product.Price;
+                dt.Rows[i]["Additional"] = calculatedProducts[i].Product.Additional;
                 foreach (var item in calculatedProducts[i].CalculatedValues)
                 {
                     dt.Rows[i][item.Item.ItemName] = item.Value;
@@ -440,7 +449,7 @@ namespace CalculationModule
         {
             var products = new List<AppCore.Models.CalculatedProduct>();
 
-            foreach (var i in calculatedProducts)
+            /*foreach (var i in calculatedProducts)
             {
                 AppCore.Models.CalculatedProduct pr = new AppCore.Models.CalculatedProduct
                 {
@@ -451,12 +460,45 @@ namespace CalculationModule
                     Price = i.Product.Product.Price
                 };
                 products.Add(pr);
+                
             }
 
             using (UserContext db = new UserContext(Settings.constr))
             {
                 db.CalculatedProducts.AddRange(products);
                 db.SaveChanges();
+            }*/
+
+            foreach (var i in calculatedProducts)
+            {
+                AppCore.Models.CalculatedProduct pr = new AppCore.Models.CalculatedProduct
+                {
+                    CalculationInstanceID = calculationInstance.ID,
+                    ProductName = i.Product.Product.Name,
+                    VendorCode = i.Product.Product.VendorCode,
+                    Count = i.Product.Count,
+                    Price = i.Product.Product.Price
+                };
+                //products.Add(pr);
+                using (UserContext db = new UserContext(Settings.constr))
+                {
+                    db.CalculatedProducts.Add(pr);
+                    db.SaveChanges();
+                    foreach (var item in i.CalculatedValues)
+                    {
+                        var calcItem = new CalculatedItem
+                        {
+                            CalculatedProductID = pr.ID,
+                            CalculationInstanceID = calculationInstance.ID,
+                            ItemID = item.Item.ID,
+                            Value = item.Value
+                        };
+                        db.CalculatedItems.Add(calcItem);
+                    }
+
+                    db.SaveChanges();
+                }
+
             }
 
         }
@@ -560,6 +602,7 @@ namespace CalculationModule
             replace.Add("count", product.Count.ToString());
             replace.Add("TNVEDCode", product.TNVEDCode.ToString());
             replace.Add("TNVEDValue", product.TNVEDValue.ToString());
+            replace.Add("Additional", product.Additional.ToString());
             var ret = item.Expression;
             foreach (var i in replace)
             {

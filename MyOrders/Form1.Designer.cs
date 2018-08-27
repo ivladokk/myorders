@@ -44,6 +44,7 @@ namespace MyOrders
             this.отчетПоПлатежамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.шаблоныПлатежейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетПоДоставкамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сведенияОВвозеТоваровToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.калькуляцияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,8 @@ namespace MyOrders
             this.всеПредложенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справочникОборудованияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справочникПроизводителейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сведенияОВвозеТоваровToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.транспортныеПакетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.создатьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +63,8 @@ namespace MyOrders
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
             this.калькуляцияToolStripMenuItem,
-            this.предложенияToolStripMenuItem});
+            this.предложенияToolStripMenuItem,
+            this.транспортныеПакетыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(877, 24);
@@ -174,6 +177,13 @@ namespace MyOrders
             this.отчетПоДоставкамToolStripMenuItem.Text = "Отчет по доставкам";
             this.отчетПоДоставкамToolStripMenuItem.Click += new System.EventHandler(this.отчетПоДоставкамToolStripMenuItem_Click);
             // 
+            // сведенияОВвозеТоваровToolStripMenuItem
+            // 
+            this.сведенияОВвозеТоваровToolStripMenuItem.Name = "сведенияОВвозеТоваровToolStripMenuItem";
+            this.сведенияОВвозеТоваровToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.сведенияОВвозеТоваровToolStripMenuItem.Text = "Сведения о ввозе товаров";
+            this.сведенияОВвозеТоваровToolStripMenuItem.Click += new System.EventHandler(this.сведенияОВвозеТоваровToolStripMenuItem_Click);
+            // 
             // калькуляцияToolStripMenuItem
             // 
             this.калькуляцияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -236,12 +246,20 @@ namespace MyOrders
             this.справочникПроизводителейToolStripMenuItem.Text = "Справочник производителей";
             this.справочникПроизводителейToolStripMenuItem.Click += new System.EventHandler(this.справочникПроизводителейToolStripMenuItem_Click);
             // 
-            // сведенияОВвозеТоваровToolStripMenuItem
+            // транспортныеПакетыToolStripMenuItem
             // 
-            this.сведенияОВвозеТоваровToolStripMenuItem.Name = "сведенияОВвозеТоваровToolStripMenuItem";
-            this.сведенияОВвозеТоваровToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.сведенияОВвозеТоваровToolStripMenuItem.Text = "Сведения о ввозе товаров";
-            this.сведенияОВвозеТоваровToolStripMenuItem.Click += new System.EventHandler(this.сведенияОВвозеТоваровToolStripMenuItem_Click);
+            this.транспортныеПакетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.создатьToolStripMenuItem1});
+            this.транспортныеПакетыToolStripMenuItem.Name = "транспортныеПакетыToolStripMenuItem";
+            this.транспортныеПакетыToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
+            this.транспортныеПакетыToolStripMenuItem.Text = "Транспортные пакеты";
+            // 
+            // создатьToolStripMenuItem1
+            // 
+            this.создатьToolStripMenuItem1.Name = "создатьToolStripMenuItem1";
+            this.создатьToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.создатьToolStripMenuItem1.Text = "Создать";
+            this.создатьToolStripMenuItem1.Click += new System.EventHandler(this.создатьToolStripMenuItem1_Click);
             // 
             // Form1
             // 
@@ -284,6 +302,8 @@ namespace MyOrders
         private System.Windows.Forms.ToolStripMenuItem справочникОборудованияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem справочникПроизводителейToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сведенияОВвозеТоваровToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem транспортныеПакетыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem создатьToolStripMenuItem1;
     }
 }
 

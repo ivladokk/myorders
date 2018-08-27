@@ -17,6 +17,7 @@ namespace CalculationModule.UI.MasterPages
     {
 
         public DataTable dt = null;
+        
         public Page2()
         {
             InitializeComponent();
@@ -28,13 +29,36 @@ namespace CalculationModule.UI.MasterPages
             if (dt != null)
             {
                 dt.Columns[0].ColumnName = "Num";
+                dt.Columns[0].Caption = "№";
                 dt.Columns[1].ColumnName = "VendorCode";
+                dt.Columns[1].Caption = "Артикул товара";
                 dt.Columns[2].ColumnName = "ProductName";
+                dt.Columns[2].Caption = "Наименование";
                 dt.Columns[3].ColumnName = "Count";
+                dt.Columns[3].Caption = "Кол-во";
+                dt.Columns[4].ColumnName = "Metrics";
+                dt.Columns[4].Caption = "Ед. измер.";
                 dt.Columns[5].ColumnName = "Price";
+                dt.Columns[5].Caption = "Цена";
+                dt.Columns[6].ColumnName = "TotalSum";
+                dt.Columns[6].Caption = "Сумма";
+                dt.Columns[7].ColumnName = "Additional";
+                dt.Columns[7].Caption = "Доп. параметр";
                 dataGridView1.DataSource = dt;
+                SetColNames();
             }
                
+        }
+
+        private void SetColNames()
+        {
+            if (dt.Columns.Count == dataGridView1.ColumnCount)
+            {
+                for (int i = 0; i < dt.Columns.Count;i++)
+                {
+                    dataGridView1.Columns[i].HeaderText = dt.Columns[i].Caption;
+                }
+            }
         }
         private DataTable clipboardExcelToDataTable(bool blnFirstRowHasHeader = false)
         {

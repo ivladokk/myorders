@@ -103,22 +103,21 @@ namespace MyOrders
                         {
                             ND = i[0].ToString().Replace("\r\n",""),
                             G022 = i[1].ToString().Replace("\r\n", ""),
-                            G082 = i[2].ToString().Replace("\r\n", ""),
-                            G23 = i[3].ToString().Replace("\r\n", ""),
-                            G31_1 = i[4].ToString().Replace("\r\n", ""),
-                            TEXT1 = i[5].ToString().Replace("\r\n", ""),
-                            G31_11 = i[6].ToString().Replace("\r\n", ""),
-                            G31_7 = i[7].ToString().Replace("\r\n", ""),
-                            G31_71 = i[8].ToString().Replace("\r\n", ""),
-                            G33 = i[9].ToString().Replace("\r\n", ""),
-                            G38 = i[10].ToString().Replace("\r\n", ""),
-                            G42 = i[11].ToString().Replace("\r\n", ""),
-                            Value1 = i[12].ToString().Replace("\r\n", ""),
+                            G081 = i[2].ToString().Replace("\r\n", ""),
+                            G082 = i[3].ToString().Replace("\r\n", ""),
+                            G23 = i[4].ToString().Replace("\r\n", ""),
+                            G31_1 = i[5].ToString().Replace("\r\n", ""),
+                            TEXT1 = i[6].ToString().Replace("\r\n", ""),
+                            G31_11 = i[7].ToString().Replace("\r\n", ""),
+                            G31_7 = i[8].ToString().Replace("\r\n", ""),
+                            G31_71 = i[9].ToString().Replace("\r\n", ""),
+                            G33 = i[10].ToString().Replace("\r\n", ""),
+                            EXW = i[11].ToString().Replace("\r\n", ""),
+                            G42 = i[12].ToString().Replace("\r\n", ""),
                             G45 = i[13].ToString().Replace("\r\n", ""),
-                            G474RUB = i[14].ToString().Replace("\r\n", ""),
-                            Value2 = i[15].ToString().Replace("\r\n", ""),
-                            Value3 = i[16].ToString().Replace("\r\n", ""),
-                            TOVG = i[17].ToString().Replace("\r\n", "")
+                            SelfValue = i[14].ToString().Replace("\r\n", ""),
+                            G474RUB = i[15].ToString().Replace("\r\n", ""),
+                            TOVG = i[16].ToString().Replace("\r\n", "")
                         };
                         list.Add(data);
                     }

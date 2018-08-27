@@ -25,7 +25,7 @@ namespace MyOrders
             }
 
             Settings.SetConstr(constr.Trim());
- 
+            Settings.SetAppName("MyOrders");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

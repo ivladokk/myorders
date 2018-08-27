@@ -433,6 +433,10 @@
       <Project>{f174583d-9089-4ab3-9550-0f9d4e8ed3b5}</Project>
       <Name>Offers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Transport\Transport.csproj">
+      <Project>{e3add1db-9b61-4075-8bc1-af99ab7d4427}</Project>
+      <Name>Transport</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

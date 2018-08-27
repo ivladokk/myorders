@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Offers", "Offers\Offers.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loader", "Loader\Loader.csproj", "{145762B7-EE33-4214-AB3E-A5036D731222}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transport", "Transport\Transport.csproj", "{E3ADD1DB-9B61-4075-8BC1-AF99AB7D4427}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{145762B7-EE33-4214-AB3E-A5036D731222}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{145762B7-EE33-4214-AB3E-A5036D731222}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{145762B7-EE33-4214-AB3E-A5036D731222}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3ADD1DB-9B61-4075-8BC1-AF99AB7D4427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3ADD1DB-9B61-4075-8BC1-AF99AB7D4427}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3ADD1DB-9B61-4075-8BC1-AF99AB7D4427}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3ADD1DB-9B61-4075-8BC1-AF99AB7D4427}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

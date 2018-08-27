@@ -39,6 +39,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
+            this.tb_curname_eng = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,19 +117,21 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.tb_curname_eng);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.tb_curname);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.tb_Code);
             this.groupBox1.Location = new System.Drawing.Point(4, 67);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(221, 100);
+            this.groupBox1.Size = new System.Drawing.Size(221, 139);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(7, 177);
+            this.btn_save.Location = new System.Drawing.Point(7, 212);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(79, 23);
             this.btn_save.TabIndex = 9;
@@ -137,7 +141,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(146, 177);
+            this.btn_cancel.Location = new System.Drawing.Point(146, 212);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(79, 23);
             this.btn_cancel.TabIndex = 10;
@@ -145,11 +149,27 @@
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
+            // tb_curname_eng
+            // 
+            this.tb_curname_eng.Location = new System.Drawing.Point(3, 110);
+            this.tb_curname_eng.Name = "tb_curname_eng";
+            this.tb_curname_eng.Size = new System.Drawing.Size(214, 20);
+            this.tb_curname_eng.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 93);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Валюта (ENG)";
+            // 
             // EditCurrency
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(230, 212);
+            this.ClientSize = new System.Drawing.Size(230, 243);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.groupBox1);
@@ -179,5 +199,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.TextBox tb_curname_eng;
+        private System.Windows.Forms.Label label3;
     }
 }

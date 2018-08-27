@@ -25,6 +25,7 @@ namespace Offers.UI
             InitializeComponent();
             MyGridSettings settings = new MyGridSettings();
             settings.ContextMenuItems = GetMenuItems();
+            settings.AutoSizeColums = true;
             grid = new MyGrid(settings);
             grid.Dock = DockStyle.Fill;
             Controls.Add(grid);
@@ -204,20 +205,23 @@ namespace Offers.UI
 
         private void DeleteItem_Click(object sender, EventArgs e)
         {
-
-            var id = grid.GetSelectedID();
-            if (id < 0) return;
-            using (UserContext db = new UserContext(Settings.constr))
+            if (MessageBox.Show("Вы уверены?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                var offer = db.Offers.FirstOrDefault(x => x.ID == id);
-                if (offer != null)
+                var id = grid.GetSelectedID();
+                if (id < 0) return;
+                using (UserContext db = new UserContext(Settings.constr))
                 {
-                    db.Offers.Remove(offer);
-                    db.SaveChanges();
-                    Init();
-                }
+                    var offer = db.Offers.FirstOrDefault(x => x.ID == id);
+                    if (offer != null)
+                    {
+                        db.Offers.Remove(offer);
+                        db.SaveChanges();
+                        Init();
+                    }
 
+                }
             }
+            
 
         }
 

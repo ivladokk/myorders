@@ -32,6 +32,8 @@
             this.tb_name = new System.Windows.Forms.TextBox();
             this.cb_Contragent = new DevExpress.XtraEditors.LookUpEdit();
             this.label3 = new System.Windows.Forms.Label();
+            this.cb_currency = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cb_Contragent.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,10 +74,29 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Выберите контрагента";
             // 
+            // cb_currency
+            // 
+            this.cb_currency.FormattingEnabled = true;
+            this.cb_currency.Location = new System.Drawing.Point(3, 123);
+            this.cb_currency.Name = "cb_currency";
+            this.cb_currency.Size = new System.Drawing.Size(121, 21);
+            this.cb_currency.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 106);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Выберите валюту";
+            // 
             // Page1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cb_currency);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tb_name);
             this.Controls.Add(this.label2);
@@ -93,5 +114,7 @@
         private System.Windows.Forms.TextBox tb_name;
         private DevExpress.XtraEditors.LookUpEdit cb_Contragent;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cb_currency;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -66,6 +66,7 @@ namespace MyOrders
             }
             tb_Code.Text = item.Code.ToString();
             tb_curname.Text = item.CurrencyName;
+            tb_curname_eng.Text = item.CurrencyNameEng;
         }
 
         private void btn_del_Click(object sender, EventArgs e)
@@ -95,7 +96,8 @@ namespace MyOrders
                     CurrencyCode item = new CurrencyCode()
                     {
                         Code = Convert.ToInt32(tb_Code.Text),
-                        CurrencyName = tb_curname.Text
+                        CurrencyName = tb_curname.Text,
+                        CurrencyNameEng = tb_curname_eng.Text
                     };
                     using (UserContext db = new UserContext(Settings.constr))
                     {
@@ -112,7 +114,8 @@ namespace MyOrders
                     CurrencyCode item = new CurrencyCode()
                     {
                         Code = Convert.ToInt32(tb_Code.Text),
-                        CurrencyName = tb_curname.Text
+                        CurrencyName = tb_curname.Text,
+                        CurrencyNameEng = tb_curname_eng.Text
                     };
                     using (UserContext db = new UserContext(Settings.constr))
                     {
@@ -120,6 +123,7 @@ namespace MyOrders
                         var entry = db.Entry(item);
                         entry.Property(x => x.CurrencyID).IsModified = true;
                         entry.Property(x => x.CurrencyName).IsModified = true;
+                        entry.Property(x => x.CurrencyNameEng).IsModified = true;
                         db.SaveChanges();
                     }
                     Init();

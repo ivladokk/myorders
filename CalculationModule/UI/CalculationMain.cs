@@ -133,22 +133,26 @@ namespace CalculationModule.UI
 
         private void DeleteItem_Click(object sender, EventArgs e)
         {
-            var id = grid.GetSelectedID();
-            if (id < 0) return;
-            using (UserContext db = new UserContext(Settings.constr))
+            if (MessageBox.Show("Вы уверены?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                var instance = db.CalculationInsctInstances.FirstOrDefault(x => x.ID == id);
-                db.CalculationInsctInstances.Remove(instance);
-               
-                var pr = db.CalculatedProducts.Where(x => x.CalculationInstanceID == id).ToList();
-                if (pr.Count > 0)
+                var id = grid.GetSelectedID();
+                if (id < 0) return;
+                using (UserContext db = new UserContext(Settings.constr))
                 {
-                    db.CalculatedProducts.RemoveRange(pr);
+                    var instance = db.CalculationInsctInstances.FirstOrDefault(x => x.ID == id);
+                    db.CalculationInsctInstances.Remove(instance);
+
+                    var pr = db.CalculatedProducts.Where(x => x.CalculationInstanceID == id).ToList();
+                    if (pr.Count > 0)
+                    {
+                        db.CalculatedProducts.RemoveRange(pr);
+                    }
+
+                    db.SaveChanges();
                 }
-               
-                db.SaveChanges();
+                Init();
             }
-            Init();
+           
         }
 
         private void CreateItem_Click(object sender, EventArgs e)

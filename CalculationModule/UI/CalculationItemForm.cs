@@ -79,6 +79,7 @@ namespace CalculationModule.UI
             attrsDS.Add("count","Кол-во");
             attrsDS.Add("TNVEDCode", "Код ТНВЭД");
             attrsDS.Add("TNVEDValue", "Ставка ТНВЭД");
+            attrsDS.Add("Additional", "Доп. значение");
             lb_attrs.DisplayMember = "Value";
             lb_attrs.ValueMember = "Key";
             lb_attrs.DataSource = new BindingSource(attrsDS, null);
