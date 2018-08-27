@@ -838,7 +838,8 @@ as begin
 			C1.Name as N'Отправитель',
 			C2.Name as N'Получатель',
 			T.CreateDate as N'Дата создания',
-			S.StatusValue as N'Статус'
+			S.StatusValue as N'Статус',
+			T.TotalSum as N'Стомость пакета'
 
 	from TransportPacks T
 	left join ContrAgents C1 on C1.ContrAgentID = T.ContragentIDFrom
